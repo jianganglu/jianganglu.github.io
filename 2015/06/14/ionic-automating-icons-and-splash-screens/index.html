@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?edcff04b92b2dadf9dcc95b55304f48e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+  <title>ionic自动创建应用的图标与启动画面 | JiangangLu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="当用户下载了你的app后他们首先会注意到什么？当他们安装完后第一次启动的时候又会注意到什么呢？
+一个应用程序图标和启动画面（启动图像）是每一个app的重要组成部分，但制作起来非常的繁琐。你需要给Android和IOS制作无数的图标，然后还要制作启动页、处理成不同的大小。
+为了降低你处理这些事儿时候的压力，我们实现了使用Ionic CLI来生成app的图标和启动页。
+针对Android平台：将我们的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ionic自动创建应用的图标与启动画面">
+<meta property="og:url" content="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/index.html">
+<meta property="og:site_name" content="JiangangLu's Blog">
+<meta property="og:description" content="当用户下载了你的app后他们首先会注意到什么？当他们安装完后第一次启动的时候又会注意到什么呢？
+一个应用程序图标和启动画面（启动图像）是每一个app的重要组成部分，但制作起来非常的繁琐。你需要给Android和IOS制作无数的图标，然后还要制作启动页、处理成不同的大小。
+为了降低你处理这些事儿时候的压力，我们实现了使用Ionic CLI来生成app的图标和启动页。
+针对Android平台：将我们的">
+<meta property="og:updated_time" content="2015-06-14T14:10:27.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ionic自动创建应用的图标与启动画面">
+<meta name="twitter:description" content="当用户下载了你的app后他们首先会注意到什么？当他们安装完后第一次启动的时候又会注意到什么呢？
+一个应用程序图标和启动画面（启动图像）是每一个app的重要组成部分，但制作起来非常的繁琐。你需要给Android和IOS制作无数的图标，然后还要制作启动页、处理成不同的大小。
+为了降低你处理这些事儿时候的压力，我们实现了使用Ionic CLI来生成app的图标和启动页。
+针对Android平台：将我们的">
+  
+    <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JiangangLu&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">精彩生活从这里开始，爱前端，爱生活。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="jianganglu.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-ionic-automating-icons-and-splash-screens" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/14/ionic-automating-icons-and-splash-screens/" class="article-date">
+  <time datetime="2015-06-14T13:38:37.000Z" itemprop="datePublished">2015-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ionic/">ionic</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ionic自动创建应用的图标与启动画面
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当用户下载了你的app后他们首先会注意到什么？当他们安装完后第一次启动的时候又会注意到什么呢？</p>
+<p>一个应用程序图标和启动画面（启动图像）是每一个app的重要组成部分，但制作起来非常的繁琐。你需要给Android和IOS制作无数的图标，然后还要制作启动页、处理成不同的大小。</p>
+<p>为了降低你处理这些事儿时候的压力，我们实现了使用Ionic CLI来生成app的图标和启动页。</p>
+<p>针对Android平台：将我们的要替换的启动图标放如android文件夹下。可以分别起名为：mdpi.png(48<em>48),hdpi(72</em>72)、xhdpi(96<em>96)、xxhdpi(144</em>144) 和 xxxhdpiI(192*192)。</p>
+<p>针对ios的，待补充。</p>
+<p>其中src中的图片路径就为整个项目的相对路径。<br>我这里偷了个懒，只搞了一个最高像素密度的应用图标（192px*192px）进去，安卓会自动进行压缩。<br>这里顺便说一下如果要修改应用的名称，只要修改name标签里的内容即可。</p>
+<p>这样在命令行中重新运行ionic run android，就能看到应用图标和名字已经被替换了。</p>
+<p>启动画面：<br>将启动画面的图片拷贝到之前的android文件夹下，splash-land-hdpi.png（640<em>480）splash-land-ldpi.png（426 × 320）splash-land-mdpi.png（470 × 320）splash-land-xhdpi.png（960 × 720）splash-port-hdpi.png（480</em>640）splash-port-ldpi.png（320<em>426）splash-port-mdpi.png（320</em>470）splash-port-xhdpi.png（720*960）<br>（名称可随意，只要和config.xml对应上即可）。</p>
+<pre><code>&lt;preference <span class="variable">name=</span><span class="string">"SplashScreen"</span> <span class="variable">value=</span><span class="string">"screen"</span>/&gt;
+&lt;preference <span class="variable">name=</span><span class="string">"SplashScreenDelay"</span> <span class="variable">value=</span><span class="string">"10000"</span> /&gt;
+</code></pre><p>其中10000单位为毫秒，即10秒后隐藏启动画面。如果不写第三句，默认3秒隐藏。</p>
+<h1 id="生成这些资源">生成这些资源</h1><p>使用新的CLI，你只需要一个目录和两张图片就可以搞定。图片可以是 .png 的，Photoshop的 .psd，或者Illustrator的 .ai，（例如）命名为icon.png和splash.png。把这些图片放到资源目录 ./resources ，ionic resources 命令就会为项目里的每一个平台生成图标和启动页，把他们交给Ionic的缩放剪切服务器，所以你不需要安装扩展依赖。</p>
+<pre><code><span class="variable">$ </span>ionic resources
+</code></pre><p>生成图片之后CLI会更新config.xml来<a href="http://cordova.apache.org/docs/en/edge/config_ref_images.md.html#Icons%20and%20Splash%20Screens" target="_blank" rel="external">包含图标和启动页</a>，而且这些处理过程都是在Cordova的构建过程中处理的。注意：这个处理过程需要Cordova CLI 的版本是3.6或者更高。</p>
+<p>如果你只是更新其中一个资源的话，或者你只希望生成图标而不是两个都生成，ionic resources 命令后面加两个标记允许你为单独生成某一个而不是生成两个。</p>
+<pre><code>$ ionic resources <span class="comment">--icon</span>
+$ ionic resources <span class="comment">--splash</span>
+</code></pre><h1 id="图片大小">图片大小</h1><p>为了适应每一个平台的各种大小的屏幕，图标和启动页需要满足最小的屏幕的要求。</p>
+<p>图标图像的最小尺寸应192×192 PX并且应该没有圆角。注意每一个平台都会影响到图标最后具体的展现，比如，IOS会自动把自身圆角的特性应用到图标上来，所以这些资源文件不应该事先已经被处理成圆角的了。<a href="http://code.ionicframework.com/resources/icon.psd" target="_blank" rel="external">图标模板下载</a></p>
+<p>启动页的尺寸对于不同平台、设备、配置来说都是不同的，这就需要生成各种尺寸大小的图片。源文件的尺寸最小应该是2208×2208 px，并且因为要裁剪成横屏和竖屏，所以图片要居中。启动页设计上需要符合中心。这个<a href="http://code.ionicframework.com/resources/splash.psd" target="_blank" rel="external">模板</a> 为尺寸大小和你设计的图片提供了一些参考。</p>
+<h1 id="平台细节">平台细节</h1><p>你的app里Android和IOS的图标有啥不同？好的没问难，这个咱也能做到。为了给每个平台生成不同图像，我们把源文件放到各自平台的文件夹下，比如为了给Android生成不同图标，那这个图标的路径应该是  resources/android/icon.png ，IOS图标的路径应该是 resources/ios/icon.png 。这样我们就能生成圆角的IOS图标和Android透明背景的图标。</p>
+<p>这只是Ionic为了让开发者的活的更容易点儿，而不是为了找乐子。现在就更新CLI尝试生成资源吧。</p>
+<pre><code>$ npm <span class="keyword">install</span> -g ionic
+</code></pre><h1 id="下一步">下一步</h1><p>在Beta 14版本发布的博客中提到，我们正在努力为Android把Crosswalk整合进CLI，Josh费了可大劲儿了弄出来了，所以后面CLI会添加这个测试版的模块，请继续关注CLI！</p>
+<ul>
+<li><a href="https://github.com/driftyco/ionic-cli#icon-and-splash-screen-image-generation" target="_blank" rel="external">Ionic-CLI Resource Generator Docs</a></li>
+<li><a href="http://cordova.apache.org/docs/en/edge/config_ref_images.md.html#Icons%20and%20Splash%20Screens" target="_blank" rel="external">Cordova Icons and Splash Screens Docs</a></li>
+<li><a href="http://code.ionicframework.com/resources/splash.psd" target="_blank" rel="external">Splash screen photoshop template</a></li>
+</ul>
+<p>注意：执行以上命令时需在线！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/" data-id="ciikgbtq30011wweimcxc84pz" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/19/javascript-splice/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          JavaScript splice() 方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/13/angular-directive/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">AngularJS - 指令详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/06/14/ionic-automating-icons-and-splash-screens/" data-title="ionic自动创建应用的图标与启动画面" data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cordova/">Cordova</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cordova/">Cordova</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Cordova/" style="font-size: 20px;">Cordova</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 20px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/24/sass-script-advance/">sass进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/cordova-plugin-splashscreen/">cordova-plugin-splashscreen</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/cordova-plugins-list/">cordova插件列表</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/ionic-android-package/">ionic android打包</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/24/ionic-hidetabs/">ionic 进入二级目录以后隐藏底部导航栏（tabs）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 JiangangLu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jianganglu"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1360 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?edcff04b92b2dadf9dcc95b55304f48e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+  <title>JiangangLu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端开发，JiangangLu, blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JiangangLu's Blog">
+<meta property="og:url" content="http://jianganglu.github.io/page/2/index.html">
+<meta property="og:site_name" content="JiangangLu's Blog">
+<meta property="og:description" content="前端开发，JiangangLu, blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JiangangLu's Blog">
+<meta name="twitter:description" content="前端开发，JiangangLu, blog">
+  
+    <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JiangangLu&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">精彩生活从这里开始，爱前端，爱生活。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="jianganglu.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-http-status-code" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/19/http-status-code/" class="article-date">
+  <time datetime="2015-06-19T15:21:38.000Z" itemprop="datePublished">2015-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/19/http-status-code/">Http状态码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一些常见的状态代码为：</p>
+<pre><code>200 - 服务器成功返回网页
+404 - 请求的网页不存在
+503 - 服务器暂时不可用
+</code></pre><h1 id="1xx（临时响应）">1xx（临时响应）</h1><p>用于表示临时响应并需要请求者执行操作才能继续的状态代码。</p>
+<pre><code>100（继续） 请求者应当继续提出请求。服务器返回此代码则意味着，服务器已收到了请求的第一部分，现正在等待接收其余部分。
+101（切换协议） 请求者已要求服务器切换协议，服务器已确认并准备进行切换。
+</code></pre><h1 id="2xx（成功）">2xx（成功）</h1><p>用于表示服务器已成功处理了请求的状态代码。</p>
+<pre><code><span class="number">200</span>（成功） 服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。如果您的 robots<span class="class">.txt</span> 文件显示为此状态，那么，这表示 Googlebot 已成功检索到该文件。
+<span class="number">201</span>（已创建） 请求成功且服务器已创建了新的资源。
+<span class="number">202</span>（已接受） 服务器已接受了请求，但尚未对其进行处理。
+<span class="number">203</span>（非授权信息） 服务器已成功处理了请求，但返回了可能来自另一来源的信息。
+<span class="number">204</span>（无内容） 服务器成功处理了请求，但未返回任何内容。
+<span class="number">205</span>（重置内容） 服务器成功处理了请求，但未返回任何内容。与 <span class="number">204</span> 响应不同，此响应要求请求者重置文档视图（例如清除表单内容以输入新内容）。
+<span class="number">206</span>（部分内容） 服务器成功处理了部分 GET 请求。
+</code></pre><h1 id="3xx（已重定向）">3xx（已重定向）</h1><p>要完成请求，您需要进一步进行操作。通常，这些状态代码是永远重定向的。Google 建议您在每次请求时使用的重定向要少于 5 个。您可以使用网站管理员工具来查看 Googlebot 在抓取您已重定向的网页时是否会遇到问题。</p>
+<pre><code><span class="number">300</span>（多种选择） 服务器根据请求可执行多种操作。服务器可根据请求者 (User agent) 来选择一项操作，或提供操作列表供请求者选择。
+<span class="number">301</span>（永久移动） 请求的网页已被永久移动到新位置。服务器返回此响应（作为对 <span class="preprocessor">GET</span> 或 HEAD 请求的响应）时，会自动将请求者转到新位置。您应使用此代码通知 Googlebot 某个网页或网站已被永久移动到新位置。
+<span class="number">302</span>（临时移动） 服务器目前正从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。此代码与响应 <span class="preprocessor">GET</span> 和 HEAD 请求的 <span class="number">301</span> 代码类似，会自动将请求者转到不同的位置。但由于 Googlebot 会继续抓取原有位置并将其编入索引，因此您不应使用此代码来通知 Googlebot 某个页面或网站已被移动。
+<span class="number">303</span>（查看其他位置） 当请求者应对不同的位置进行单独的 <span class="preprocessor">GET</span> 请求以检索响应时，服务器会返回此代码。对于除 HEAD 请求之外的所有请求，服务器会自动转到其他位置。
+<span class="number">304</span>（未修改） 
+自从上次请求后，请求的网页未被修改过。服务器返回此响应时，不会返回网页内容。
+如果网页自请求者上次请求后再也没有更改过，您应当将服务器配置为返回此响应（称为 <span class="preprocessor">If</span>-Modified-Since HTTP 标头）。由于服务器可以告诉 Googlebot 自从上次抓取后网页没有更改过，因此可节省带宽和开销
+<span class="number">305</span>（使用代理） 请求者只能使用代理访问请求的网页。如果服务器返回此响应，那么，服务器还会指明请求者应当使用的代理。
+<span class="number">307</span>（临时重定向） 服务器目前正从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。此代码与响应 <span class="preprocessor">GET</span> 和 HEAD 请求的 <span class="number">301</span> 代码类似，会自动将请求者转到不同的位置。但由于 Googlebot 会继续抓取原有位置并将其编入索引，因此您不应使用此代码来通知 Googlebot 某个页面或网站已被移动。
+</code></pre><h1 id="4xx（请求错误）">4xx（请求错误）</h1><p>这些状态代码表示，请求可能出错，已妨碍了服务器对请求的处理。</p>
+<pre><code><span class="number">400</span>（错误请求） 服务器不理解请求的语法。
+<span class="number">401</span>（未授权） 请求要求进行身份验证。登录后，服务器可能会返回对页面的此响应。
+<span class="number">403</span>（已禁止） 服务器拒绝请求。如果在 Googlebot 尝试抓取您网站上的有效网页时显示此状态代码（您可在 Google 网站管理员工具中诊断下的网络抓取页面上看到此状态代码），那么，这可能是您的服务器或主机拒绝 Googlebot 对其进行访问。
+<span class="number">404</span>（未找到） 
+服务器找不到请求的网页。例如，如果请求是针对服务器上不存在的网页进行的，那么，服务器通常会返回此代码。
+如然而，如果您有 robots<span class="class">.txt</span> 文件而又发现了此状态，那么，这说明您的 robots<span class="class">.txt</span> 文件可能是命名错误或位于错误的位置。（该文件应当位于顶级域名上，且应当名为 robots.txt）。
+如果您在 Googlebot 尝试抓取的网址上发现此状态（位于<span class="string">"诊断"</span>标签的 HTTP 错误页上），那么，这表示 Googlebot 所追踪的可能是另一网页中的无效链接（旧链接或输入有误的链接）。
+<span class="number">405</span>（方法禁用） 禁用请求中所指定的方法。
+<span class="number">406</span>（不接受） 无法使用请求的内容特性来响应请求的网页。
+<span class="number">407</span>（需要代理授权） 此状态代码与 <span class="number">401</span>（未授权）类似，但却指定了请求者应当使用代理进行授权。如果服务器返回此响应，那么，服务器还会指明请求者应当使用的代理。
+<span class="number">408</span>（请求超时） 服务器等候请求时超时。
+<span class="number">409</span>（冲突） 服务器在完成请求时发生冲突。服务器必须包含有关响应中所发生的冲突的信息。服务器在响应与前一个请求相冲突的 PUT 请求时可能会返回此代码，同时会提供两个请求的差异列表。
+<span class="number">410</span>（已删除） 如果请求的资源已被永久删除，那么，服务器会返回此响应。该代码与 <span class="number">404</span>（未找到）代码类似，但在资源以前有但现在已经不复存在的情况下，有时会替代 <span class="number">404</span> 代码出现。如果资源已被永久删除，那么，您应当使用 <span class="number">301</span> 代码指定该资源的新位置。
+<span class="number">411</span>（需要有效长度） 服务器不会接受包含无效内容长度标头字段的请求。
+<span class="number">412</span>（未满足前提条件） 服务器未满足请求者在请求中设置的其中一个前提条件。
+<span class="number">413</span>（请求实体过大） 服务器无法处理请求，因为请求实体过大，已超出服务器的处理能力。
+<span class="number">414</span>（请求的 URI 过长） 请求的 URI（通常为网址）过长，服务器无法进行处理。
+<span class="number">415</span>（不支持的媒体类型） 请求的格式不受请求页面的支持。
+<span class="number">416</span>（请求范围不符合要求） 如果请求是针对网页的无效范围进行的，那么，服务器会返回此状态代码。
+<span class="number">417</span>（未满足期望值） 服务器未满足<span class="string">"期望"</span>请求标头字段的要求。
+</code></pre><h1 id="5xx（服务器错误）">5xx（服务器错误）</h1><p>这些状态代码表示，服务器在尝试处理请求时发生内部错误。这些错误可能是服务器本身的错误，而不是请求出错。</p>
+<pre><code>500（服务器内部错误） 服务器遇到错误，无法完成请求。
+501（尚未实施） 服务器不具备完成请求的功能。例如，当服务器无法识别请求方法时，服务器可能会返回此代码。
+502（错误网关） 服务器作为网关或代理，从上游服务器收到了无效的响应。
+503（服务不可用） 目前无法使用服务器（由于超载或进行停机维护）。通常，这只是一种暂时的状态。
+504（网关超时） 服务器作为网关或代理，未及时从上游服务器接收请求。
+505（HTTP 版本不受支持） 服务器不支持请求中所使用的 HTTP 协议版本。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/06/19/http-status-code/" data-id="ciikgbtqd001awweidxc8ora0" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/06/19/http-status-code/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-README" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/19/README/" class="article-date">
+  <time datetime="2015-06-19T07:46:53.400Z" itemprop="datePublished">2015-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="jianganglu-github-io">jianganglu.github.io</h1><p>jianganglu.github.io</p>
+<h1 id="A_First_Level_Header">A First Level Header</h1><h2 id="A_Second_Level_Header">A Second Level Header</h2><p>Now is the time for all good men to come to<br>the aid of their country. This is just a<br>regular paragraph</p>
+<p>The quick brown fox jumped over the lazy<br>dog’s back.</p>
+<h3 id="Header_3">Header 3</h3><blockquote>
+<p>This is a blockquote.</p>
+<p>This is the second paragraph in the blockquote.</p>
+<h2 id="This_is_an_H2_in_a_blockquote">This is an H2 in a blockquote</h2></blockquote>
+<p>Some of these words <em>are emphasized</em>.</p>
+<p>Some of these words <em>are emphasized also</em>.</p>
+<p>Use two asterisks for <strong>strong emphasis</strong>.</p>
+<p>Or, if you prefer, <strong>use two underscores instead</strong>.</p>
+<ul>
+<li>Candy.</li>
+<li>Gum.</li>
+<li>Booze.</li>
+</ul>
+<ul>
+<li>Candy.</li>
+<li>Gum.</li>
+<li>Booze.</li>
+</ul>
+<ul>
+<li>Candy.</li>
+<li>Gum.</li>
+<li>Booze.</li>
+</ul>
+<ol>
+<li>Candy.</li>
+<li>Gum.</li>
+<li>Booze.</li>
+</ol>
+<ul>
+<li><p>A list item.<br>With multiple paragraphs.</p>
+</li>
+<li><p>Another item in the lis.</p>
+</li>
+</ul>
+<p>This is an <a href="http://example.com/" target="_blank" rel="external">example link</a>.</p>
+<p>This is an <a href="http://example.com" title="With a Title" target="_blank" rel="external">example link</a>.</p>
+<p>I get 10 times more traffic from [Google][1] than from<br><a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="external">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="external">MSN</a></p>
+<p>[1]: <a href="http://google.com/" target="_blank" rel="external">http://google.com/</a> ‘Google’</p>
+<p>I start my morning with a cup of coffee and<br><a href="http://www.nytimes.com/" target="_blank" rel="external">The New York Times</a>.</p>
+<pre><code>![<span class="link_label">alt text</span>](<span class="link_url">/path/to/img.jpg "Title"</span>)
+
+![<span class="link_label">alt text</span>][<span class="link_reference">id</span>]
+
+[<span class="link_reference">id</span>]:<span class="link_url"> /path/to/img.jpg "Title"</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/06/19/README/" data-id="ciikgbtra0024wweiyiaiuid5" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/06/19/README/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javascript-splice" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/19/javascript-splice/" class="article-date">
+  <time datetime="2015-06-19T07:02:49.000Z" itemprop="datePublished">2015-06-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaSciprt/">JavaSciprt</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/19/javascript-splice/">JavaScript splice() 方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>定义和用法</strong></p>
+<p>splice()方法向/从数组中添加/删除项目，然后返回被删除的项目</p>
+<p><strong>注释:</strong>该方法会改变原始数组。</p>
+<p><strong>语法</strong></p>
+<pre><code>arrayObject.<span class="function"><span class="title">splice</span><span class="params">(index,howmany,item1,.....,itemX)</span></span>
+</code></pre><table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td>必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。</td>
+</tr>
+<tr>
+<td>howmany</td>
+<td>必需。要删除的项目数量。如果设置为0，则不会删除项目。</td>
+</tr>
+<tr>
+<td>item1, …, itemX</td>
+<td>可选。向数组添加的新项目。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回值</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>类型</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td>包含被删除项目的新数组，如果有的话</td>
+</tr>
+</tbody>
+</table>
+<p><strong>说明</strong></p>
+<p>splice()方法可删除从index处开始的零个或多个元素，并且用参数列表中声明的一个或多个值来替换那些被删除的元素。<br>如果从arrayObject中删除了元素，则返回的是含有被删除的元素的数组。</p>
+<p><strong>技术细节</strong></p>
+<p>| <strong>技术细节</strong> | 1.2 |</p>
+<p><strong>浏览器支持</strong></p>
+<p>所有主流浏览器都支持splice()方法。</p>
+<p><strong>提示和注释</strong></p>
+<p><strong>注释：</strong>请注意，splice()方法与splice()方法的作用是不同的，splice()方法会直接对数组进行修改。</p>
+<p><strong>实例</strong></p>
+<p><strong>例子1</strong></p>
+<p>在本例中，我们将创建一个新数组，并向其添加一个元素：</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="prolog">
+  <span class="atom">var</span> <span class="atom">arr</span> = <span class="atom">new</span> <span class="name">Array</span>(<span class="number">6</span>);
+  <span class="atom">arr</span>[<span class="number">0</span>] = <span class="string">'George'</span>;
+  <span class="atom">arr</span>[<span class="number">1</span>] = <span class="string">'John'</span>;
+  <span class="atom">arr</span>[<span class="number">2</span>] = <span class="string">'Thomas'</span>;
+  <span class="atom">arr</span>[<span class="number">3</span>] = <span class="string">'James'</span>;
+  <span class="atom">arr</span>[<span class="number">4</span>] = <span class="string">'Adrew'</span>;
+  <span class="atom">arr</span>[<span class="number">5</span>] = <span class="string">'Martin'</span>;
+
+  <span class="atom">document</span>.<span class="atom">write</span>(<span class="atom">arr</span> + <span class="string">'&lt;br&gt;'</span>);
+  <span class="atom">arr</span>.<span class="atom">splice</span>(<span class="number">2</span>, <span class="number">0</span>, <span class="string">'William'</span>);
+  <span class="atom">document</span>.<span class="atom">write</span>(<span class="atom">arr</span> + <span class="string">'&lt;br&gt;'</span>);
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>输出：</p>
+<pre><code><span class="label">George</span>,John,Thomas,James,<span class="keyword">Adrew,Martin
+</span><span class="label">George</span>,John,William,Thomas,James,<span class="keyword">Adrew,Martin</span>
+</code></pre><p><strong>例子2</strong></p>
+<p>在本例中我们将删除位于 index 2 的元素，并添加一个新元素来替代被删除的元素：</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="prolog">
+  <span class="atom">var</span> <span class="atom">arr</span> = <span class="atom">new</span> <span class="name">Array</span>(<span class="number">6</span>)
+  <span class="atom">arr</span>[<span class="number">0</span>] = <span class="string">'George'</span>;
+  <span class="atom">arr</span>[<span class="number">1</span>] = <span class="string">'John'</span>;
+  <span class="atom">arr</span>[<span class="number">2</span>] = <span class="string">'Thomas'</span>;
+  <span class="atom">arr</span>[<span class="number">3</span>] = <span class="string">'James'</span>;
+  <span class="atom">arr</span>[<span class="number">4</span>] = <span class="string">'Adrew'</span>;
+  <span class="atom">arr</span>[<span class="number">5</span>] = <span class="string">'Martin'</span>;
+
+  <span class="atom">document</span>.<span class="atom">write</span>(<span class="atom">arr</span> + <span class="string">'&lt;br&gt;'</span>);
+  <span class="atom">arr</span>.<span class="atom">splice</span>(<span class="number">2</span>,<span class="number">1</span>,<span class="string">'William'</span>);
+  <span class="atom">document</span>.<span class="atom">write</span>(<span class="atom">arr</span>);
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>输出：</p>
+<pre><code><span class="label">George</span>,John,Thomas,James,<span class="keyword">Adrew,Martin
+</span><span class="label">George</span>,John,William,James,<span class="keyword">Adrew,Martin</span>
+</code></pre><p><strong>例子3</strong></p>
+<p>在本例中我们将删除从 index 2 (“Thomas”) 开始的三个元素，并添加一个新元素 (“William”) 来替代被删除的元素：</p>
+<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="prolog">
+  <span class="atom">var</span> <span class="atom">arr</span> = <span class="atom">new</span> <span class="name">Array</span>(<span class="number">6</span>)
+  <span class="atom">arr</span>[<span class="number">0</span>] = <span class="string">'George'</span>;
+  <span class="atom">arr</span>[<span class="number">1</span>] = <span class="string">'John'</span>;
+  <span class="atom">arr</span>[<span class="number">2</span>] = <span class="string">'Thomas'</span>;
+  <span class="atom">arr</span>[<span class="number">3</span>] = <span class="string">'James'</span>;
+  <span class="atom">arr</span>[<span class="number">4</span>] = <span class="string">'Adrew'</span>;
+  <span class="atom">arr</span>[<span class="number">5</span>] = <span class="string">'Martin'</span>;
+
+  <span class="atom">document</span>.<span class="atom">write</span>(<span class="atom">arr</span> + <span class="string">"&lt;br /&gt;"</span>);
+  <span class="atom">arr</span>.<span class="atom">splice</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="string">"William"</span>);
+  <span class="atom">document</span>.<span class="atom">write</span>(<span class="atom">arr</span>);
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>输出：</p>
+<pre><code><span class="label">George</span>,John,Thomas,James,<span class="keyword">Adrew,Martin
+</span><span class="label">George</span>,John,William,<span class="keyword">Martin</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/06/19/javascript-splice/" data-id="ciikgbtpl000mwwei9u200dfc" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/06/19/javascript-splice/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Splice/">Splice()</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ionic-automating-icons-and-splash-screens" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/14/ionic-automating-icons-and-splash-screens/" class="article-date">
+  <time datetime="2015-06-14T13:38:37.000Z" itemprop="datePublished">2015-06-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ionic/">ionic</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/14/ionic-automating-icons-and-splash-screens/">ionic自动创建应用的图标与启动画面</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当用户下载了你的app后他们首先会注意到什么？当他们安装完后第一次启动的时候又会注意到什么呢？</p>
+<p>一个应用程序图标和启动画面（启动图像）是每一个app的重要组成部分，但制作起来非常的繁琐。你需要给Android和IOS制作无数的图标，然后还要制作启动页、处理成不同的大小。</p>
+<p>为了降低你处理这些事儿时候的压力，我们实现了使用Ionic CLI来生成app的图标和启动页。</p>
+<p>针对Android平台：将我们的要替换的启动图标放如android文件夹下。可以分别起名为：mdpi.png(48<em>48),hdpi(72</em>72)、xhdpi(96<em>96)、xxhdpi(144</em>144) 和 xxxhdpiI(192*192)。</p>
+<p>针对ios的，待补充。</p>
+<p>其中src中的图片路径就为整个项目的相对路径。<br>我这里偷了个懒，只搞了一个最高像素密度的应用图标（192px*192px）进去，安卓会自动进行压缩。<br>这里顺便说一下如果要修改应用的名称，只要修改name标签里的内容即可。</p>
+<p>这样在命令行中重新运行ionic run android，就能看到应用图标和名字已经被替换了。</p>
+<p>启动画面：<br>将启动画面的图片拷贝到之前的android文件夹下，splash-land-hdpi.png（640<em>480）splash-land-ldpi.png（426 × 320）splash-land-mdpi.png（470 × 320）splash-land-xhdpi.png（960 × 720）splash-port-hdpi.png（480</em>640）splash-port-ldpi.png（320<em>426）splash-port-mdpi.png（320</em>470）splash-port-xhdpi.png（720*960）<br>（名称可随意，只要和config.xml对应上即可）。</p>
+<pre><code>&lt;preference <span class="variable">name=</span><span class="string">"SplashScreen"</span> <span class="variable">value=</span><span class="string">"screen"</span>/&gt;
+&lt;preference <span class="variable">name=</span><span class="string">"SplashScreenDelay"</span> <span class="variable">value=</span><span class="string">"10000"</span> /&gt;
+</code></pre><p>其中10000单位为毫秒，即10秒后隐藏启动画面。如果不写第三句，默认3秒隐藏。</p>
+<h1 id="生成这些资源">生成这些资源</h1><p>使用新的CLI，你只需要一个目录和两张图片就可以搞定。图片可以是 .png 的，Photoshop的 .psd，或者Illustrator的 .ai，（例如）命名为icon.png和splash.png。把这些图片放到资源目录 ./resources ，ionic resources 命令就会为项目里的每一个平台生成图标和启动页，把他们交给Ionic的缩放剪切服务器，所以你不需要安装扩展依赖。</p>
+<pre><code><span class="variable">$ </span>ionic resources
+</code></pre><p>生成图片之后CLI会更新config.xml来<a href="http://cordova.apache.org/docs/en/edge/config_ref_images.md.html#Icons%20and%20Splash%20Screens" target="_blank" rel="external">包含图标和启动页</a>，而且这些处理过程都是在Cordova的构建过程中处理的。注意：这个处理过程需要Cordova CLI 的版本是3.6或者更高。</p>
+<p>如果你只是更新其中一个资源的话，或者你只希望生成图标而不是两个都生成，ionic resources 命令后面加两个标记允许你为单独生成某一个而不是生成两个。</p>
+<pre><code>$ ionic resources <span class="comment">--icon</span>
+$ ionic resources <span class="comment">--splash</span>
+</code></pre><h1 id="图片大小">图片大小</h1><p>为了适应每一个平台的各种大小的屏幕，图标和启动页需要满足最小的屏幕的要求。</p>
+<p>图标图像的最小尺寸应192×192 PX并且应该没有圆角。注意每一个平台都会影响到图标最后具体的展现，比如，IOS会自动把自身圆角的特性应用到图标上来，所以这些资源文件不应该事先已经被处理成圆角的了。<a href="http://code.ionicframework.com/resources/icon.psd" target="_blank" rel="external">图标模板下载</a></p>
+<p>启动页的尺寸对于不同平台、设备、配置来说都是不同的，这就需要生成各种尺寸大小的图片。源文件的尺寸最小应该是2208×2208 px，并且因为要裁剪成横屏和竖屏，所以图片要居中。启动页设计上需要符合中心。这个<a href="http://code.ionicframework.com/resources/splash.psd" target="_blank" rel="external">模板</a> 为尺寸大小和你设计的图片提供了一些参考。</p>
+<h1 id="平台细节">平台细节</h1><p>你的app里Android和IOS的图标有啥不同？好的没问难，这个咱也能做到。为了给每个平台生成不同图像，我们把源文件放到各自平台的文件夹下，比如为了给Android生成不同图标，那这个图标的路径应该是  resources/android/icon.png ，IOS图标的路径应该是 resources/ios/icon.png 。这样我们就能生成圆角的IOS图标和Android透明背景的图标。</p>
+<p>这只是Ionic为了让开发者的活的更容易点儿，而不是为了找乐子。现在就更新CLI尝试生成资源吧。</p>
+<pre><code>$ npm <span class="keyword">install</span> -g ionic
+</code></pre><h1 id="下一步">下一步</h1><p>在Beta 14版本发布的博客中提到，我们正在努力为Android把Crosswalk整合进CLI，Josh费了可大劲儿了弄出来了，所以后面CLI会添加这个测试版的模块，请继续关注CLI！</p>
+<ul>
+<li><a href="https://github.com/driftyco/ionic-cli#icon-and-splash-screen-image-generation" target="_blank" rel="external">Ionic-CLI Resource Generator Docs</a></li>
+<li><a href="http://cordova.apache.org/docs/en/edge/config_ref_images.md.html#Icons%20and%20Splash%20Screens" target="_blank" rel="external">Cordova Icons and Splash Screens Docs</a></li>
+<li><a href="http://code.ionicframework.com/resources/splash.psd" target="_blank" rel="external">Splash screen photoshop template</a></li>
+</ul>
+<p>注意：执行以上命令时需在线！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/" data-id="ciikgbtq30011wweimcxc84pz" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-angular-directive" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/13/angular-directive/" class="article-date">
+  <time datetime="2015-06-13T10:40:46.000Z" itemprop="datePublished">2015-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/13/angular-directive/">AngularJS - 指令详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="指令定义">指令定义</h1><p>AngularJS应用的模块中有很多方法可以使用，其中directive()这个方法是用来定义指令的：</p>
+<pre><code>angular
+  .module(<span class="string">'myApp'</span>, [])
+  .directive(<span class="string">'myDirective'</span>, myDirective);
+
+myDirective.<span class="variable">$inject</span> = [<span class="string">'$timeout'</span>, <span class="string">'UserDefinedService'</span>]
+<span class="function"><span class="keyword">function</span> <span class="title">myDirective</span><span class="params">(<span class="variable">$timeout</span>, UserDefinedService)</span> </span>{
+  <span class="comment">// 指令定义放在这里</span>
+}
+</code></pre><p>directive()方法可以接受两个参数：</p>
+<ol>
+<li>name(字符串)<br>指令的名字，用来在视力中引用特定的指令。</li>
+<li>factory_function(函数)<br>这个函数返回一个对象，其中定义了指令的全部行为。$compile服务利用这个方法返回的对象，在DOM调用指令时来构造指令的行为。</li>
+</ol>
+<p><strong>为了避免与未来的HTML标准冲突，给自定义的指令加入前缀来代表自定义的命名空间。AngularJS本身已经使用了ng-前缀，所以可以选择除此以外的名字。在例子中我们使用my-前缀（比如my-derictive）。</strong></p>
+<p>下面，来看看定义一个指令时可以使用的全部设置选项。<br>可能的选项如下所示，每个键的值说明了可以将这个属性设置为何种类型或者什么样的函数：</p>
+<pre><code>angular
+  .module('myApp', [])
+  .directive('myDirective', myDirective);
+
+function myDirective() {
+  <span class="keyword">return</span>: {
+    restrict: <span class="type">String</span>,
+    priority: <span class="type">Number</span>,
+    terminal: <span class="type">Boolean</span>,
+    <span class="keyword">template</span>: <span class="type">String</span> <span class="keyword">or</span> <span class="type">Template</span> <span class="type">Function</span>:
+      function(tElement, tAttrs) <span class="decorator">{...}</span>,
+    templateUrl: <span class="type">String</span>,
+    replace: <span class="type">Boolean</span> <span class="keyword">or</span> <span class="type">String</span>,
+    scope: <span class="type">Boolean</span> <span class="keyword">or</span> <span class="type">Object</span>,
+    transclude: <span class="type">Boolean</span>,
+    controller: <span class="type">String</span> <span class="keyword">or</span>
+      function(scope, element, attrs, transclude, otherInjectables) <span class="decorator">{...}</span>,
+    controllerAs: <span class="type">String</span>,
+    require: <span class="type">String</span>,
+    link: function(scope, iElement, iAttrs) <span class="decorator">{...}</span>,
+    compile: // 返回一个对象或连接函数，如下所示:
+      function(tElement, tAttrs, transclude) {
+        <span class="keyword">return</span> {
+          pre: function(scope, iElement, iAttrs， controller) <span class="decorator">{...}</span>,
+          post: function(scope, iElement, iAttrs, controller) <span class="decorator">{...}</span>
+        }
+        // 或者
+        <span class="keyword">return</span> function postLink(...) <span class="decorator">{...}</span>
+      }
+  }
+}
+</code></pre><h2 id="restrict(字符串)">restrict(字符串)</h2><p>restrict是一个可选的参数。它告诉AngularJS这个指令在DOM中可以何种形式被声明。默认AngularJS认为restrict的值是A，即以属性的形式来进行声明。<br>可选值如下：<br>E(元素)</p>
+<pre><code><span class="tag">&lt;my-directive&gt;</span><span class="tag">&lt;/my-directive&gt;</span>
+</code></pre><p>A(属性，默认值)</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="keyword">my</span>-directive=<span class="string">"expression"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>C(类名)</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"my-directive:expression;"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>M(注释)</p>
+<pre><code><span class="comment">&lt;!-- directive:my-directive expression --&gt;</span>
+</code></pre><p>这些选项可以单独使用，也可以混合在一起使用。</p>
+<h2 id="优先级(数值型)">优先级(数值型)</h2><p>优先级参数可以被设置为一个数值。大多数指令会忽略这个参数，使用默认值0，但也有些场景设置高优先级是非常重要甚至是必须的。例如，ngRepeat将这个参数设置为1000，这样就可以保证在同一元素上，它总是在其他指令之前被调用。<br>如果一个元素上具有两个优先级相同的指令，声明在前面的那个会被优先调用。如果其中一个的优先级更高，则不管声明的顺序如何都会被优先调用：具有更高优先级的指令总是优先运行。</p>
+<h2 id="terminal(布尔型)">terminal(布尔型)</h2><p>terminal是一个布尔型参数，可以被设置为true或false。<br>这个参数用来告诉AngularJS停止运行当前元素上比本指令优先级低的指令。但同当前指令优先级相同的指令还是会被执行。<br>如果元素上某个指令设置了terminal参数并具有较高的优先级，就不要再用其他低优先级的指令对其进行修饰了，因为不会被调用。但是具有相同优先级的指令还是会被继续调用。    </p>
+<h2 id="template(字符串或函数)">template(字符串或函数)</h2><p>template参数是可选的，必须被设置为以下两种形式之一：</p>
+<ul>
+<li>一段HTML文本;</li>
+<li>一个可以接受两个参数的函数，参数为tElement和tAttrs，并返回一个代表模板的字符串。tElement和tAttrs中的t代表template，是相对于instance的。在讨论链接和编译设置时会详细介绍，模板元素或属性与实例元素或属性之间的区别。</li>
+</ul>
+<h2 id="templateUrl(字符串或函数)">templateUrl(字符串或函数)</h2><p>templateUrl是可选的参数，可以是以下类型：</p>
+<ul>
+<li>一个代表外部HTML文件路径的字符串;</li>
+<li>一个可以接受两个参数的函数，参数为tElement和tAttrs，并返回一个外部HTML文件路径的字符串。</li>
+</ul>
+<h2 id="replace(布尔型)">replace(布尔型)</h2><p>replace是一个可选参数，如果设置了这个参数，值必须为true，因为默认值为false。默认值意味着模板会被当作子元素插入到调用此指令的元素内部：</p>
+<pre><code>&lt;<span class="keyword">div</span> some-directive&gt;&lt;/<span class="keyword">div</span>&gt;
+.directive('someDirective', function() {
+  <span class="keyword">return</span> {
+    <span class="keyword">template</span>: '&lt;<span class="keyword">div</span>&gt;some stuff here&lt;/<span class="keyword">div</span>&gt;'
+  }
+})
+</code></pre><p>调用指令之后的结果如下(这是默认replace为false时的情况)：</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="keyword">some</span>-directive&gt;
+  &lt;<span class="keyword">div</span>&gt;<span class="keyword">some</span> stuff here&lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>如果replace被设置为了true：</p>
+<pre><code>.directive('someDirective', function() {
+  <span class="keyword">return</span> {
+    replace: <span class="literal">true</span>, // 修饰过
+    <span class="keyword">template</span>: '&lt;<span class="keyword">div</span>&gt;some stuff here&lt;/<span class="keyword">div</span>&gt;'
+  }
+})
+</code></pre><p>指令调用后的结果将是：</p>
+<pre><code>&lt;<span class="keyword">div</span>&gt;<span class="keyword">some</span> stuff here&lt;/<span class="keyword">div</span>&gt;
+</code></pre><h1 id="#">#</h1>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/06/13/angular-directive/" data-id="ciikgbtr6001zwweifa9iin1q" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/06/13/angular-directive/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AngularJS/">AngularJS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-markdown-catelog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/03/markdown-catelog/" class="article-date">
+  <time datetime="2015-06-03T13:58:16.000Z" itemprop="datePublished">2015-06-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/03/markdown-catelog/">JS代码让Markdown自动生成目录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言">前言</h1><p>已经习惯了使用Markdown书写文章，既方便也通用。<br>但一直在想：应该生成一个方便的导航目录，这样查看文章更方便。于是有了本文。</p>
+<h1 id="实现方法">实现方法</h1><h2 id="页面结构">页面结构</h2><pre><code>//放入在文章页内容前面
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"BlogAnchor"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">p</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">b</span> <span class="attribute">id</span>=<span class="value">"AnchorContentToggle"</span> <span class="attribute">title</span>=<span class="value">"收起"</span> <span class="attribute">style</span>=<span class="value">"cursor:pointer;"</span>&gt;</span>目录[-]<span class="tag">&lt;/<span class="title">b</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"AnchorContent"</span> <span class="attribute">id</span>=<span class="value">"AnchorContent"</span>&gt;</span> <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</code></pre><h2 id="Js代码">Js代码</h2><pre><code><span class="comment">//在文章中查找title并填充到div AnchorContent中</span>
+$<span class="params">(<span class="string">".post-content"</span>)</span>.find<span class="params">(<span class="string">"h2,h3,h4,h5,h6"</span>)</span>.each<span class="params">(function<span class="params">(i,item)</span>{
+    var tag = $<span class="params">(item)</span>.get<span class="params">(<span class="number">0</span>)</span>.localName;
+    $<span class="params">(item)</span>.attr<span class="params">(<span class="string">"id"</span>,<span class="string">"wow"</span>+i)</span>;
+    $<span class="params">(<span class="string">"#AnchorContent"</span>)</span>.append<span class="params">('&lt;li&gt;&lt;a class=<span class="string">"new'+tag+' anchor-link"</span> onclick=<span class="string">"return false;"</span> href=<span class="string">"#"</span> link=<span class="string">"#wow'+i+'"</span>&gt;'+<span class="params">(i+<span class="number">1</span>)</span>+<span class="string">" · "</span>+$<span class="params">(this)</span>.text<span class="params">()</span>+'&lt;/a&gt;&lt;/li&gt;')</span>;
+    $<span class="params">(<span class="string">".newh2"</span>)</span>.css<span class="params">(<span class="string">"margin-left"</span>,<span class="number">0</span>)</span>;
+    $<span class="params">(<span class="string">".newh3"</span>)</span>.css<span class="params">(<span class="string">"margin-left"</span>,<span class="number">20</span>)</span>;
+    $<span class="params">(<span class="string">".newh4"</span>)</span>.css<span class="params">(<span class="string">"margin-left"</span>,<span class="number">40</span>)</span>;
+    $<span class="params">(<span class="string">".newh5"</span>)</span>.css<span class="params">(<span class="string">"margin-left"</span>,<span class="number">60</span>)</span>;
+    $<span class="params">(<span class="string">".newh6"</span>)</span>.css<span class="params">(<span class="string">"margin-left"</span>,<span class="number">80</span>)</span>;
+})</span>;
+$<span class="params">(<span class="string">"#AnchorContentToggle"</span>)</span>.click<span class="params">(function<span class="params">()</span>{
+    var text = $<span class="params">(this)</span>.html<span class="params">()</span>;
+    if<span class="params">(text==<span class="string">"目录[-]"</span>)</span>{
+        $<span class="params">(this)</span>.html<span class="params">(<span class="string">"目录[+]"</span>)</span>;
+        $<span class="params">(this)</span>.attr<span class="params">({<span class="string">"title"</span>:<span class="string">"展开"</span>})</span>;
+    }else{
+        $<span class="params">(this)</span>.html<span class="params">(<span class="string">"目录[-]"</span>)</span>;
+        $<span class="params">(this)</span>.attr<span class="params">({<span class="string">"title"</span>:<span class="string">"收起"</span>})</span>;
+    }
+    $<span class="params">(<span class="string">"#AnchorContent"</span>)</span>.toggle<span class="params">()</span>;
+})</span>;
+</code></pre><h2 id="CSS代码">CSS代码</h2><pre><code><span class="comment">/*导航*/</span>
+<span class="class">.BlogAnchor</span> <span class="rules">{
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#f4f7f9</span></span></span>;
+    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">10px</span></span></span>;
+    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">180%</span></span></span>;
+}</span>
+<span class="class">.BlogAnchor</span> <span class="tag">p</span> <span class="rules">{
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">18px</span></span></span>;
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#15a230</span></span></span>;
+    <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">0.3em</span></span></span>;
+}</span>
+<span class="class">.BlogAnchor</span> <span class="class">.AnchorContent</span> <span class="rules">{
+    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">5px</span> <span class="number">0px</span></span></span>;
+}</span>
+<span class="class">.BlogAnchor</span> <span class="tag">li</span><span class="rules">{
+    <span class="rule"><span class="attribute">text-indent</span>:<span class="value"> <span class="number">20px</span></span></span>;
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;
+}</span>
+<span class="id">#AnchorContentToggle</span> <span class="rules">{
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">13px</span></span></span>;
+    <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> normal</span></span>;
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#FFF</span></span></span>;
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;
+    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">20px</span></span></span>;
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#5cc26f</span></span></span>;
+    <span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;
+    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">1px</span> <span class="number">8px</span></span></span>;
+    <span class="rule"><span class="attribute">margin-right</span>:<span class="value"> <span class="number">10px</span></span></span>;
+}</span>
+<span class="class">.BlogAnchor</span> <span class="rule"><span class="attribute">a</span>:<span class="value">hover {
+    color: <span class="hexcolor">#5cc26f</span></span></span>;
+}
+<span class="class">.BlogAnchor</span> <span class="tag">a</span> <span class="rules">{
+    <span class="rule"><span class="attribute">text-decoration</span>:<span class="value"> none</span></span>;
+}</span>
+</code></pre><h1 id="导航扩展">导航扩展</h1><p>同时也可以实现锚点之间的平滑滚动，使用jquery animate</p>
+<pre><code>$<span class="params">(<span class="string">".anchor-link"</span>)</span>.click<span class="params">(function<span class="params">()</span>{
+    $<span class="params">(<span class="string">"html,body"</span>)</span>.animate<span class="params">({scrollTop: $<span class="params">($<span class="params">(this)</span>.attr<span class="params">(<span class="string">"link"</span>)</span>)</span>.offset<span class="params">()</span>.top}, <span class="number">1000</span>)</span>;
+})</span>;
+</code></pre><p><strong>具体效果参考本文</strong></p>
+<p><strong>声明：</strong>本博客如无特殊说明皆为原创，转载请注明来源：<a href="http://jianganglu.github.io/2015/06/03/markdown-catelog/">JS代码让Markdown自动生成目录</a>，谢谢！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/06/03/markdown-catelog/" data-id="ciikgbtpd000cwweitc0xpad6" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/06/03/markdown-catelog/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-blog-with-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/25/blog-with-hexo/" class="article-date">
+  <time datetime="2015-05-25T13:02:12.000Z" itemprop="datePublished">2015-05-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/25/blog-with-hexo/">使用Hexo搭建博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是一篇个人总结，不适合用作入门教程；<br>需要更详细的资料请<a href="http://www.baidu.com" target="_blank" rel="external">点击这里</a></p>
+<h1 id="安装">安装</h1><p>系统环境 win8.1 64bit</p>
+<p>文本编辑器推荐使用<a href="http://www.sublimetext.com/" title="Sublime Text" target="_blank" rel="external">Sublime Text</a>;<br>Hexo的文件编码格式为 UTF-8</p>
+<h1 id="Git">Git</h1><p>安装 <a href="https://windows.github.com/" title="GitHub for Windows" target="_blank" rel="external">GitHub for Windows</a>,<br>登录后会自动在本地配置好 SSH,执行 git shell时也不需要-config用户名和邮箱</p>
+<p>新建仓库，Github Pages 的仓库名必须为your_user_name.github.io</p>
+<p>配置 SSH，参考 <a href="https://help.github.com/articles/generating-ssh-keys/" title="SSH配置教程" target="_blank" rel="external">SSH配置教程</a></p>
+<h1 id="Node-js">Node.js</h1><p>安装 <a href="https://nodejs.org/" title="Node.js" target="_blank" rel="external">Node.js</a>, Node 安装包里带有npm</p>
+<h1 id="Hexo">Hexo</h1><p>安装 Hexo</p>
+<pre><code>npm <span class="keyword">install</span> -g hexo
+</code></pre><p>查看 Node 版本</p>
+<pre><code><span class="title">node</span> -v
+</code></pre><p>查看 Hexo 版本</p>
+<pre><code>hexo <span class="property">version</span>
+</code></pre><p>创建项目</p>
+<pre><code><span class="title">hexo</span> init Hexo
+</code></pre><p>进入目录</p>
+<pre><code><span class="built_in">cd</span> Hexo
+</code></pre><p>也可以先进目录再初始化项目</p>
+<pre><code><span class="built_in">cd</span> Hexo
+hexo init
+</code></pre><p>安装依赖包</p>
+<pre><code>npm <span class="keyword">install</span>
+</code></pre><p>以后所有的命令都在该目录下进行</p>
+<p>启动服务</p>
+<pre><code>hexo <span class="keyword">server</span>
+</code></pre><p>用浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 或者 <a href="http://127.0.0.1:4000/" target="_blank" rel="external">http://127.0.0.1:4000/</a> 就能看到网页了<br>推荐使用现代化浏览器(Chrome)获得最佳效果</p>
+<p>按 Ctrl+C 停止本地预览</p>
+<h1 id="使用">使用</h1><h2 id="目录结构">目录结构</h2><pre><code>.
+├── .deploy       <span class="preprocessor">#需要部署的文件</span>
+├── node_modules  <span class="preprocessor">#Hexo插件</span>
+├── <span class="keyword">public</span>        <span class="preprocessor">#生成的静态网页文件</span>
+├── scaffolds     <span class="preprocessor">#模板</span>
+├── source        <span class="preprocessor">#博客正文和其他源文件，404、favicon、CNAME 都应该放在这里</span>
+|   ├── _drafts   <span class="preprocessor">#草稿</span>
+|   └── _posts    <span class="preprocessor">#文章</span>
+├── themes        <span class="preprocessor">#主题</span>
+├── _config.yml   <span class="preprocessor">#全局配置文件</span>
+└── <span class="keyword">package</span>.json
+</code></pre><h2 id="全局配置__config-yml">全局配置 _config.yml</h2><p>配置文件的冒号“:”后面有空格</p>
+<pre><code><span class="comment"># Hexo Configuration</span>
+<span class="comment">## Docs: http://hexo.io/docs/configuration.html</span>
+<span class="comment">## Source: https://github.com/hexojs/hexo/</span>
+<span class="comment"># Site #站点信息</span>
+<span class="symbol">title:</span> <span class="constant">JiangangLu</span><span class="string">'s Blog #标题
+subtitle: 做人不卖萌和咸鱼有什么区别 #副标题
+description: JiangangLu'</span>s blog <span class="comment">#站点描述，给搜索引擎看的</span>
+<span class="symbol">author:</span> jianganglu <span class="comment">#作者</span>
+<span class="symbol">email:</span>  <span class="comment">#电子邮箱</span>
+<span class="symbol">language:</span> zh-<span class="constant">CN</span> <span class="comment">#语言</span>
+<span class="comment"># URL #链接格式</span>
+<span class="symbol">url:</span> <span class="symbol">http:</span>/<span class="regexp">/jianganglu.github.io/</span> <span class="comment">#网址</span>
+<span class="symbol">root:</span> / <span class="comment">#根目录</span>
+<span class="symbol">permalink:</span> <span class="symbol">:year/</span><span class="symbol">:month/</span><span class="symbol">:day/</span><span class="symbol">:title/</span> <span class="comment">#文章的链接格式</span>
+<span class="symbol">tag_dir:</span> tags <span class="comment">#标签目录</span>
+<span class="symbol">archive_dir:</span> archives <span class="comment">#存档目录</span>
+<span class="symbol">category_dir:</span> categories <span class="comment">#分类目录</span>
+<span class="symbol">code_dir:</span> downloads/code
+<span class="symbol">permalink_defaults:</span>
+<span class="comment"># Directory #目录</span>
+<span class="symbol">source_dir:</span> source <span class="comment">#源文件目录</span>
+<span class="symbol">public_dir:</span> public <span class="comment">#生成的网页文件目录</span>
+<span class="comment"># Writing #写作</span>
+<span class="symbol">new_post_name:</span> <span class="symbol">:title</span>.md <span class="comment">#新文章标题</span>
+<span class="symbol">default_layout:</span> post <span class="comment">#默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）</span>
+<span class="symbol">titlecase:</span> <span class="keyword">false</span> <span class="comment">#标题转换成大写</span>
+<span class="symbol">external_link:</span> <span class="keyword">true</span> <span class="comment">#在新选项卡中打开连接</span>
+<span class="symbol">filename_case:</span> <span class="number">0</span>
+<span class="symbol">render_drafts:</span> <span class="keyword">false</span>
+<span class="symbol">post_asset_folder:</span> <span class="keyword">false</span>
+<span class="symbol">relative_link:</span> <span class="keyword">false</span>
+<span class="symbol">highlight:</span> <span class="comment">#语法高亮</span>
+  <span class="symbol">enable:</span> <span class="keyword">true</span> <span class="comment">#是否启用</span>
+  <span class="symbol">line_number:</span> <span class="keyword">true</span> <span class="comment">#显示行号</span>
+  <span class="symbol">tab_replace:</span>
+<span class="comment"># Category &amp; Tag #分类和标签</span>
+<span class="symbol">default_category:</span> uncategorized <span class="comment">#默认分类</span>
+<span class="symbol">category_map:</span>
+<span class="symbol">tag_map:</span>
+<span class="comment"># Archives</span>
+<span class="number">2</span><span class="symbol">:</span> 开启分页
+<span class="number">1</span><span class="symbol">:</span> 禁用分页
+<span class="number">0</span><span class="symbol">:</span> 全部禁用
+<span class="symbol">archive:</span> <span class="number">2</span>
+<span class="symbol">category:</span> <span class="number">2</span>
+<span class="symbol">tag:</span> <span class="number">2</span>
+<span class="comment"># Server #本地服务器</span>
+<span class="symbol">port:</span> <span class="number">4000</span> <span class="comment">#端口号</span>
+<span class="symbol">server_ip:</span> localhost <span class="comment">#IP 地址</span>
+<span class="symbol">logger:</span> <span class="keyword">false</span>
+<span class="symbol">logger_format:</span> dev
+<span class="comment"># Date / Time format #日期时间格式</span>
+<span class="symbol">date_format:</span> <span class="constant">YYYY</span>-<span class="constant">MM</span>-<span class="constant">DD</span> <span class="comment">#参考http://momentjs.com/docs/#/displaying/format/</span>
+<span class="symbol">time_format:</span> <span class="constant">H</span><span class="symbol">:mm</span><span class="symbol">:ss</span>
+<span class="comment"># Pagination #分页</span>
+<span class="symbol">per_page:</span> <span class="number">10</span> <span class="comment">#每页文章数，设置成 0 禁用分页</span>
+<span class="symbol">pagination_dir:</span> page
+<span class="comment"># Disqus #Disqus评论，替换为多说</span>
+<span class="symbol">disqus_shortname:</span>
+<span class="comment"># Extensions #拓展插件</span>
+<span class="symbol">theme:</span> landscape-plus <span class="comment">#主题</span>
+<span class="symbol">exclude_generator:</span>
+<span class="symbol">plugins:</span> <span class="comment">#插件，例如生成 RSS 和站点地图的</span>
+- hexo-generator-feed
+- hexo-generator-sitemap
+<span class="comment"># Deployment #部署，将 jianganglu 改成用户名</span>
+<span class="symbol">deploy:</span>
+  <span class="symbol">type:</span> git
+  <span class="symbol">repo:</span> <span class="symbol">https:</span>/<span class="regexp">/github.com/jianganglu</span><span class="regexp">/jianganglu.github.io.git</span>
+</code></pre><h2 id="命令行使用">命令行使用</h2><p>常用命令：</p>
+<pre><code>hexo help <span class="preprocessor">#查看帮助</span>
+hexo init <span class="preprocessor">#初始化一个目录</span>
+hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="preprocessor">#新建文章</span>
+hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="preprocessor">#新建页面</span>
+hexo generate <span class="preprocessor">#生成网页，可以在 public 目录查看整个网站的文件</span>
+hexo <span class="keyword">server</span> <span class="preprocessor">#本地预览，'Ctrl+C'关闭</span>
+hexo deploy <span class="preprocessor">#部署.deploy目录</span>
+hexo clean <span class="preprocessor">#清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**</span>
+</code></pre><p>复合命令：</p>
+<pre><code>hexo deploy -<span class="keyword">g</span>
+hexo server -<span class="keyword">g</span>
+</code></pre><p>简写：</p>
+<pre><code>hexo <span class="variable">n =</span>= hexo new
+hexo <span class="variable">g =</span>= hexo generate
+hexo <span class="variable">s =</span>= hexo server
+hexo <span class="variable">d =</span>= hexo deploy
+</code></pre><p>安装插件，<plugin-name>为插件名</plugin-name></p>
+<pre><code>npm <span class="operator"><span class="keyword">install</span> &lt;<span class="keyword">plugin</span>-name&gt; <span class="comment">--save</span>
+npm <span class="keyword">update</span> #升级
+npm <span class="keyword">uninstall</span> &lt;<span class="keyword">plugin</span>-name&gt; #卸载</span>
+</code></pre><p>安装主题，<repository>为主题的 git 仓库，<theme-name>为要存放在本地的目录名</theme-name></repository></p>
+<pre><code>git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
+</code></pre><h2 id="编辑文章">编辑文章</h2><p>新建文章</p>
+<pre><code>hexo <span class="keyword">new</span> <span class="string">"标题"</span>
+</code></pre><p>在 _posts 目录下会生成文件标题.md</p>
+<pre><code>title: 标题
+date: 2014-11-11 11:11:11
+tags:
+-<span class="ruby"> 标签<span class="number">1</span>
+</span>-<span class="ruby"> 标签<span class="number">2</span>
+</span>-<span class="ruby"> 标签<span class="number">3</span>
+</span>categories: [分类1,分类2,分类3]
+-<span class="ruby">--
+</span>正文，使用Markdown语法书写
+</code></pre><p>编辑完后保存，hexo server 预览</p>
+<h2 id="发布">发布</h2><p>以发布到 Github 为例</p>
+<p>编辑全局配置文件 _config.yml 中的 deploy 部分，jianganglu为用户名</p>
+<pre><code><span class="attribute">deploy</span>:
+  <span class="attribute">type</span>: git
+  <span class="attribute">repo</span>: <span class="attribute">https</span>:<span class="comment">//github.com/jianganglu/jianganglu.github.io.git</span>
+  <span class="attribute">branch</span>: master
+</code></pre><p>或者</p>
+<pre><code><span class="attribute">deploy</span>:
+  <span class="attribute">type</span>: git
+  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:jianganglu/jianganglu.github.com.git
+  <span class="attribute">branch</span>: master
+</code></pre><p><strong>项目主页需要把 branch 设置为 gh-pages</strong></p>
+<p>托管到 Gitcafe 的话修改为</p>
+<pre><code><span class="attribute">deploy</span>:
+  <span class="attribute">type</span>: github
+  <span class="attribute">repository</span>: git<span class="variable">@gitcafe</span>.<span class="attribute">com</span>:jianganglu/jianganglu.git
+  <span class="attribute">branch</span>: gitcafe-pages
+</code></pre><p>部署</p>
+<pre><code><span class="title">hexo</span> deploy
+</code></pre><p>以下提示说明部署成功</p>
+<pre><code><span class="attr_selector">[info]</span> <span class="tag">Deploy</span> <span class="rule"><span class="attribute">done</span>:<span class="value"> github</span></span>
+</code></pre><p>点击 Github 上项目的 Settings，GitHub Pages，提示Your site is published at <a href="http://jianganglu.github.io/">http://jianganglu.github.io/</a><br>第一次上传网站的话需要等十分钟左右，以后每次更新都能马上打开</p>
+<h1 id="绑定域名">绑定域名</h1><p>不绑定域名的话只能通过your_user_name.github.io访问<br>申请域名推荐<a href="https://www.godaddy.com/" title="GoDaddy" target="_blank" rel="external">GoDaddy</a>，域名解析推荐<a href="https://www.dnspod.cn/Login" title="DNSPod" target="_blank" rel="external">DNSPod</a></p>
+<h2 id="绑定顶级域名">绑定顶级域名</h2><p>新建文件 CNAME，无后缀，纯文本文件，内容为要绑定的域名jianganglu.com<br>如果要使用www.jianganglu.com的形式，文件内容改为www.jianganglu.com</p>
+<p>DNS设置<br>主机记录@，类型A，记录值192.30.252.153<br>主机记录www，类型A，记录值192.30.252.153<br>参考 <a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider" target="_blank" rel="external">https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider</a></p>
+<h2 id="绑定子域名">绑定子域名</h2><p>比如使用域名jianganglu.com的子域名blog.jianganglu.com<br>CNAME文件内容为blog.jianganglu.com</p>
+<p>DNS设置<br>主机记录blog，类型CNAME，记录值jianganglu.github.io<br>参考 <a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider" target="_blank" rel="external">https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider</a></p>
+<h2 id="Gitcafe_绑定域名">Gitcafe 绑定域名</h2><p>项目管理界面，左侧的导航栏中有自定义域名设置</p>
+<h1 id="优化">优化</h1><h2 id="配置主题">配置主题</h2><p>Hexo 的<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">主题列表</a></p>
+<p>下载主题</p>
+<pre><code>$ git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
+</code></pre><p>也可以手动下载后解压到 themes 目录</p>
+<p>在全局配置文件 _config.yml 中 theme 一行改成想要的主题</p>
+<p>主题目录结构</p>
+<pre><code>.
+├── languages          <span class="preprocessor">#国际化</span>
+|   ├── <span class="keyword">default</span>.yml    <span class="preprocessor">#默认</span>
+|   └── zh-CN.yml      <span class="preprocessor">#中文</span>
+├── <span class="keyword">layout</span>             <span class="preprocessor">#布局</span>
+|   ├── _partial       <span class="preprocessor">#局部的布局</span>
+|   └── _widget        <span class="preprocessor">#小挂件的布局</span>
+├── script             <span class="preprocessor">#js脚本</span>
+├── source             <span class="preprocessor">#源代码文件</span>
+|   ├── css            <span class="preprocessor">#CSS</span>
+|   |   ├── _base      <span class="preprocessor">#基础CSS</span>
+|   |   ├── _partial   <span class="preprocessor">#局部CSS</span>
+|   |   ├── fonts      <span class="preprocessor">#字体</span>
+|   |   ├── images     <span class="preprocessor">#图片</span>
+|   |   └── style.styl <span class="preprocessor">#style.css</span>
+|   ├── fancybox       <span class="preprocessor">#fancybox</span>
+|   └── js             <span class="preprocessor">#js</span>
+├── _config.yml        <span class="preprocessor">#主题配置文件</span>
+└── README.md          <span class="preprocessor">#主题介绍</span>
+</code></pre><p>以下是主题 <a href="https://github.com/xiangming/landscape-plus" target="_blank" rel="external">landscape-plus</a> 的配置文件</p>
+<pre><code><span class="preprocessor"># Header #顶部导航</span>
+<span class="label">menu:</span>
+  Home: / <span class="preprocessor">#主页</span>
+  Archives: /archives <span class="preprocessor">#存档</span>
+  About: /about <span class="preprocessor">#关于</span>
+<span class="label">rss:</span> /atom.xml <span class="preprocessor">#RSS 订阅</span>
+<span class="preprocessor"># Content</span>
+<span class="label">excerpt_link:</span> 阅读全文 <span class="preprocessor">#"Read More"要显示的文字</span>
+<span class="label">fancybox:</span> true <span class="preprocessor">#fancybox 看图效果</span>
+<span class="preprocessor"># Sidebar #侧边栏</span>
+<span class="label">sidebar:</span> right <span class="preprocessor">#位置，右边</span>
+<span class="label">widgets:</span>
+- weibo
+- recent_posts
+- recent_comments
+- recent_visitors
+- archive
+- category
+- tag
+- tagcloud
+<span class="preprocessor">#- links #在 widget 前加"#"禁用</span>
+<span class="preprocessor"># Links #友情链接</span>
+<span class="label">links:</span>
+  Hexo: http://hexo.io
+<span class="preprocessor"># Miscellaneous</span>
+<span class="label">google_analytics:</span> UA-xxxxxxxx-<span class="number">1</span> <span class="preprocessor">#Google Analytics ID</span>
+<span class="label">favicon:</span> /favicon.ico <span class="preprocessor">#favicon 路径</span>
+<span class="label">twitter:</span> jianganglu
+<span class="label">google_plus:</span> 
+<span class="label">fb_admins:</span> 
+<span class="label">fb_app_id:</span> 
+<span class="preprocessor"># Duoshuo #多说通用代码</span>
+<span class="label">duoshuo_shortname:</span>
+<span class="preprocessor"># Baidu share #百度分享</span>
+<span class="label">baidushare:</span> true
+</code></pre><h1 id="评论">评论</h1><p>在 <a href="https://disqus.com/" title="Disqus官网" target="_blank" rel="external">Disqus官网</a> 申请新网站的 shortname<br>配置 _config.yml 文件</p>
+<pre><code><span class="attribute">disqus_shortname</span>: <span class="string">xxxxxxxx</span>
+</code></pre><p>替换为多说，landscape-plus 已经配置好了多说，填写duoshuo_shortname即可</p>
+<h1 id="RSS_订阅">RSS 订阅</h1><p>安装插件</p>
+<pre><code>npm <span class="keyword">install</span> hexo-generator-feed
+</code></pre><p>全局配置文件开启插件</p>
+<pre><code>plugins:
+<span class="bullet">- </span>hexo-generator-feed
+</code></pre><p>主题配置文件添加入口</p>
+<pre><code><span class="attribute">rss</span>: <span class="string">/atom.xml</span>
+</code></pre><p>浏览<a href="http://localhost:4000/atom.xml查看是否生效" target="_blank" rel="external">http://localhost:4000/atom.xml查看是否生效</a></p>
+<h1 id="Sitemap_网站地图">Sitemap 网站地图</h1><p>安装插件</p>
+<pre><code>npm <span class="keyword">install</span> hexo-generator-sitemap
+</code></pre><p>开启插件</p>
+<pre><code>plugins:
+<span class="bullet">- </span>hexo-generator-sitemap
+</code></pre><p>浏览<a href="http://localhost:4000/sitemap.xml查看是否生效" target="_blank" rel="external">http://localhost:4000/sitemap.xml查看是否生效</a></p>
+<h1 id="mathjax_数学公式">mathjax 数学公式</h1><p>新建文件 themes/pacman/layout/_partial/mathjax.ejs<br>添加以下内容</p>
+<pre><code><span class="comment">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/x-mathjax-config"</span>&gt;</span><span class="less">
+  <span class="tag">MathJax</span><span class="class">.Hub</span><span class="class">.Config</span>({
+    <span class="tag">tex2jax</span>: {
+      <span class="attribute">inlineMath</span>: [ [<span class="string">'$'</span>,<span class="string">'$'</span>], [<span class="string">"\\("</span>,<span class="string">"\\)"</span>] ],
+      <span class="attribute">processEscapes</span>: true
+    }
+  });
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/x-mathjax-config"</span>&gt;</span><span class="less">
+    <span class="tag">MathJax</span><span class="class">.Hub</span><span class="class">.Config</span>({
+      <span class="tag">tex2jax</span>: {
+        <span class="attribute">skipTags</span>: [<span class="string">'script'</span>, <span class="string">'noscript'</span>, <span class="string">'style'</span>, <span class="string">'textarea'</span>, <span class="string">'pre'</span>, <span class="string">'code'</span>]
+      }
+    });
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/x-mathjax-config"</span>&gt;</span><span class="matlab">
+    MathJax.Hub.Queue(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        var all = MathJax.Hub.getAllJax(), <span class="built_in">i</span>;
+        <span class="keyword">for</span>(<span class="built_in">i</span>=<span class="number">0</span>; <span class="built_in">i</span> &lt; all.<span class="built_in">length</span>; <span class="built_in">i</span> += <span class="number">1</span>) <span class="cell">{
+            all[i].SourceElement().parentNode.className += <span class="string">' has-jax'</span>;
+        }</span>
+    });
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><span class="undefined">
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</code></pre><p>在themes/pacman/layout/_partial/after_footer.ejs增加对mathjax的引用</p>
+<pre><code>&lt;<span class="preprocessor">%</span>- partial<span class="comment">('mathjax')</span> <span class="preprocessor">%</span>&gt;
+</code></pre><h1 id="文章摘要">文章摘要</h1><p>在摘要文字后面插入</p>
+<pre><code><span class="comment">&lt;!--more--&gt;</span>
+</code></pre><p>可以在主题的配置文件中设置要显示的文字</p>
+<pre><code><span class="attribute">excerpt_link</span>: <span class="string">阅读全文</span>
+</code></pre><h1 id="图片显示">图片显示</h1><p>把图片放到 source/images 目录下</p>
+<pre><code>![]<span class="comment">(images/<span class="doctag"><span class="keyword">xxx</span>.</span>jpg)</span>
+</code></pre><p>推荐使用图床</p>
+<h1 id="自定义页面">自定义页面</h1><p>以关于页面为例</p>
+<pre><code>hexo <span class="keyword">new</span> page <span class="string">"about"</span>
+</code></pre><p>编辑 source/about/index.md：</p>
+<pre><code>title: About
+<span class="header">date: 2014-11-1 11:11:11
+---</span>
+About Me
+</code></pre><p>在主题的配置文件里添加入口</p>
+<pre><code><span class="attribute">menu</span>:
+  <span class="attribute">About</span>: /about
+</code></pre><h1 id="自定义_404_页面">自定义 404 页面</h1><p>添加 source/404.html</p>
+<p>404 页面不需要 Hexo 解析</p>
+<pre><code>layout: false
+--------
+<span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=UTF-8"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">href</span>=<span class="value">"/favicon.ico"</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">align</span>=<span class="value">"center"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">p</span>&gt;</span>404 你懂的<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p><a href="http://www.qq.com/404/" target="_blank" rel="external">腾讯公益404</a><br><a href="http://yibo.iyiyun.com/Index/web404" target="_blank" rel="external">404公益_益云(公益互联网)社会创新中心</a><br><a href="http://404page.missingkids.org.tw/" target="_blank" rel="external">失蹤兒童少年資料管理中心404</a></p>
+<h1 id="添加小图标">添加小图标</h1><p>将 favicon.ico 文件放在 source 目录下<br>配置 landscape-plus 主题里的 _config.yml</p>
+<pre><code><span class="attribute">favicon</span>: <span class="string">/favicon.ico</span>
+</code></pre><h1 id="添加robots-txt">添加robots.txt</h1><p>source 目录下添加 robots.txt</p>
+<pre><code><span class="attribute">User-agent</span>: <span class="string">Baiduspider</span>
+<span class="attribute">Disallow</span>: <span class="string"></span>
+<span class="attribute">User-agent</span>: <span class="string">Googlebot</span>
+<span class="attribute">Disallow</span>: <span class="string"></span>
+<span class="attribute">User-agent</span>: <span class="string">*</span>
+<span class="attribute">Disallow</span>: <span class="string">/</span>
+</code></pre><h1 id="生成_post_时默认生成_categories_配置项">生成 post 时默认生成 categories 配置项</h1><p>在 scaffolds/post.md 中添加</p>
+<pre><code><span class="label">categories:</span>
+</code></pre><h1 id="添加新浪微博秀">添加新浪微博秀</h1><p>在<a href="http://app.weibo.com/tool/weiboshow" title="微博秀" target="_blank" rel="external">微博秀</a>设置和生成代码<br>在主题 /layout/_widget 中新建 weibo.ejs 文件，保存刚刚复制的代码<br>在主题配置文件添加</p>
+<pre><code>widgets:
+<span class="bullet">- </span>weibo
+</code></pre><h1 id="设置网站统计">设置网站统计</h1><h2 id="百度统计">百度统计</h2><p>编辑文件 hexo\themes\modernist_config.yml ，增加配置选项：</p>
+<pre><code><span class="keyword">baidu_t</span>ongji: <span class="keyword">true</span>
+</code></pre><p>新建文件 hexo\themes\modernist\layout_partial\baidu_tongji.ejs ，内容如下：</p>
+<pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">if</span> (theme.baidu_tongji){ </span>%&gt;<span class="xml">
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="vala">
+<span class="preprocessor">#你的百度统计代码</span>
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml"></span>
+</code></pre><p>注册并登录百度统计获取你的统计代码。</p>
+<p>编辑文件 hexo\themes\modernist\layout_partial\head.ejs ，在 『/head』 之前增加：</p>
+<pre><code>&lt;<span class="preprocessor">%</span>- partial<span class="comment">('baidu_tongji')</span> <span class="preprocessor">%</span>&gt;
+</code></pre><p>不出意外的话，在你的站点的每个页面的左上角都会看到一个恶心的百度LOGO。你只能在『百度统计首页-&gt;网站列表-&gt;获取代码-&gt;系统管理设置-&gt;统计图标设置-&gt;显示图标』，把那个勾去掉。</p>
+<h1 id="Google_Analytics">Google Analytics</h1><p>landscape-plus 主题直接配置</p>
+<pre><code><span class="attribute">google_analytics</span>: <span class="string">UA-xxxxxxxx-1</span>
+</code></pre><h1 id="添加”fork_me_on_github”">添加”fork me on github”</h1><p><a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">官方教程</a><br>将代码插入到 layout.ejs</p>
+<h1 id="分享">分享</h1><p>landscape-plus 主题开启百度分享</p>
+<pre><code><span class="string">baidushare:</span> <span class="literal">true</span>
+</code></pre><h1 id="迁移">迁移</h1><p>参考官方文档 <a href="http://zespia.tw/hexo/docs/migration.html" title="Hexo Migration" target="_blank" rel="external">Hexo Migration</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/05/25/blog-with-hexo/" data-id="ciikgbtr2001uwweiz9702jds" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/05/25/blog-with-hexo/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/24/hello-world/" class="article-date">
+  <time datetime="2015-05-24T13:33:22.020Z" itemprop="datePublished">2015-05-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/24/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/05/24/hello-world/" data-id="ciikgbtqh001dwweit71a2pml" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/05/24/hello-world/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
+  
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cordova/">Cordova</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cordova/">Cordova</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Cordova/" style="font-size: 20px;">Cordova</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 20px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/24/sass-script-advance/">sass进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/cordova-plugin-splashscreen/">cordova-plugin-splashscreen</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/cordova-plugins-list/">cordova插件列表</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/ionic-android-package/">ionic android打包</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/24/ionic-hidetabs/">ionic 进入二级目录以后隐藏底部导航栏（tabs）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 JiangangLu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jianganglu"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>

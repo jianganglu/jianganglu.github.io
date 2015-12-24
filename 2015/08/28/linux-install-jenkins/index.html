@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?edcff04b92b2dadf9dcc95b55304f48e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+  <title>Jenkins安装与配置 | JiangangLu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1 Jenkins入门系列之——03PDF文档下载
+2 Jenkins安装在最简单的情况下，Jenkins 只需要两个步骤： 
+1.下载最新的版本（一个 WAR 文件）。Jenkins官方网址: http://Jenkins-ci.org/
+2.运行 java -jar jenkins.war
+注意：Jenkins 需要运行 Java 5以及以上的版本。
+还有一种安装方式就是将下载的war包文件部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins安装与配置">
+<meta property="og:url" content="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/index.html">
+<meta property="og:site_name" content="JiangangLu's Blog">
+<meta property="og:description" content="1 Jenkins入门系列之——03PDF文档下载
+2 Jenkins安装在最简单的情况下，Jenkins 只需要两个步骤： 
+1.下载最新的版本（一个 WAR 文件）。Jenkins官方网址: http://Jenkins-ci.org/
+2.运行 java -jar jenkins.war
+注意：Jenkins 需要运行 Java 5以及以上的版本。
+还有一种安装方式就是将下载的war包文件部">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins01.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins02.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins03.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins04.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins05.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins06.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins07.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins08.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins09.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins10.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins11.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins12.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins13.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins14.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins15.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins16.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins17.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins18.jpg">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins19.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins20.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins21.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins22.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins23.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins24.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins25.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins26.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins27.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins28.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins29.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins30.jpg">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins31.jpg">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins32.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins33.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins34.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins35.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins36.jpg">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins37.png">
+<meta property="og:image" content="http://jianganglu.github.io/img/linux/install-jenkins38.png">
+<meta property="og:updated_time" content="2015-08-28T12:59:41.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jenkins安装与配置">
+<meta name="twitter:description" content="1 Jenkins入门系列之——03PDF文档下载
+2 Jenkins安装在最简单的情况下，Jenkins 只需要两个步骤： 
+1.下载最新的版本（一个 WAR 文件）。Jenkins官方网址: http://Jenkins-ci.org/
+2.运行 java -jar jenkins.war
+注意：Jenkins 需要运行 Java 5以及以上的版本。
+还有一种安装方式就是将下载的war包文件部">
+  
+    <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JiangangLu&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">精彩生活从这里开始，爱前端，爱生活。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="jianganglu.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-linux-install-jenkins" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/28/linux-install-jenkins/" class="article-date">
+  <time datetime="2015-08-28T12:16:42.000Z" itemprop="datePublished">2015-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/jenkins/">jenkins</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Jenkins安装与配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1 <a href="&#39;http://files.cnblogs.com/files/zz0412/jenkins%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C.pdf&#39;">Jenkins入门系列之——03PDF文档下载</a></p>
+<p>2 Jenkins安装<br>在最简单的情况下，Jenkins 只需要两个步骤： </p>
+<p>1.下载最新的版本（一个 WAR 文件）。Jenkins官方网址: <a href="http://Jenkins-ci.org/" target="_blank" rel="external">http://Jenkins-ci.org/</a></p>
+<p>2.运行 java -jar jenkins.war</p>
+<p>注意：Jenkins 需要运行 Java 5以及以上的版本。</p>
+<p>还有一种安装方式就是将下载的war包文件部署到 servlet 容器，然后启动容器，在浏览器的URL地址栏中输入类似<a href="http://localhost:8080/jenkins/这样的地址即可。下图是安装成功后的界面（使用的是Linux+Tomcat6+Java6环境）：" target="_blank" rel="external">http://localhost:8080/jenkins/这样的地址即可。下图是安装成功后的界面（使用的是Linux+Tomcat6+Java6环境）：</a></p>
+<p><img src="/img/linux/install-jenkins01.png" alt="图1 Jenkins主界面"></p>
+<p>3 Jenkins配置</p>
+<p>写在配置前的一些话：Jenkins的配置不可能全部都说到的，大部分配置是有英文说明的，点击输入框后面的问号就可以看见了。英文不会用翻译工具，连蒙带猜的，多测试几次，你就懂了。</p>
+<p>3.1 系统管理</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理进入如下界面：<br><img src="/img/linux/install-jenkins02.png" alt="图2 Jenkins系统管理"></p>
+<p>3.1.1 提示信息</p>
+<p>Ps：版本不同提示的消息有可能不同</p>
+<p>3.1.1.1 Utf-8编码</p>
+<p>Your container doesn’t use UTF-8 to decode URLs. If you use non-ASCII characters as a job name etc, this will cause problems. See Containers and Tomcat i18n for more details.</p>
+<p>Jenkins建议在tomcat中使用utf-8编码，配置tomcat下conf目录的server.xml文件</p>
+<p><img src="/img/linux/install-jenkins03.png" alt="图3 URIEncoding编码设置"></p>
+<p>Ps：如果Job的控制台中文输出乱码，请将URIEncoding=”utf-8”更改为useBodyEncodingForURI=”true”</p>
+<p>3.1.1.2 新的版本</p>
+<p>New version of Jenkins (1.518.JENKINS-14362-jzlib) is available for download (changelog).</p>
+<p>提示有新的版本可以下载了,喜欢更新的点击download去下载吧！</p>
+<p>3.1.1.3 安全设置</p>
+<p><img src="/img/linux/install-jenkins04.png" alt="图4 安全提示消息"></p>
+<p>詹金斯允许网络上的任何人代表您启动进程。考虑至少启用身份验证来阻止滥用。点击Dismiss忽略该消息,点击Setup Security进入设置界面.详细设置请参考 Configure Global Security(安全设置) 章节</p>
+<p>3.1.2 系统设置</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理—&gt;系统设置进入如下界面：<br><img src="/img/linux/install-jenkins05.png" alt="图5 系统设置界面"></p>
+<p>3.1.2.1 JDK、Maven、Ant配置<br>配置一个JDK、Ant、Maven实例，请在每一节下面单击Add(新增) 按钮，这里将添加实例的名称和绝对地址。下图描述了这两个部分。<br><img src="/img/linux/install-jenkins06.png" alt="图6 JDK配置界面"></p>
+<p>JDK别名：给你看的，随便你自己，叫阿猫阿狗都可以</p>
+<p>JAVA_HOME：这个是本机JDK的安装路径（错误的路径会有红字提示你的）</p>
+<p>自动安装：不推荐这个选项</p>
+<p>后面Ant与Maven的配置是一样的，JDK去oracle官网下载，Ant与Maven去apache官网下载</p>
+<p>Ps：每个文本框后面都有个问号，点击问号就会出现帮助信息</p>
+<p>3.1.2.2 邮件通知配置</p>
+<p>3.1.2.2.1 配置发件人地址<br><img src="/img/linux/install-jenkins07.png" alt="图7 发件人地址配置界面"></p>
+<p>System Admin e-mail address：Jenkins邮件发送地址，如果你这个没有配置，等着发邮件的时候报错吧，当时我也是这儿没有配置，郁闷了我一周的时间。⊙﹏⊙b汗 </p>
+<p>3.1.2.2.2 配置邮件通知<br><img src="/img/linux/install-jenkins08.png" alt="图8 邮件通知"></p>
+<p>这个就非常的简单了，根据的的邮箱提供者的参数配置就行了。</p>
+<p>Ps：小技巧：用户默认邮件后缀配置了后，以后你填写邮件地址只需要@之前的就行了</p>
+<p>3.1.2.3 Subversion配置<br><img src="/img/linux/install-jenkins09.png" alt="图9 Subversion配置"></p>
+<p>Subversion Workspace Version：Subversion 的版本号，选择你对应的版本号就行了</p>
+<p>3.1.3 Configure Global Security(安全设置)</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理—&gt;Configure Global Security进入如下界面：<br><img src="/img/linux/install-jenkins10.png" alt="图10 安全设置界面"></p>
+<p>设置如上图，保存后系统管理中就出现管理用户的选项。页面右上角也会出现登录/注册的选项。</p>
+<p>3.1.4 管理用户设置</p>
+<p>在右上角点击注册<br><img src="/img/linux/install-jenkins11.png" alt="图11 注册用户界面"></p>
+<p><img src="/img/linux/install-jenkins12.png" alt=""><br><img src="/img/linux/install-jenkins13.png" alt=""><br><img src="/img/linux/install-jenkins14.png" alt=""><br><img src="/img/linux/install-jenkins15.png" alt=""><br><img src="/img/linux/install-jenkins16.png" alt=""><br><img src="/img/linux/install-jenkins17.png" alt=""><br><img src="/img/linux/install-jenkins18.jpg" alt=""><br><img src="/img/linux/install-jenkins19.png" alt=""><br><img src="/img/linux/install-jenkins20.png" alt=""><br><img src="/img/linux/install-jenkins21.png" alt=""><br><img src="/img/linux/install-jenkins22.png" alt=""><br><img src="/img/linux/install-jenkins23.png" alt=""><br><img src="/img/linux/install-jenkins24.png" alt=""><br><img src="/img/linux/install-jenkins25.png" alt=""><br><img src="/img/linux/install-jenkins26.png" alt=""><br><img src="/img/linux/install-jenkins27.png" alt=""><br><img src="/img/linux/install-jenkins28.png" alt=""><br><img src="/img/linux/install-jenkins29.png" alt=""><br><img src="/img/linux/install-jenkins30.jpg" alt=""><br><img src="/img/linux/install-jenkins31.jpg" alt=""><br><img src="/img/linux/install-jenkins32.png" alt=""><br><img src="/img/linux/install-jenkins33.png" alt=""><br><img src="/img/linux/install-jenkins34.png" alt=""><br><img src="/img/linux/install-jenkins35.png" alt=""><br><img src="/img/linux/install-jenkins36.jpg" alt=""><br><img src="/img/linux/install-jenkins37.png" alt=""><br><img src="/img/linux/install-jenkins38.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/" data-id="ciikgbtph000hwweib238zim7" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/09/cordova-build-android/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          cordova-build-android-22报错解决
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/28/git-ssh/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">LINUX上为GIT添加SSH-KEY,WINDOWS上也适用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/08/28/linux-install-jenkins/" data-title="Jenkins安装与配置" data-url="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cordova/">Cordova</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cordova/">Cordova</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Cordova/" style="font-size: 20px;">Cordova</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 20px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/24/sass-script-advance/">sass进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/cordova-plugin-splashscreen/">cordova-plugin-splashscreen</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/cordova-plugins-list/">cordova插件列表</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/ionic-android-package/">ionic android打包</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/24/ionic-hidetabs/">ionic 进入二级目录以后隐藏底部导航栏（tabs）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 JiangangLu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jianganglu"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>

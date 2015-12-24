@@ -1,0 +1,1299 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?edcff04b92b2dadf9dcc95b55304f48e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+  <title>JiangangLu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端开发，JiangangLu, blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JiangangLu's Blog">
+<meta property="og:url" content="http://jianganglu.github.io/index.html">
+<meta property="og:site_name" content="JiangangLu's Blog">
+<meta property="og:description" content="前端开发，JiangangLu, blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JiangangLu's Blog">
+<meta name="twitter:description" content="前端开发，JiangangLu, blog">
+  
+    <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JiangangLu&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">精彩生活从这里开始，爱前端，爱生活。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="jianganglu.github.io">
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main">
+  
+    <article id="post-sass-script-advance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/24/sass-script-advance/" class="article-date">
+  <time datetime="2015-12-24T15:21:08.000Z" itemprop="datePublished">2015-12-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/sass/">sass</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/24/sass-script-advance/">sass进阶</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/sass/sass-guide.png" alt="sass学习思维导图"></p>
+<h3 id="数字类型(Number)">数字类型(Number)</h3><p>For example:</p>
+<pre><code><span class="comment">/*! 数字类型 */</span>
+<span class="variable">$n1</span><span class="value">: <span class="number">1.2</span>;</span>
+<span class="variable">$n2</span><span class="value">: <span class="number">12</span>;</span>
+<span class="variable">$n3</span><span class="value">: <span class="number">14px</span>;</span>
+
+<span class="tag">p</span>{
+  <span class="attribute">font-size</span><span class="value">: <span class="variable">$n3</span>;</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="comment">/*! 数字类型 */</span>
+<span class="tag">p</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;
+}</span>
+</code></pre><h3 id="字符串类型(String)">字符串类型(String)</h3><p>For example:</p>
+<pre><code><span class="comment">/*! 字符串类型*/</span>
+<span class="variable">$s1</span><span class="value">: container;</span>
+<span class="variable">$s2</span><span class="value">: <span class="string">'container'</span>;</span>
+<span class="variable">$s3</span><span class="value">: <span class="string">"container"</span>;</span>
+
+.#{<span class="variable">$s3</span>}{
+  <span class="attribute">font-size</span><span class="value">: <span class="variable">$n3</span>;</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="comment">/*! 字符串类型*/</span>
+<span class="class">.container</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;
+}</span>
+</code></pre><h3 id="Map类型">Map类型</h3><p>For example:</p>
+<p>is compiled to:</p>
+<h3 id="List类型">List类型</h3><p>For example:</p>
+<p>is compiled to:</p>
+<h3 id="颜色类型">颜色类型</h3><p>For example:</p>
+<pre><code><span class="comment">/*! 颜色类型*/</span>
+<span class="variable">$c1</span><span class="value">: blue;</span>
+<span class="variable">$c2</span><span class="value">: <span class="hexcolor">#fff</span>;</span>
+<span class="variable">$c3</span><span class="value">: <span class="function">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>,<span class="number">0.5</span>);</span>
+
+<span class="tag">body</span>{
+  <span class="attribute">color</span><span class="value">: <span class="variable">$c3</span>;</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="comment">/*! 颜色类型*/</span>
+<span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">0.5</span>)</span></span>;
+}</span>
+</code></pre><h3 id="Boolean类型">Boolean类型</h3><p>For example:</p>
+<pre><code><span class="comment">/*! Bool类型*/</span>
+<span class="variable">$bt</span><span class="value">: ture;</span>
+<span class="variable">$bf</span><span class="value">: false;</span>
+</code></pre><h3 id="Null类型">Null类型</h3><p>For example:</p>
+<pre><code><span class="comment">/*! Null类型*/</span>
+$<span class="keyword">null</span>: <span class="keyword">null</span>;
+
+body{
+  @<span class="keyword">if</span> $<span class="keyword">null</span> == <span class="keyword">null</span>{
+    <span class="built_in">color</span>: <span class="built_in">red</span>;
+  }
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="comment">/*! Bool类型*/</span>
+<span class="comment">/*! Null类型*/</span>
+<span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+}</span>
+</code></pre><h3 id="变量操作">变量操作</h3><p>For example:</p>
+<pre><code><span class="variable">$width1</span><span class="value">: <span class="number">10px</span>;</span>
+<span class="variable">$width2</span><span class="value">: <span class="number">15px</span>;</span>
+
+<span class="tag">span</span>{
+  <span class="attribute">width</span><span class="value">: <span class="variable">$width1</span> - <span class="variable">$width2</span>;</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="tag">span</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> -<span class="number">5px</span></span></span>;
+}</span>
+</code></pre><p>For example:</p>
+<pre><code><span class="tag">a</span><span class="pseudo">:hover</span>{
+  <span class="attribute">cursor</span>: e + -resize;
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="tag">a</span><span class="pseudo">:hover</span> {
+  <span class="attribute">cursor</span>: e-resize;
+}
+</code></pre><p>For example:</p>
+<pre><code><span class="tag">a</span><span class="pseudo">:before</span>{
+  <span class="attribute">content</span>: <span class="string">"A"</span> + bc;
+}
+<span class="tag">a</span><span class="pseudo">:before</span>{
+  <span class="attribute">content</span>: A + <span class="string">'bc'</span>;
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="tag">a</span><span class="pseudo">:before</span> {
+  <span class="attribute">content</span>: <span class="string">"Abc"</span>;
+}
+<span class="tag">a</span><span class="pseudo">:before</span> {
+  <span class="attribute">content</span>: Abc;
+}
+</code></pre><p>For example:</p>
+<pre><code><span class="tag">p</span>{
+  <span class="attribute">padding</span><span class="value">: <span class="number">3px</span> + <span class="number">4px</span> auto;</span> 
+}
+<span class="variable">$version</span><span class="value">: <span class="number">3</span>;</span>
+<span class="tag">p</span><span class="pseudo">:before</span>{
+  <span class="attribute">content</span><span class="value">: <span class="string">'Hello,Sass #{$version}'</span>;</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="tag">p</span> <span class="rules">{
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">7px</span> auto</span></span>;
+}</span>
+<span class="rule"><span class="attribute">p</span>:<span class="value">before {
+  content: <span class="string">"Hello,Sass 3"</span></span></span>;
+}
+</code></pre><p>For example:</p>
+<pre><code><span class="tag">p</span><span class="rules">{
+  <span class="rule"><span class="attribute">font</span>:<span class="value"> <span class="number">20px</span> / <span class="number">10px</span></span></span>;
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> $width2 / <span class="number">2</span></span></span>; 
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="function">round</span>($width2) / <span class="number">2</span></span></span>;
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> (<span class="number">100px</span> / <span class="number">2</span>)</span></span>;
+}</span>
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="tag">p</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font</span>:<span class="value"> <span class="number">20px</span> / <span class="number">10px</span></span></span>;
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">7.5px</span></span></span>;
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">7.5px</span></span></span>;
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">50px</span></span></span>;
+}</span>
+</code></pre><p>注意：<br>1.运算符之间的空格<br>2.相同运算单位</p>
+<pre><code><span class="comment">/*! Good*/</span>
+<span class="tag">p</span><span class="rules">{
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">3px</span> + <span class="number">4px</span> auto</span></span>; 
+}</span>
+
+<span class="comment">/*! Bad*/</span>
+<span class="tag">p</span><span class="rules">{
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">3px</span> + <span class="number">4px</span> auto</span></span>; 
+}</span>
+
+<span class="comment">/*! Good*/</span>
+<span class="tag">p</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font</span>:<span class="value"> (<span class="number">20px</span> / <span class="number">10px</span>)</span></span>;
+}</span>
+
+<span class="comment">/*! Bad*/</span>
+<span class="tag">p</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font</span>:<span class="value"> (<span class="number">20px</span> / <span class="number">10em</span>)</span></span>;
+}</span>
+</code></pre><h3 id="minix">minix</h3><p>For example:</p>
+<pre><code><span class="variable">@minix</span> <span class="function">cont</span>() {
+  <span class="attribute">color</span>: red;
+}
+
+body{
+  <span class="variable">@include</span> <span class="function">cont</span>();
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+}</span>
+</code></pre><p>For example:</p>
+<pre><code><span class="at_rule">@minix<span class="preprocessor"> cont</span>(<span class="variable">$color</span>) {</span>
+  <span class="attribute">color</span><span class="value">: <span class="variable">$color</span>;</span>
+}
+
+<span class="tag">body</span>{
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> cont</span>(red);</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+}</span>
+</code></pre><p>For example:</p>
+<pre><code><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> cont</span>(<span class="variable">$color</span>:<span class="preprocessor"> red</span>, <span class="variable">$fontSize</span>:<span class="preprocessor"> 14px</span>){</span>
+  <span class="attribute">color</span><span class="value">: <span class="variable">$color</span>;</span>
+  <span class="attribute">font-size</span><span class="value">: <span class="variable">$fontSize</span>;</span>
+}
+
+<span class="tag">body</span>{
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> cont</span>(<span class="variable">$fontSize</span>:<span class="preprocessor"> 18px</span>);</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">18px</span></span></span>;
+}</span>
+</code></pre><h3 id="传递多值参数">传递多值参数</h3><p>For example:</p>
+<pre><code><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> box-shadow</span>(<span class="variable">$shadow</span>...){</span>
+  -moz-<span class="attribute">box-shadow</span><span class="value">: <span class="variable">$shadow</span>;</span>
+  -webkit-<span class="attribute">box-shadow</span><span class="value">: <span class="variable">$shadow</span>;</span>
+  <span class="attribute">box-shadow</span><span class="value">: <span class="variable">$shadow</span>;</span>
+}
+
+<span class="class">.shadows</span>{
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> box-shadow</span>(<span class="number">0px</span><span class="preprocessor"> 4px</span><span class="preprocessor"> 4px</span> <span class="hexcolor">#555</span>,<span class="preprocessor"> 2px</span><span class="preprocessor"> 6px</span><span class="preprocessor"> 10px</span> <span class="hexcolor">#6dd3ee</span>);</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="class">.shadows</span> <span class="rules">{
+  <span class="rule"><span class="attribute">-moz-box-shadow</span>:<span class="value"> <span class="number">0px</span> <span class="number">4px</span> <span class="number">4px</span> <span class="hexcolor">#555</span>, <span class="number">2px</span> <span class="number">6px</span> <span class="number">10px</span> <span class="hexcolor">#6dd3ee</span></span></span>;
+  <span class="rule"><span class="attribute">-webkit-box-shadow</span>:<span class="value"> <span class="number">0px</span> <span class="number">4px</span> <span class="number">4px</span> <span class="hexcolor">#555</span>, <span class="number">2px</span> <span class="number">6px</span> <span class="number">10px</span> <span class="hexcolor">#6dd3ee</span></span></span>;
+  <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> <span class="number">0px</span> <span class="number">4px</span> <span class="number">4px</span> <span class="hexcolor">#555</span>, <span class="number">2px</span> <span class="number">6px</span> <span class="number">10px</span> <span class="hexcolor">#6dd3ee</span></span></span>;
+}</span>
+</code></pre><h3 id="传递内容">传递内容</h3><p>For example:</p>
+<pre><code><span class="variable">@mixin</span> style-for-iphone{
+  <span class="at_rule">@media</span> only screen and (<span class="attribute">min-device-width</span>: <span class="number">320px</span>) and (<span class="attribute">max-device-width</span>:<span class="number">568px</span>){
+    <span class="variable">@content</span>;
+  }
+}
+
+<span class="variable">@include</span> style-for-iphone{
+  <span class="attribute">font-size</span>: <span class="number">12px</span>;
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="at_rule">@<span class="keyword">media</span> only screen and (min-device-width: <span class="number">320px</span>) and (max-device-width: <span class="number">568px</span>) </span>{
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">12px</span></span></span>;
+}
+</code></pre><p>用于响应式布局。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/12/24/sass-script-advance/" data-id="ciikgbtox0002wwei8x0z7yun" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/12/24/sass-script-advance/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cordova-plugin-splashscreen" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/20/cordova-plugin-splashscreen/" class="article-date">
+  <time datetime="2015-11-19T17:39:21.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cordova/">Cordova</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/cordova-plugin-splashscreen/">cordova-plugin-splashscreen</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用于解决android启动页黑屏和ios白屏。</p>
+<h2 id="安装插件">安装插件</h2><pre><code><span class="label">cordova</span> plugins <span class="keyword">add </span>cordova-plugin-splashscreen
+</code></pre><h2 id="配置config-xml">配置config.xml</h2><pre><code>&lt;preference <span class="variable">name=</span><span class="string">"SplashScreenDelay"</span> <span class="variable">value=</span><span class="string">"10000"</span> /&gt;
+&lt;preference <span class="variable">name=</span><span class="string">"KeyboardDisplayRequiresUserAction"</span> <span class="variable">value=</span><span class="string">"false"</span> /&gt;
+</code></pre><h2 id="Quick_Example">Quick Example</h2><pre><code><span class="tag">navigator</span><span class="class">.splashscreen</span><span class="class">.hide</span>();
+</code></pre><h2 id="Full_Example">Full Example</h2><pre><code><span class="xml">$ionicPlatform.ready(function()</span><span class="expression">{
+    <span class="variable"><span class="keyword">if</span></span>(<span class="variable">navigator.splashscreen</span>) {
+        <span class="variable"><span class="keyword">if</span></span>(<span class="variable">ionic.Platform.isIOS</span>()) {
+            <span class="variable">setTimeout</span>(<span class="variable">function</span>() {
+                <span class="variable">navigator.splashscreen.hide</span>();
+            }</span><span class="xml">, 2000);
+        }else </span><span class="expression">{
+            <span class="variable">navigator.splashscreen.hide</span>();
+        }</span><span class="xml">
+    }
+}
+
+<span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Splashscreen Example<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span> <span class="attribute">src</span>=<span class="value">"cordova.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span><span class="http">
+
+<span class="javascript">    <span class="comment">// Wait for device API libraries to load</span>
+    <span class="comment">//</span>
+    <span class="built_in">document</span>.addEventListener(<span class="string">"deviceready"</span>, onDeviceReady, <span class="literal">false</span>);
+
+    <span class="comment">// device APIs are available</span>
+    <span class="comment">//</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">onDeviceReady</span>(<span class="params"></span>) </span></span></span></span><span class="expression">{
+        <span class="variable">navigator.splashscreen.hide</span>();
+    }</span><span class="xml"><span class="http">
+
+<span class="undefined">    </span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Example<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span></span>
+</code></pre><h2 id="iOS_Quirk">iOS Quirk</h2><pre><code>setTimeout<span class="list">(<span class="keyword">function</span><span class="list">()</span> {
+    navigator.splashscreen.hide<span class="list">()</span><span class="comment">;</span>
+}, <span class="number">2000</span>)</span><span class="comment">;</span>
+</code></pre><h2 id="参数资料">参数资料</h2><p><a href="https://github.com/jianganglu/cordova-plugin-splashscreen" target="_blank" rel="external">插件地址</a><br><a href="https://cordova.apache.org/docs/en/3.0.0/cordova/splashscreen/splashscreen.html" target="_blank" rel="external">splashscreen.hide</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugin-splashscreen/" data-id="ciikgbtqt001owweieyz79f55" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/11/20/cordova-plugin-splashscreen/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cordova/">Cordova</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cordova-plugins-list" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/20/cordova-plugins-list/" class="article-date">
+  <time datetime="2015-11-19T17:29:08.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cordova/">Cordova</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/cordova-plugins-list/">cordova插件列表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>“cordova-plugin-dialogs”,<br>“cordova-plugin-console”,<br>“ionic-plugin-keyboard”,<br><a href="https://github.com/jpush/jpush-phonegap-plugin" target="_blank" rel="external">“cn.jpush.phonegap.JPushPlugin”</a>,<br>“cordova-plugin-crosswalk-webview”<br>“cordova-plugin-camera”,<br>“cordova-plugin-file-transfer”,<br>“cordova-plugin-whitelist”,<br>“cordova-plugin-crosswalk-webview”,<br>“cordova-plugin-datepicker”,<br>“org.apache.cordova.device”,<br>“cordova-plugin-geolocation”,<br><a href="https://github.com/jianganglu/cordova-plugin-splashscreen" target="_blank" rel="external">“cordova-plugin-splashscreen”</a><br><a href="https://github.com/jianganglu/cordova-plugin-globalization" target="_blank" rel="external">“cordova-plugin-globalization”</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugins-list/" data-id="ciikgbtqo001lwweimat1dhv2" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/11/20/cordova-plugins-list/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cordova/">Cordova</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ionic-android-package" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/20/ionic-android-package/" class="article-date">
+  <time datetime="2015-11-19T17:11:26.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cordova/">Cordova</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/ionic-android-package/">ionic android打包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>App用ionic开发完成后，就可以打包发布市场啦。发布一个App可以上传市场的包，关键要做两样东西，一是打一个release包，而是给包签名。命令不多，但命令比较长，记录一下。</p>
+<h2 id="打包">打包</h2><p>首先生成 release包</p>
+<pre><code>$  cordova <span class="keyword">build </span>--release <span class="keyword">android </span> # 记得加上--release 参数，不然会打出debug包
+</code></pre><p>执行完这条命令后，cordova会根据你的config.xml生成一个未签名的apk包。在platform文件夹可以找到apk包（platforms/android/ant-build），接下来就可以签名了。</p>
+<h2 id="生成安全钥匙">生成安全钥匙</h2><p>App签名需要用到安全钥匙，你可以用JDK的keytool工具生成，执行下面命令：</p>
+<pre><code># 把my-<span class="operator"><span class="keyword">release</span>-<span class="keyword">key</span>和alias_name换成你的名字
+$ keytool -genkey -v -keystore my-<span class="keyword">release</span>-<span class="keyword">key</span>.keystore -alias alias_name -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">10000</span></span>
+</code></pre><p>执行后需要回答一些问题，正常填写就好了</p>
+<pre><code>Enter keystore password:
+Re-enter new password:
+What <span class="keyword">is</span> your <span class="keyword">first</span> <span class="keyword">and</span> <span class="keyword">last</span> <span class="property">name</span>?
+  [Unknown]:  test
+What <span class="keyword">is</span> <span class="keyword">the</span> <span class="property">name</span> <span class="keyword">of</span> your organizational unit?
+  [Unknown]:  test
+What <span class="keyword">is</span> <span class="keyword">the</span> <span class="property">name</span> <span class="keyword">of</span> your organization?
+  [Unknown]:  test
+What <span class="keyword">is</span> <span class="keyword">the</span> <span class="property">name</span> <span class="keyword">of</span> your City <span class="keyword">or</span> Locality?
+</code></pre><p>之后会生成一个your_name.keystore文件，这就是你的安全秘钥，记得要好好保管，下次更新应用要用到，丢失就大事了，你以后就甭想更新市场上的应用了。</p>
+<h2 id="签名">签名</h2><p>目录跳转至包所在位置，<br>使用JDK中的jarsigner工具为apk签名，命令如下：</p>
+<pre><code># my-<span class="operator"><span class="keyword">release</span>-<span class="keyword">key</span>和alias_name换成你的名字
+$ jarsigner -verbose -sigalg SHA1withRSA -digestalg <span class="keyword">SHA1</span> -keystore my-<span class="keyword">release</span>-<span class="keyword">key</span>.keystore HelloWorld-<span class="keyword">release</span>-unsigned.apk alias_name</span>
+</code></pre><p>执行后会生成一个已签名成功的apk，你可以用这个包发布市场。</p>
+<h2 id="优化（可选）">优化（可选）</h2><p>使用Zipalign优化，Zipalign是一个android平台上整理APK文件的工具，它首次被引入是在Android 1.6版本的SDK软件开发工具包中。它能够对打包的Android应用程序进行优化， 以使Android操作系统与应用程序之间的交互作用更有效率，这能够让应用程序和整个系统运行得更快。</p>
+<p>命令如下：</p>
+<pre><code>$ zipalign -v <span class="number">4</span> HelloWorld-release-unsigned<span class="class">.apk</span> HelloWorld.apk
+</code></pre><p>done</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/11/20/ionic-android-package/" data-id="ciikgbtq80014wweifnk8187u" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/11/20/ionic-android-package/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cordova/">Cordova</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ionic-hidetabs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/24/ionic-hidetabs/" class="article-date">
+  <time datetime="2015-10-23T16:45:50.000Z" itemprop="datePublished">2015-10-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ionic/">ionic</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/24/ionic-hidetabs/">ionic 进入二级目录以后隐藏底部导航栏（tabs）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇记录在有tabs的项目里，进入子层级时，底部导航还一直存在，本人是要让他只在首页几个界面存在，其他的隐藏，在这里用到了angularjs的指令，要完成这个步骤分为三步：</p>
+<h3 id="1-在标签ion-tabs中添加：ng-class=”{‘tabs-item-hide’:_$root-hideTabs}”，源码如下：">1.在标签ion-tabs中添加：ng-class=”{‘tabs-item-hide’: $root.hideTabs}”，源码如下：</h3><pre><code>&lt;ion-tabs <span class="keyword">class</span>=<span class="string">"tabs-icon-top"</span> ng-<span class="keyword">class</span>=<span class="string">"{'tabs-item-hide': $root.hideTabs}"</span>&gt;
+
+<span class="comment">//tabs</span>
+
+&lt;/ion-tabs&gt;
+</code></pre><h3 id="2-添加angularjs的指令，源码如下：">2.添加angularjs的指令，源码如下：</h3><pre><code><span class="comment">//app已经在其他文件中指定，如var app = angular.module("starter",["ionic"])</span>
+app.directive(<span class="string">'hideTabs'</span>, <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$rootScope</span>)</span> </span>{
+    <span class="keyword">return</span> {
+        restrict: <span class="string">'A'</span>,
+        link: <span class="function"><span class="keyword">function</span><span class="params">(scope, element, attributes)</span> </span>{
+            scope.<span class="variable">$on</span>(<span class="string">'$ionicView.beforeEnter'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+                scope.<span class="variable">$watch</span>(attributes.hideTabs, <span class="function"><span class="keyword">function</span><span class="params">(value)</span></span>{
+                    <span class="variable">$rootScope</span>.hideTabs = value;
+                });
+            });
+
+            scope.<span class="variable">$on</span>(<span class="string">'$ionicView.beforeLeave'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+                <span class="variable">$rootScope</span>.hideTabs = <span class="keyword">false</span>;
+            });
+        }
+    };
+});
+</code></pre><h3 id="3-三你想要隐藏的界面标签_ion-view添加表达式hide-tabs=”true”,源码如下：">3.三你想要隐藏的界面标签 ion-view添加表达式hide-tabs=”true”,源码如下：</h3><pre><code>//这是官网模板中的文件
+<span class="tag">&lt;<span class="title">ion-view</span> <span class="attribute">hide-tabs</span>=<span class="value">"true"</span> <span class="attribute">view-title</span>=<span class="value">""</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">ion-content</span> <span class="attribute">class</span>=<span class="value">"padding"</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">ng-src</span>=<span class="value">""</span> <span class="attribute">style</span>=<span class="value">"width: 64px; height: 64px"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">p</span>&gt;</span>
+      <span class="comment"></span>
+    <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">ion-content</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ion-view</span>&gt;</span>
+</code></pre><p>现在体验下效果吧！<br>另外，如果要把效果搞得好看点，没有什么延迟现象，需要改动ionic.css文件，改动他需要用scss，这些内容前面也有介绍，改动地方如下：</p>
+<pre><code><span class="class">.tabs</span> <span class="rules">{
+  <span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> all linear <span class="number">0.2s</span></span></span>;
+  <span class="rule"><span class="attribute">transition</span>:<span class="value"> all linear <span class="number">0.2s</span></span></span>;
+}</span>
+
+<span class="class">.tabs-item-hide</span> &gt; <span class="class">.tabs</span><span class="rules">{
+  <span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> all linear <span class="number">0.2s</span></span></span>;
+  <span class="rule"><span class="attribute">transition</span>:<span class="value"> all linear <span class="number">0.2s</span></span></span>;
+  <span class="rule"><span class="attribute">bottom</span>:<span class="value"> -$tabs-height</span></span>;
+  <span class="rule"><span class="attribute">display</span>:<span class="value"> flex</span></span>;
+}</span>
+</code></pre><p>上面内容在tabs.scss文件中！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/10/24/ionic-hidetabs/" data-id="ciikgbtpr000twwei38cxmtvt" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/10/24/ionic-hidetabs/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cordova-build-android" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/09/cordova-build-android/" class="article-date">
+  <time datetime="2015-09-09T02:31:54.000Z" itemprop="datePublished">2015-09-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Cordova/">Cordova</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/09/cordova-build-android/">cordova-build-android-22报错解决</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>执行cordova build android命令报错信息如下：</p>
+<pre><code>E:<span class="command">\Workspaces</span><span class="command">\Cordova</span><span class="command">\myApp</span>&gt;ionic build android
+Running command: "C:<span class="command">\Program</span> Files<span class="command">\nodejs</span><span class="command">\node</span>.exe" E:<span class="command">\Workspaces</span><span class="command">\Cordova</span><span class="command">\myApp</span><span class="command">\hooks</span><span class="command">\after</span>_prepare\010_add_platform_class.js E:<span class="command">\Workspaces</span><span class="command">\Cordova</span><span class="command">\myApp</span>
+add to body class: platform-android
+Running command: cmd "/s /c "E:<span class="command">\Workspaces</span><span class="command">\Cordova</span><span class="command">\myApp</span><span class="command">\platforms</span><span class="command">\android</span><span class="command">\cordova</span><span class="command">\build</span>.bat""
+<span class="special">[</span>Error: ANDROID_HOME is not set and "android" command not in your PATH. You must fulfill at least one of these conditions.<span class="special">]</span>
+ERROR building one of the platforms: Error: cmd: Command failed with exit code 2
+You may not have the required environment or OS to build this project
+Error: cmd: Command failed with exit code 2
+    at ChildProcess.whenDone (C:<span class="command">\Users</span><span class="command">\Xiaodi</span><span class="command">\AppData</span><span class="command">\Roaming</span><span class="command">\npm</span><span class="command">\node</span>_modules<span class="command">\cordova</span><span class="command">\node</span>_modules<span class="command">\cordova</span>-lib<span class="command">\src</span><span class="command">\cordova</span><span class="command">\superspawn</span>.js:134:23)
+    at ChildProcess.emit (events.js:110:17)
+    at maybeClose (child_process.js:1015:16)
+    at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+</code></pre><p>报错了，ANDROID_HOME没有配置，需要说明的是，如果先安装了Android Studio等Android的开发环境，这些变量是应该已经配置好的，因为本机没有装Android Studio所以没有配置，那在环境变量里补上。</p>
+<p>我把Android的SDK放在了D:\Android\sdk目录下，在环境变量里添加：</p>
+<pre><code>ANDROID_HOME=D:<span class="command">\Android</span><span class="command">\sdk</span>
+</code></pre><p>还要添加java的环境变量：</p>
+<pre><code>JAVA_HOME=C:<span class="command">\Program</span> Files (x86)<span class="command">\Java</span><span class="command">\jdk</span>1.7.0_55
+</code></pre><p>然后在PATH里添加：</p>
+<pre><code><span class="variable">%ANDROID_HOME</span><span class="variable">%;</span><span class="variable">%JAVA_HOME</span><span class="variable">%\</span>bin;
+
+<span class="variable">%ANDROID_HOME</span><span class="variable">%\</span>build-tools;
+<span class="variable">%ANDROID_HOME</span><span class="variable">%\</span>platform-tools;
+<span class="variable">%ANDROID_HOME</span><span class="variable">%\</span>tools;
+</code></pre><p>然后 一定要关闭当前的nodejs窗口再重新打开 ，不然新配置的不会起作用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/09/09/cordova-build-android/" data-id="ciikgbtqx001rwweiqmy4pss3" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/09/09/cordova-build-android/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cordova/">Cordova</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-install-jenkins" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/28/linux-install-jenkins/" class="article-date">
+  <time datetime="2015-08-28T12:16:42.000Z" itemprop="datePublished">2015-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/jenkins/">jenkins</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/28/linux-install-jenkins/">Jenkins安装与配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1 <a href="&#39;http://files.cnblogs.com/files/zz0412/jenkins%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C.pdf&#39;">Jenkins入门系列之——03PDF文档下载</a></p>
+<p>2 Jenkins安装<br>在最简单的情况下，Jenkins 只需要两个步骤： </p>
+<p>1.下载最新的版本（一个 WAR 文件）。Jenkins官方网址: <a href="http://Jenkins-ci.org/" target="_blank" rel="external">http://Jenkins-ci.org/</a></p>
+<p>2.运行 java -jar jenkins.war</p>
+<p>注意：Jenkins 需要运行 Java 5以及以上的版本。</p>
+<p>还有一种安装方式就是将下载的war包文件部署到 servlet 容器，然后启动容器，在浏览器的URL地址栏中输入类似<a href="http://localhost:8080/jenkins/这样的地址即可。下图是安装成功后的界面（使用的是Linux+Tomcat6+Java6环境）：" target="_blank" rel="external">http://localhost:8080/jenkins/这样的地址即可。下图是安装成功后的界面（使用的是Linux+Tomcat6+Java6环境）：</a></p>
+<p><img src="/img/linux/install-jenkins01.png" alt="图1 Jenkins主界面"></p>
+<p>3 Jenkins配置</p>
+<p>写在配置前的一些话：Jenkins的配置不可能全部都说到的，大部分配置是有英文说明的，点击输入框后面的问号就可以看见了。英文不会用翻译工具，连蒙带猜的，多测试几次，你就懂了。</p>
+<p>3.1 系统管理</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理进入如下界面：<br><img src="/img/linux/install-jenkins02.png" alt="图2 Jenkins系统管理"></p>
+<p>3.1.1 提示信息</p>
+<p>Ps：版本不同提示的消息有可能不同</p>
+<p>3.1.1.1 Utf-8编码</p>
+<p>Your container doesn’t use UTF-8 to decode URLs. If you use non-ASCII characters as a job name etc, this will cause problems. See Containers and Tomcat i18n for more details.</p>
+<p>Jenkins建议在tomcat中使用utf-8编码，配置tomcat下conf目录的server.xml文件</p>
+<p><img src="/img/linux/install-jenkins03.png" alt="图3 URIEncoding编码设置"></p>
+<p>Ps：如果Job的控制台中文输出乱码，请将URIEncoding=”utf-8”更改为useBodyEncodingForURI=”true”</p>
+<p>3.1.1.2 新的版本</p>
+<p>New version of Jenkins (1.518.JENKINS-14362-jzlib) is available for download (changelog).</p>
+<p>提示有新的版本可以下载了,喜欢更新的点击download去下载吧！</p>
+<p>3.1.1.3 安全设置</p>
+<p><img src="/img/linux/install-jenkins04.png" alt="图4 安全提示消息"></p>
+<p>詹金斯允许网络上的任何人代表您启动进程。考虑至少启用身份验证来阻止滥用。点击Dismiss忽略该消息,点击Setup Security进入设置界面.详细设置请参考 Configure Global Security(安全设置) 章节</p>
+<p>3.1.2 系统设置</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理—&gt;系统设置进入如下界面：<br><img src="/img/linux/install-jenkins05.png" alt="图5 系统设置界面"></p>
+<p>3.1.2.1 JDK、Maven、Ant配置<br>配置一个JDK、Ant、Maven实例，请在每一节下面单击Add(新增) 按钮，这里将添加实例的名称和绝对地址。下图描述了这两个部分。<br><img src="/img/linux/install-jenkins06.png" alt="图6 JDK配置界面"></p>
+<p>JDK别名：给你看的，随便你自己，叫阿猫阿狗都可以</p>
+<p>JAVA_HOME：这个是本机JDK的安装路径（错误的路径会有红字提示你的）</p>
+<p>自动安装：不推荐这个选项</p>
+<p>后面Ant与Maven的配置是一样的，JDK去oracle官网下载，Ant与Maven去apache官网下载</p>
+<p>Ps：每个文本框后面都有个问号，点击问号就会出现帮助信息</p>
+<p>3.1.2.2 邮件通知配置</p>
+<p>3.1.2.2.1 配置发件人地址<br><img src="/img/linux/install-jenkins07.png" alt="图7 发件人地址配置界面"></p>
+<p>System Admin e-mail address：Jenkins邮件发送地址，如果你这个没有配置，等着发邮件的时候报错吧，当时我也是这儿没有配置，郁闷了我一周的时间。⊙﹏⊙b汗 </p>
+<p>3.1.2.2.2 配置邮件通知<br><img src="/img/linux/install-jenkins08.png" alt="图8 邮件通知"></p>
+<p>这个就非常的简单了，根据的的邮箱提供者的参数配置就行了。</p>
+<p>Ps：小技巧：用户默认邮件后缀配置了后，以后你填写邮件地址只需要@之前的就行了</p>
+<p>3.1.2.3 Subversion配置<br><img src="/img/linux/install-jenkins09.png" alt="图9 Subversion配置"></p>
+<p>Subversion Workspace Version：Subversion 的版本号，选择你对应的版本号就行了</p>
+<p>3.1.3 Configure Global Security(安全设置)</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理—&gt;Configure Global Security进入如下界面：<br><img src="/img/linux/install-jenkins10.png" alt="图10 安全设置界面"></p>
+<p>设置如上图，保存后系统管理中就出现管理用户的选项。页面右上角也会出现登录/注册的选项。</p>
+<p>3.1.4 管理用户设置</p>
+<p>在右上角点击注册<br><img src="/img/linux/install-jenkins11.png" alt="图11 注册用户界面"></p>
+<p><img src="/img/linux/install-jenkins12.png" alt=""><br><img src="/img/linux/install-jenkins13.png" alt=""><br><img src="/img/linux/install-jenkins14.png" alt=""><br><img src="/img/linux/install-jenkins15.png" alt=""><br><img src="/img/linux/install-jenkins16.png" alt=""><br><img src="/img/linux/install-jenkins17.png" alt=""><br><img src="/img/linux/install-jenkins18.jpg" alt=""><br><img src="/img/linux/install-jenkins19.png" alt=""><br><img src="/img/linux/install-jenkins20.png" alt=""><br><img src="/img/linux/install-jenkins21.png" alt=""><br><img src="/img/linux/install-jenkins22.png" alt=""><br><img src="/img/linux/install-jenkins23.png" alt=""><br><img src="/img/linux/install-jenkins24.png" alt=""><br><img src="/img/linux/install-jenkins25.png" alt=""><br><img src="/img/linux/install-jenkins26.png" alt=""><br><img src="/img/linux/install-jenkins27.png" alt=""><br><img src="/img/linux/install-jenkins28.png" alt=""><br><img src="/img/linux/install-jenkins29.png" alt=""><br><img src="/img/linux/install-jenkins30.jpg" alt=""><br><img src="/img/linux/install-jenkins31.jpg" alt=""><br><img src="/img/linux/install-jenkins32.png" alt=""><br><img src="/img/linux/install-jenkins33.png" alt=""><br><img src="/img/linux/install-jenkins34.png" alt=""><br><img src="/img/linux/install-jenkins35.png" alt=""><br><img src="/img/linux/install-jenkins36.jpg" alt=""><br><img src="/img/linux/install-jenkins37.png" alt=""><br><img src="/img/linux/install-jenkins38.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/" data-id="ciikgbtph000hwweib238zim7" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git-ssh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/28/git-ssh/" class="article-date">
+  <time datetime="2015-08-28T05:18:30.000Z" itemprop="datePublished">2015-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/28/git-ssh/">LINUX上为GIT添加SSH-KEY,WINDOWS上也适用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>查看本地是否存在key了，如果存在，可以不用生成</p>
+<pre><code><span class="keyword">cd</span> ~/.ssh
+<span class="keyword">ls</span>
+</code></pre><p>查看本地存在的key 名为id_rsa.pub 或 id_dsa.pub</p>
+<p>生成key – ssh-keygen -t rsa -C “example@163.com” 一条命令即可，后面会提示输入密码什么的，果断直接回车，空密码</p>
+<pre><code>ssh-keygen -t rsa -C 
+<span class="comment"># Creates a new ssh key, using the provided email as a label</span>
+<span class="comment"># Generating public/private rsa key pair.</span>
+<span class="comment"># Enter file in which to save the key (/home/you/.ssh/id_rsa):</span>
+ssh-<span class="built_ins">add</span> id_rsa
+</code></pre><p>然后就生成了需要的key了，就放在当前用户住文件夹下的.ssh/下 用编辑器打开，复制里面的内容加到github网站上</p>
+<pre><code>vi <span class="regexp">/root/</span>.ssh/id_rsa.push
+</code></pre><p>打开的内容看起来就想是乱码了，不过会是以之前邮箱结尾。</p>
+<p>登录github网站 Account Settings -&gt; SSH Keys -&gt; Add key</p>
+<p>标题随便打一个最好能记住，免得忘了，不过不会有那么多就是，也忘不了。</p>
+<p>测试：</p>
+<pre><code><span class="title">ssh</span> -T git<span class="variable">@github</span>.com
+
+<span class="comment"># Hi username! You've successfully authenticated, but GitHub does not</span>
+<span class="comment"># provide shell access.</span>
+</code></pre><p>如果出现下面的提示，说明就装好了，可以使用push名利直接提交快照了</p>
+<p>如果出现warring什么的，后面带个IP地址的，关闭防火墙就往事了，正常应该添加例外把应该</p>
+<p>英文说明: <a href="https://help.github.com/articles/generating-ssh-keys" target="_blank" rel="external">https://help.github.com/articles/generating-ssh-keys</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/08/28/git-ssh/" data-id="ciikgbtqk001ewweii0uoidia" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/08/28/git-ssh/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-npm-install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/19/npm-install/" class="article-date">
+  <time datetime="2015-08-19T05:56:01.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/node/">node</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/npm-install/">使用npm安装一些包失败了的看过来（npm国内镜像介绍）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个也是网上搜的，亲自试过，非常好用！</p>
+<p>删除代理设置：</p>
+<pre><code><span class="id">#npm</span> config delete proxy
+<span class="id">#npm</span> config delete https-proxy
+</code></pre><p>镜像使用方法（三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在）:</p>
+<h1 id="1-通过config命令">1.通过config命令</h1><pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> https://<span class="keyword">registry</span>.npm.taobao.org 
+npm <span class="keyword">info</span> underscore （如果上面配置正确这个命令会有字符串response）
+</code></pre><h1 id="2-命令行指定">2.命令行指定</h1><pre><code><span class="title">npm</span> --registry <span class="url">https://registry.npm.taobao.org</span> <span class="built_in">info</span> underscore 
+</code></pre><h1 id="3-编辑_~/-npmrc_加入下面内容">3.编辑 ~/.npmrc 加入下面内容</h1><pre><code>registry = <span class="string">https:</span><span class="comment">//registry.npm.taobao.org</span>
+</code></pre><p>搜索镜像: <a href="https://npm.taobao.org" target="_blank" rel="external">https://npm.taobao.org</a></p>
+<p>建立或使用镜像,参考: <a href="https://github.com/cnpm/cnpmjs.org" target="_blank" rel="external">https://github.com/cnpm/cnpmjs.org</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/08/19/npm-install/" data-id="ciikgbtp80007wweimsthc1na" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/08/19/npm-install/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ionic-cors" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/12/ionic-cors/" class="article-date">
+  <time datetime="2015-08-12T05:25:07.000Z" itemprop="datePublished">2015-08-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ionic/">ionic</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/12/ionic-cors/">解决 ionic 中的 CORS（跨域） 问题【译】</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>译者注：本人翻译功力有限，所以文中难免有翻译不准确的地方，凑合看吧，牛逼的话你看<a href="http://blog.ionic.io/handling-cors-issues-in-ionic/" target="_blank" rel="external">英文版</a>的去，完事儿欢迎回来指正交流（^_^）</p>
+<p>如果你通过 ionic serve 或者 ionic run 命令使用或 live reload 或者访问过外部 API 结点，那么你肯定遇到过 CORS 问题，譬如下面这样：</p>
+<pre><code>XMLHttpRequest cannot <span class="operator"><span class="keyword">load</span> http://api.ionic.com/endpoint.
+<span class="keyword">No</span> <span class="string">'Access-Control-Allow-Origin'</span> header <span class="keyword">is</span> present <span class="keyword">on</span> the requested resource.
+Origin <span class="string">'http://localhost:8100'</span> <span class="keyword">is</span> therefore <span class="keyword">not</span> allowed access.</span>
+</code></pre><p>那么问题来了，什么是 CORS 呢？又是什么导致了这个问题嘞？</p>
+<h1 id="什么是_CORS？">什么是 CORS？</h1><p>CORS=Cross origin resource sharing(跨域资源共享)</p>
+<p>origin 就是你现在正在看的主站，你现在访问的是 <a href="http://ionicframework.com/blog/handling-cors-issues-in-ionic" target="_blank" rel="external">http://ionicframework.com/blog/handling-cors-issues-in-ionic</a> ，那么 origin 就是 ionicframework.com。</p>
+<p>如果说我们向 <a href="http://cors.api.com/api" target="_blank" rel="external">http://cors.api.com/api</a> 发起一个 AJAX 请求，那么 host origin 会由被浏览器自动列入CORS请求的 Orgin header 指定好了<em>（原文：Say we send an AJAX request to <a href="http://cors.api.com/api" target="_blank" rel="external">http://cors.api.com/api</a>, your host origin will be specified by the Origin header that is automatically included for CORS requests by the browser. ）</em> 由于 ionicframework.com 和 api.com 的主机并不匹配，所以在一个HTTP OPTIONS请求报头的 form 中我们所有从 ionicframework.com 发起的访问服务器资源的请求必修得到服务器的授权。</p>
+<p>假如上面的请求出现错误(不被服务器允许)，那么我们是无法从服务器访问到(api.com上的)资源的。</p>
+<p>让我们来看一下当你通过ionic serve， ionic run，ionic run -l来运行 app 的时候 origin 会是什么。</p>
+<h1 id="浏览器中的运行">浏览器中的运行</h1><p>当你运行 ionic serve 时发生了什么呢？</p>
+<ul>
+<li>启动了一个本地 web 服务器</li>
+<li>你的浏览器打开并定位到本地服务器地址</li>
+</ul>
+<p>这让你看着你的应用加载到你电脑上一个浏览器里，地址是：<a href="http://localhost:8100" target="_blank" rel="external">http://localhost:8100</a> （如果你选择了 localhost的话）。</p>
+<p>你的 origin 就是 localhost:8100。</p>
+<p>任何的发送到其他不是 localhost:8100 主机上的 AJAX 请求都会把localhost:8100作为他的 origin，这就会导致必须要经过一个 CORS 预检来看是否可以访问（非本机的）服务器资源。</p>
+<h1 id="设备上的运行">设备上的运行</h1><p>当你运行 ionic run 时发生了什么呢？</p>
+<ul>
+<li>app 所有的文件被拷贝到设备（或者模拟器）上。</li>
+<li>app 运行起来，触发手机/模拟器上的浏览器访问已经被拷贝上去的文件，比如： file://some/path/www/index.html。</li>
+</ul>
+<p>因为你正在运行的 URI 是 file://，所以你的 origin 将不会存在，所以任何向外的请求都不再需要 CORS 请求。</p>
+<h1 id="在设备使用_livereload_运行">在设备使用 livereload 运行</h1><p>当你运行 ionic run -l时又发生了什么呢？</p>
+<ul>
+<li>启动了一个本地服务器</li>
+<li>app 运行起来，触发手机/模拟器上的一个浏览器通过<a href="http://192.168.1.1:8100" target="_blank" rel="external">http://192.168.1.1:8100</a> 来运行文件(你的 本地 ip 可能是其他的)。</li>
+</ul>
+<p>你的 origin 就会是 192.168.1.1:8100。</p>
+<p>任何一个发送到不是192.168.1.1:8100 的服务器上的 AJAX 请求都会需要进行 CORS 预检请求来看是否可以访问到该服务器上的资源。</p>
+<h1 id="在_ionic_中解决_CORS_问题">在 ionic 中解决 CORS 问题</h1><p>CORS 问题只有在我们通过 ionic serve 或者 ionic run -l 来运行或测试应用的时候才会遇到。</p>
+<p>解决这个问题有两个办法：第一个，也是比较简单的一个，就是在你的 API 服务器端允许所有的 origin，然而我们并不能控制我们访问的所有的结点。我们需要的是一个不指定origin的请求。</p>
+<p>我们可以通过使用代理服务器来解决这个问题。我们来看看 Ionic CLI 是怎样提供了一个易配置的代理服务器的。</p>
+<h1 id="Ionic_CLI代理服务器">Ionic CLI代理服务器</h1><p>关于代理的快速定义：</p>
+<p>在计算机网络中，代理服务器就是一个服务器（计算机系统或者应用程序），是客户端发起的请求从其他服务器寻求资源的中间桥梁。<br>原文：In computer networks, a proxy server is a server (a computer system or an application) that acts as an intermediary for requests from clients seeking resources from other servers.</p>
+<p>我们为了避开 CORS 问题需要做的就是有一个代理服务器，可以接收我们的请求，想 API 结点发出一个新的请求，接收结点响应，之后反馈给我们的应用，从而避开 CORS 问题。</p>
+<p>Ionic CLI 就有给你提供一个代理服务器从而避开所有可能会遇到的 CORS 问题的能力。</p>
+<p>由于代理服务器向你的目标主机发起了一个新的请求，所以就不会再有 origin，也就不再需要 CORS 了。要注意，在浏览器增加了 Origin header 是很重要的。</p>
+<h1 id="设置代理服务器">设置代理服务器</h1><p>注意，这些设置只有通过ionic serve 和 ionic run -l 运行应用才需要</p>
+<p>首先我们需要在 ionic.project文件中设置我们的代理，这会告诉我们的 Ionic 本地服务器监听这些地址，然后发送这些请求到我们的目标地址上。</p>
+<p>在我们的应用中，当运行 serve 或 run -l 时候，我们需要把要访问的结点地址替换成代理服务器的地址。</p>
+<p>使用gulp任务的 replace 模块来转换出口地址会简单一点。</p>
+<p>建议的方法是设置一个 Angular Constant 来定位到我们试图代理的 API。</p>
+<p>这就是我们下面要采用的方法。我们会同时设置一个 Angular Service 来从 API结点 获取数据。</p>
+<h1 id="设置代理路径">设置代理路径</h1><p>比如说我们想要访问 <a href="http://cors.api.com/api" target="_blank" rel="external">http://cors.api.com/api</a> ，但并不允许我们来自 localhost的 origin。</p>
+<p>代理的设置包括两件事儿：在你本地 Ionic 服务器需要访问的 path，最终需要访问API的 proxyUrl。</p>
+<p>在你的 ionic.project 中像这样设置：</p>
+<pre><code>{
+  "<span class="attribute">name</span>": <span class="value"><span class="string">"proxy-example"</span></span>,
+  "<span class="attribute">app_id</span>": <span class="value"><span class="string">""</span></span>,
+  "<span class="attribute">proxies</span>": <span class="value">[
+    {
+      "<span class="attribute">path</span>": <span class="value"><span class="string">"/api"</span></span>,
+      "<span class="attribute">proxyUrl</span>": <span class="value"><span class="string">"http://cors.api.com/api"</span>
+    </span>}
+  ]
+</span>}
+</code></pre><p>通过ionic serve启动你的服务器。</p>
+<p>像我们上面指定的这样，当你访问 Ionic 服务器地址 <a href="http://localhost:8100/api" target="_blank" rel="external">http://localhost:8100/api</a> 的时候，它会以你的名义访问 <a href="http://cors.api.com/api。" target="_blank" rel="external">http://cors.api.com/api。</a></p>
+<p>这样，就不需要 CORS 了。</p>
+<h1 id="设置_Angular_Constant">设置 Angular Constant</h1><p>把你的 API结点设置成 Angular Constants是非常简单的一件事儿。</p>
+<p>下面我们就来把API结点指定成为我们的代理 URL。</p>
+<p>之后(发布时候)我们会把正式的地址作为 constant。</p>
+<pre><code>angular.<span class="keyword">module</span>(<span class="string">'starter'</span>, [<span class="string">'ionic'</span>, <span class="string">'starter.controllers'</span>, <span class="string">'starter.services'</span>])
+.constant(<span class="string">'ApiEndpoint'</span>, {
+  url: <span class="string">'http://localhost:8100/api'</span>
+})
+<span class="comment">// For the real endpoint, we'd use this</span>
+<span class="comment">// .constant('ApiEndpoint', {</span>
+<span class="comment">//  url: 'http://cors.api.com/api'</span>
+<span class="comment">// })</span>
+</code></pre><p>设置好之后你就能像下面这样在应用中引入ApiEndpoint依赖，随意调用这个constant了。</p>
+<h1 id="设置Angular_Service">设置Angular Service</h1><pre><code>angular.module(<span class="string">'starter.services'</span>, [])
+
+<span class="comment">//<span class="doctag"><span class="keyword">NOTE</span></span>: We are including the constant `ApiEndpoint` to be used here.</span>
+.factory(<span class="string">'Api'</span>, <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$http</span>, ApiEndpoint)</span> </span>{
+  console.log(<span class="string">'ApiEndpoint'</span>, ApiEndpoint)
+
+  <span class="keyword">var</span> getApiData = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> <span class="variable">$http</span>.get(ApiEndpoint.url + <span class="string">'/tasks'</span>)
+      .then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span> </span>{
+        console.log(<span class="string">'Got some data: '</span>, data);
+        <span class="keyword">return</span> data;
+      });
+  };
+
+  <span class="keyword">return</span> {
+    getApiData: getApiData
+  };
+})
+</code></pre><h1 id="通过_Gulp_自动转换地址">通过 Gulp 自动转换地址</h1><p>这个过程中，我们需要修改gulpfile.js来添加两个任务：添加代理和移除代理。</p>
+<p>首先安装replace模块 - npm install —save replace</p>
+<pre><code><span class="comment">// `npm install --save replace`</span>
+<span class="keyword">var</span> replace = <span class="built_in">require</span>(<span class="string">'replace'</span>);
+<span class="keyword">var</span> replaceFiles = [<span class="string">'./www/js/app.js'</span>];
+
+gulp.task(<span class="string">'add-proxy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">return</span> replace({
+    regex: <span class="string">"http://cors.api.com/api"</span>,
+    replacement: <span class="string">"http://localhost:8100/api"</span>,
+    paths: replaceFiles,
+    recursive: <span class="literal">false</span>,
+    silent: <span class="literal">false</span>,
+  });
+})
+
+gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">return</span> replace({
+    regex: <span class="string">"http://localhost:8100/api"</span>,
+    replacement: <span class="string">"http://cors.api.com/api"</span>,
+    paths: replaceFiles,
+    recursive: <span class="literal">false</span>,
+    silent: <span class="literal">false</span>,
+  });
+})
+</code></pre><h1 id="结语">结语</h1><p>本教程向你展示了一个解决通过ionic serve或ionic run -l命令运行应用时候遇到的 CORS 问题的方法。</p>
+<p>我们知道在ionic serve和ionic run -l之间转换 API 结点地址的时候可能会是个麻烦，比较建议的方法是启动一个 gulp 进程。</p>
+<p>解决 CORS 问题最简单的方法是让 API 提供者允许所有的 hosts，然后这事儿有点儿不太现实。</p>
+<p>使用 Angular constant 和 replace 模块可以给我们一个避开 CORS 的折中的办法。</p>
+<p>如果你想看看完整的例子，可以看看这个<a href="https://github.com/driftyco/ionic-proxy-example" target="_blank" rel="external">示例项目</a>。</p>
+<p>这就是你需要访问一个有 CORS 限制的 API 服务器时候需要了解的所有事儿了。</p>
+<p>如果你还有什么疑问、问题或者想法，请在下面评论，或者在 twitter 或 github 上联系我们。</p>
+<p>来源：解决 ionic 中的 CORS 问题【译】 -  Only One</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/08/12/ionic-cors/" data-id="ciikgbtpx000ywwein541ihrr" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/08/12/ionic-cors/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Cordova/">Cordova</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cordova/">Cordova</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Cordova/" style="font-size: 20px;">Cordova</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 20px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/24/sass-script-advance/">sass进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/cordova-plugin-splashscreen/">cordova-plugin-splashscreen</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/cordova-plugins-list/">cordova插件列表</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/20/ionic-android-package/">ionic android打包</a>
+          </li>
+        
+          <li>
+            <a href="/2015/10/24/ionic-hidetabs/">ionic 进入二级目录以后隐藏底部导航栏（tabs）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://xiguabaobao.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 JiangangLu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"jianganglu"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>window._bd_share_config={"common":{},"share":{"bdCustomStyle":"/css/bdshare.css"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+</div>
+</body>
+</html>
