@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,18 +15,64 @@ var _hmt = _hmt || [];
 </script>
 
   
-  <title>about | JiangangLu&#39;s Blog</title>
+  <title>&#39;sass-script-advanced&#39; | JiangangLu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="About Me">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://jianganglu.github.io/about/index.html">
+  <meta name="description" content="Sass 高级
+
+@if 三目运算
+For explame:
+$screenWidth: 500;
+body{
+  color: if($screenWidth &amp;gt; 768, blue, red);
+}
+is complied to:
+body {
+  color: red;
+}
+@if
+For explame:
+@if $screenWidth &amp;gt; 768{
+  body{">
+<meta property="og:type" content="article">
+<meta property="og:title" content="'sass-script-advanced'">
+<meta property="og:url" content="http://jianganglu.github.io/2015/12/27/sass-script-advanced/index.html">
 <meta property="og:site_name" content="JiangangLu's Blog">
-<meta property="og:description" content="About Me">
-<meta property="og:updated_time" content="2015-05-26T14:09:25.567Z">
+<meta property="og:description" content="Sass 高级
+
+@if 三目运算
+For explame:
+$screenWidth: 500;
+body{
+  color: if($screenWidth &amp;gt; 768, blue, red);
+}
+is complied to:
+body {
+  color: red;
+}
+@if
+For explame:
+@if $screenWidth &amp;gt; 768{
+  body{">
+<meta property="og:image" content="http://7xpjsl.com1.z0.glb.clouddn.com/sass-guide.png">
+<meta property="og:updated_time" content="2015-12-27T13:47:19.623Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="About Me">
+<meta name="twitter:title" content="'sass-script-advanced'">
+<meta name="twitter:description" content="Sass 高级
+
+@if 三目运算
+For explame:
+$screenWidth: 500;
+body{
+  color: if($screenWidth &amp;gt; 768, blue, red);
+}
+is complied to:
+body {
+  color: red;
+}
+@if
+For explame:
+@if $screenWidth &amp;gt; 768{
+  body{">
   
     <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
   
@@ -85,10 +130,10 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-sass-script-advanced" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/about/index.html" class="article-date">
-  <time datetime="2015-05-26T14:08:42.000Z" itemprop="datePublished">2015-05-26</time>
+    <a href="/2015/12/27/sass-script-advanced/" class="article-date">
+  <time datetime="2015-12-27T13:29:03.000Z" itemprop="datePublished">2015-12-27</time>
 </a>
     
   </div>
@@ -99,7 +144,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      &#39;sass-script-advanced&#39;
     </h1>
   
 
@@ -107,30 +152,208 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>About Me</p>
+        <p>Sass 高级</p>
+<p><img src="http://7xpjsl.com1.z0.glb.clouddn.com/sass-guide.png" alt="sass学习思维导图"></p>
+<p>@if 三目运算</p>
+<p>For explame:</p>
+<pre><code><span class="variable">$screenWidth</span><span class="value">: <span class="number">500</span>;</span>
+<span class="tag">body</span>{
+  <span class="attribute">color</span><span class="value">: <span class="function">if</span>(<span class="variable">$screenWidth</span> &gt; <span class="number">768</span>, blue, red);</span>
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+}</span>
+</code></pre><p>@if</p>
+<p>For explame:</p>
+<pre><code><span class="at_rule">@<span class="keyword">if</span> $screenWidth &gt; <span class="number">768</span></span>{
+  <span class="tag">body</span><span class="rules">{
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+  }</span>
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="tag">body</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+}</span>
+</code></pre><p>@if…@else if…@else</p>
+<p>For explame:</p>
+<pre><code><span class="variable">@if</span> $screenWidth &gt; <span class="number">768</span>{
+  <span class="tag">body</span>{
+    <span class="attribute">color</span>: red;
+  }
+}
+<span class="variable">@else</span> if $screenWidth &gt;<span class="number">400</span>{
+  <span class="tag">span</span>{
+    <span class="attribute">color</span>: green;
+  }
+}
+<span class="variable">@else</span>{
+  <span class="tag">p</span>{
+    <span class="attribute">color</span>: blue;
+  }
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="tag">span</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
+}</span>
+</code></pre><p>@for</p>
+<p>For explame:</p>
+<pre><code>@<span class="keyword">for</span> <span class="variable">$i</span> <span class="keyword">from</span> <span class="number">1</span> <span class="keyword">to</span> <span class="number">5</span>{
+  .span<span class="comment">#{$i}{</span>
+    width: <span class="number">20</span>% * <span class="variable">$i</span>;
+  }
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="class">.span1</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">20%</span></span></span>;
+}</span>
 
+<span class="class">.span2</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">40%</span></span></span>;
+}</span>
+
+<span class="class">.span3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">60%</span></span></span>;
+}</span>
+
+<span class="class">.span4</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80%</span></span></span>;
+}</span>
+</code></pre><p>For explame:</p>
+<pre><code><span class="at_rule">@<span class="keyword">for</span> <span class="variable">$i</span><span class="preprocessor"> from</span><span class="preprocessor"> 1</span><span class="preprocessor"> through</span><span class="preprocessor"> 5</span>{</span>
+  <span class="class">.span</span>#{<span class="variable">$i</span>}{
+    <span class="attribute">width</span><span class="value">: <span class="number">20%</span> * <span class="variable">$i</span>;</span>
+  }
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="class">.span1</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">20%</span></span></span>;
+}</span>
+
+<span class="class">.span2</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">40%</span></span></span>;
+}</span>
+
+<span class="class">.span3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">60%</span></span></span>;
+}</span>
+
+<span class="class">.span4</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80%</span></span></span>;
+}</span>
+
+<span class="class">.span5</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;
+}</span>
+</code></pre><p>@while</p>
+<p>For explame:</p>
+<pre><code><span class="variable">$j</span><span class="value">: <span class="number">6</span>;</span>
+<span class="at_rule">@<span class="keyword">while</span> <span class="variable">$j</span> &gt;<span class="preprocessor"> 0</span>{</span>
+  <span class="class">.p</span>#{<span class="variable">$j</span>}{
+    <span class="attribute">width</span><span class="value">: <span class="number">20%</span> * <span class="variable">$j</span>;</span>
+  }
+  <span class="variable">$j</span><span class="value">: <span class="variable">$j</span> - <span class="number">3</span>;</span>
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="class">.p6</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">120%</span></span></span>;
+}</span>
+
+<span class="class">.p3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">60%</span></span></span>;
+}</span>
+</code></pre><p>@each</p>
+<p>For explame:</p>
+<pre><code><span class="variable">$k</span><span class="value">: <span class="number">1</span>;</span>
+<span class="at_rule">@<span class="keyword">each</span> <span class="variable">$c</span><span class="preprocessor"> in</span><span class="preprocessor"> blue</span>,<span class="preprocessor"> red</span>,<span class="preprocessor"> green</span> {</span>
+  <span class="class">.div</span>#{<span class="variable">$k</span>}{
+    <span class="attribute">color</span><span class="value">: <span class="variable">$c</span>;</span>
+  }
+  <span class="variable">$k</span><span class="value">: <span class="variable">$k</span>+<span class="number">1</span>;</span>
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="class">.div1</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> blue</span></span>;
+}</span>
+
+<span class="class">.div2</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+}</span>
+
+<span class="class">.div3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
+}</span>
+</code></pre><p>For explame:</p>
+<pre><code>@each $<span class="variable">key</span>,$<span class="built_in">color</span> in (<span class="keyword">default</span>, <span class="built_in">blue</span>), (info, <span class="built_in">green</span>), (danger, <span class="built_in">red</span>){
+  .<span class="built_in">text</span>-#{$<span class="variable">key</span>}{
+    <span class="built_in">color</span>: $<span class="built_in">color</span>;
+  }
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="class">.text-default</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> blue</span></span>;
+}</span>
+
+<span class="class">.text-info</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
+}</span>
+
+<span class="class">.text-danger</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+}</span>
+</code></pre><p>For explame:</p>
+<pre><code><span class="variable">@each</span> <span class="variable">$key</span>, <span class="variable">$value</span> <span class="keyword">in</span> (<span class="keyword">default</span>: blue, info: green, danger: red){
+  .label-#{<span class="variable">$key</span>}{
+    <span class="keyword">color</span>: <span class="variable">$value</span>;
+  }
+}
+</code></pre><p>is complied to:</p>
+<pre><code><span class="class">.label-default</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> blue</span></span>;
+}</span>
+
+<span class="class">.label-info</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
+}</span>
+
+<span class="class">.label-danger</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
+}</span>
+</code></pre>
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/about/index.html" data-id="ciiolc77l00017keineytjne0" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/" data-id="ciiolc78g00027keizm8i39nj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://jianganglu.github.io/about/index.html#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://jianganglu.github.io/2015/12/27/sass-script-advanced/#ds-thread" class="article-comment-link">评论</a>
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sass/">Sass</a></li></ul>
+
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/24/sass-script-advance/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Sass进阶</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="about/index.html" data-title="about" data-url="http://jianganglu.github.io/about/index.html"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2015/12/27/sass-script-advanced/" data-title="&#39;sass-script-advanced&#39;" data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/"></div>
   </section>
 </section>
       
@@ -293,4 +516,3 @@ var duoshuoQuery = {short_name:"jianganglu"};
 </div>
 </body>
 </html>
-
