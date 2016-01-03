@@ -17,17 +17,35 @@ var _hmt = _hmt || [];
   
   <title>sass官网实现 | JiangangLu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
+  <meta name="description" content="项目创建npm init
+
+compass create --bare
+or
+compass create --bare --sass-dir &quot;sass&quot; --css-dir &quot;css&quot; --images-dir &quot;img&quot; --javascripts-dir &quot;js&quot;
+自动化构建在根目录下创建gulpfile.js
+npm gulp gulp-compass browser-sync del">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sass官网实现">
 <meta property="og:url" content="http://jianganglu.github.io/2015/12/28/sass-official-website/index.html">
 <meta property="og:site_name" content="JiangangLu's Blog">
-<meta property="og:description">
+<meta property="og:description" content="项目创建npm init
+
+compass create --bare
+or
+compass create --bare --sass-dir &quot;sass&quot; --css-dir &quot;css&quot; --images-dir &quot;img&quot; --javascripts-dir &quot;js&quot;
+自动化构建在根目录下创建gulpfile.js
+npm gulp gulp-compass browser-sync del">
 <meta property="og:image" content="http://7xpjsl.com1.z0.glb.clouddn.com/sass-script-advanced.png">
-<meta property="og:updated_time" content="2015-12-28T15:16:48.824Z">
+<meta property="og:updated_time" content="2016-01-03T04:21:13.241Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sass官网实现">
-<meta name="twitter:description">
+<meta name="twitter:description" content="项目创建npm init
+
+compass create --bare
+or
+compass create --bare --sass-dir &quot;sass&quot; --css-dir &quot;css&quot; --images-dir &quot;img&quot; --javascripts-dir &quot;js&quot;
+自动化构建在根目录下创建gulpfile.js
+npm gulp gulp-compass browser-sync del">
   
     <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
   
@@ -112,7 +130,72 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://7xpjsl.com1.z0.glb.clouddn.com/sass-script-advanced.png" alt="sass官网实现"></p>
+<h2 id="项目创建">项目创建</h2><pre><code>npm init
 
+compass <span class="built_in">create</span> <span class="comment">--bare</span>
+</code></pre><p>or</p>
+<pre><code>compass create --bare --sass-<span class="keyword">dir</span> <span class="string">"sass"</span> --css-<span class="keyword">dir</span> <span class="string">"css"</span> --images-<span class="keyword">dir</span> <span class="string">"img"</span> --javascripts-<span class="keyword">dir</span> <span class="string">"js"</span>
+</code></pre><h2 id="自动化构建">自动化构建</h2><p>在根目录下创建gulpfile.js</p>
+<pre><code>npm gulp gulp-compass browser-sync del <span class="command">run</span>-sequence <span class="comment">--save-dev</span>
+</code></pre><p>假如下载失败可修改：</p>
+<pre><code>npm config git <span class="keyword">registry</span>
+
+npm config <span class="keyword">set</span> <span class="keyword">registry</span> <span class="keyword">http</span>://
+</code></pre><p>安装compass-normalize、breakpoint、susy</p>
+<pre><code><span class="label">gem</span> install compass-normalize <span class="keyword">breakpoint </span>susy
+</code></pre><p>在config.rb里分别引入</p>
+<pre><code><span class="built_in">require</span> <span class="string">"compass-normalize"</span>
+<span class="comment"># 响应式</span>
+<span class="built_in">require</span> <span class="string">"breakpoint"</span>
+<span class="comment"># 布局</span>
+<span class="built_in">require</span> <span class="string">"susy"</span>
+</code></pre><p>main.scss</p>
+<pre><code><span class="comment">/*! Vendor */</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"compass"</span>
+, <span class="string">"susy"</span>
+, <span class="string">"breakpoint"</span>
+, <span class="string">"normalize-version"</span>  
+, <span class="string">"normalize/base"</span>
+, <span class="string">"normalize/links"</span>
+, <span class="string">"normalize/html5"</span>
+</span>;
+
+<span class="comment">/*! Helpers */</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"helpers/variables"</span>
+</span>;
+
+<span class="comment">/*! Base*/</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"base/font"</span>
+</span>;
+
+<span class="comment">/*! Layout */</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"layout/main"</span>
+</span>;
+
+<span class="comment">/*! Components */</span> 
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"components/alerts"</span>
+, <span class="string">"components/pop-stripe"</span>
+, <span class="string">"components/banner"</span>
+, <span class="string">"components/page-header"</span>
+, <span class="string">"components/section-bottom"</span>
+, <span class="string">"components/contentinfo"</span>
+</span>;
+
+<span class="comment">/*! Pages*/</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"pages/page-base"</span>
+, <span class="string">"pages/index"</span>
+, <span class="string">"pages/install"</span>
+, <span class="string">"pages/guide"</span>
+, <span class="string">"pages/community"</span>
+, <span class="string">"pages/libsass"</span>
+</span>;
+</code></pre>
       
     </div>
     <footer class="article-footer">
@@ -254,7 +337,7 @@ var _hmt = _hmt || [];
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2015 JiangangLu<br>
+      &copy; 2016 JiangangLu<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
