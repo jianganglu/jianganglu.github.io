@@ -39,7 +39,7 @@ gem sources -l
 gem install sass
 sass -v
 or    gem in">
-<meta property="og:updated_time" content="2016-01-05T15:07:23.567Z">
+<meta property="og:updated_time" content="2016-01-06T15:33:54.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sass安装">
 <meta name="twitter:description" content="安装RubyMac安装RubyWindow安装Ruby
@@ -160,7 +160,72 @@ compass <span class="keyword">create</span> learn-compass-init</span>
 <p>1.当@import后边跟的文件名是以.css结尾的时候<br>2.当@import后边跟的是<a href="http://开头的字符串的时候" target="_blank" rel="external">http://开头的字符串的时候</a><br>3.当@import后边跟的是一个url()函数的时候<br>4.当@import后边带有media queries的时候</p>
 <p>基于sass的既定规则</p>
 <p>1.没有文件后缀名的时候.sass会添加.scss或者.sass的后缀；<br>2.同一目录下，局部文件和非局部文件不能重名。</p>
-<p><a href="http://www.sass-lang.com/" target="_blank" rel="external">Sass官网</a></p>
+<p>变量操作</p>
+<p>1.直接操作变量，即变量表达式。<br>2.通过函数<br>跟代码块无关的函数，多是自己内置函数@Function<br>可重用的代码块，称mixin<br>@include方式调用<br>@extend的方式调用</p>
+<p><a href="http://cdc.tencent.com/?p=3760" target="_blank" rel="external">hsl</a></p>
+<p>For example:</p>
+<pre><code><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> col-6</span> {</span>
+  <span class="attribute">width</span><span class="value">: <span class="number">50%</span>;</span>
+  <span class="attribute">float</span><span class="value">: left;</span>
+}
+
+<span class="class">.webdemo-sec</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> col-6</span>;</span>
+}
+
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> col-6</span>(<span class="variable">$width</span>) {</span>
+  <span class="attribute">width</span><span class="value">: <span class="variable">$width</span>;</span>
+  <span class="attribute">float</span><span class="value">: left;</span>
+}
+
+<span class="class">.webdemo-sec</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> col-6</span>(<span class="number">50%</span>);</span>
+}
+
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> col-6</span>(<span class="variable">$width</span>:<span class="preprocessor"> 50</span>) {</span>
+  <span class="attribute">width</span><span class="value">: <span class="variable">$width</span>;</span>
+  <span class="attribute">float</span><span class="value">: left;</span>
+}
+
+<span class="class">.webdemo-sec</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> col-6</span>();</span>
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="class">.webdemo-sec</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">50%</span></span></span>;
+  <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;
+}</span>
+</code></pre><p>extend两个知识点</p>
+<p>1.extend不可以继承选择器序列<br>2.使用%，用来构建不用来继承的选择器。</p>
+<p>For example:</p>
+<pre><code><span class="class">.error</span> {
+  <span class="attribute">color</span>: <span class="hexcolor">#f00</span>;
+}
+<span class="class">.serious-error</span> {
+  <span class="variable">@extend</span> .error;
+  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="hexcolor">#f00</span>;
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="class">.error</span>, <span class="class">.serious-error</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#f00</span></span></span>;
+}</span>
+<span class="class">.serious-error</span> <span class="rules">{
+  <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#f00</span></span></span>;
+}</span>
+</code></pre><p>For example:</p>
+<pre><code>%<span class="tag">error</span> {
+  <span class="attribute">color</span>: <span class="hexcolor">#f00</span>;
+}
+<span class="class">.serious-error</span> {
+  <span class="variable">@extend</span> %error;
+  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="hexcolor">#f00</span>;
+}
+</code></pre><p>is compiled to:</p>
+<pre><code><span class="class">.serious-error</span> <span class="rules">{
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#f00</span></span></span>;
+  <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#f00</span></span></span>;
+}</span>
+</code></pre><p><a href="http://www.sass-lang.com/" target="_blank" rel="external">Sass官网</a></p>
 <p><a href="http://compass-style.org/" target="_blank" rel="external">Compass官网</a></p>
 
       
