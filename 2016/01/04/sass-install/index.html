@@ -39,7 +39,7 @@ gem sources -l
 gem install sass
 sass -v
 or    gem in">
-<meta property="og:updated_time" content="2016-01-06T15:33:54.243Z">
+<meta property="og:updated_time" content="2016-01-09T14:13:04.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sass安装">
 <meta name="twitter:description" content="安装RubyMac安装RubyWindow安装Ruby
@@ -225,7 +225,22 @@ compass <span class="keyword">create</span> learn-compass-init</span>
   <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#f00</span></span></span>;
   <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#f00</span></span></span>;
 }</span>
-</code></pre><p><a href="http://www.sass-lang.com/" target="_blank" rel="external">Sass官网</a></p>
+</code></pre><p>Compass核心模块</p>
+<p>CSS3<br>Helpers<br>Typography<br>Utilities<br>    @import “compass”;<br>Reset<br>    @import “compass/reset”;<br>Layout<br>    @import “compass/layout”;</p>
+<p>Normalize核心模块<br>base<br>html5<br>links<br>typegraphy<br>embeds<br>groups<br>forms<br>tables<br>    @import “normalize”;<br>or<br>    @import “normalize/version”;<br>    @import “normalize/base”;<br>    @import “normailze/html5”;</p>
+<p>Layout模块</p>
+<pre><code><span class="at_rule">@<span class="keyword">import</span> <span class="string">"compass/layout"</span></span>;
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"compass/grid-background"</span></span>;
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"compass/sticky-footer"</span></span>;
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"compass/stretching"</span></span>;
+</code></pre><p>CSS3模块</p>
+<pre><code><span class="at_rule">@<span class="keyword">import</span> <span class="string">"compass/css3"</span>;</span>
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"compass/support"</span>
+
+<span class="variable">$supported-browsers</span>:<span class="preprocessor"> chrome</span>;</span>
+<span class="variable">$broer-minimum-versions</span><span class="value">: (<span class="string">"ie"</span>: <span class="string">"8"</span>);</span>
+</code></pre><p><a href="http://compass-style.org/reference/compass/reset/utilities/" target="_blank" rel="external">Compass/Utilities</a></p>
+<p><a href="http://www.sass-lang.com/" target="_blank" rel="external">Sass官网</a></p>
 <p><a href="http://compass-style.org/" target="_blank" rel="external">Compass官网</a></p>
 
       
