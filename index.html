@@ -85,6 +85,219 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-css-oocss" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/23/css-oocss/" class="article-date">
+  <time datetime="2016-01-23T03:40:05.000Z" itemprop="datePublished">2016-01-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/23/css-oocss/">面向对象的CSS(OOCSS)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>特别声明：此篇文章由<a href="http://www.cnblogs.com/different/" target="_blank" rel="external">D姐</a>根据<a href="http://coding.smashingmagazine.com/author/louis-lazaris/?rel=author" target="_blank" rel="external">Louis Lazaris</a>的英文文章原名《<a href="http://coding.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss" target="_blank" rel="external">An Introduction To Object Oriented CSS (OOCSS)</a>》进行翻译，整个译文带有我们自己的理解与思想，如果译得不好或不对之处还请同行朋友指点。如需转载此译文，需注明英文出处：<a href="http://coding.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss以及作者相关信息" target="_blank" rel="external">http://coding.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss以及作者相关信息</a></p>
+<p>你曾经听过这样一句话：“内容就是王道”吗？作为一位Web开发者，因为工作的缘故经常与内容打交道，这可能是很正常不过了。对于我们已经是过渡使用，但是什么才能把游客吸引到一个网站才是真正的一道。</p>
+<p>从一个Web开发者的观点来看，一些人认为速度才是王道。久而久之，我也开始认同这个观点。近年来许多有经验的前端工程题提供建议”如何才能通过一些最佳实践的方法提高用户体验度呢？”</p>
+<p>不幸的是，众多开发者忽视了CSS的表现（认为他太过简单，是一种机械的工作），而把更多关注在Javascript的性能上或者其他方面。</p>
+<p>在这篇文章中，我将通过面向对象的css概念的介绍，让你了解一些经常被忽视的地方是如何在改善用户体验和网页可维护性上面发挥作用的。</p>
+<h2 id="OOCSS面向对象的css原则">OOCSS面向对象的css原则</h2><p>任何基于面向对象的代码方法，其主要目的都是鼓励代码的复用。OOCSS也是一样，讲究复用，并最终可以更快更高效的书写你的样式，同时方便日后的添加和维护。</p>
+<p>根据oocss在github上的描述，oocss是基于两个主要原则</p>
+<h3 id="1、结构与样式的分离">1、结构与样式的分离</h3><p>几乎页面上的每个元素都有不同的视觉特效（也叫皮肤），他们在不同的环境中重复的在使用。思考一下，一个网站的品牌logo，它的颜色，细微的渐变或是可见的边框。另一方不是视觉特效（结构）也在不断的重复使用。</p>
+<p>当把这些不同的特性抽象到一个基于类的模块里，他们变得可复用，可以运用到任何的元素上，并且具有相同的效果。让我们来看一个代码的前后对比，你就明白我在说些什么了。</p>
+<h3 id="在运用oocss的原则前，你的css可能是这个样子的：">在运用oocss的原则前，你的css可能是这个样子的：</h3><pre><code><span class="id">#button</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200px</span></span></span>;
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">50px</span></span></span>;
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">10px</span></span></span>;
+  <span class="rule"><span class="attribute">border</span>:<span class="value"> solid <span class="number">1px</span> <span class="hexcolor">#ccc</span></span></span>;
+  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">linear-gradient</span>(<span class="hexcolor">#ccc</span>, <span class="hexcolor">#222</span>)</span></span>;
+  <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">5</span>) <span class="number">2px</span> <span class="number">2px</span> <span class="number">5px</span></span></span>;
+}</span>
+
+<span class="id">#box</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">400px</span></span></span>;
+  <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;
+  <span class="rule"><span class="attribute">border</span>:<span class="value"> solid <span class="number">1px</span> <span class="hexcolor">#ccc</span></span></span>;
+  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">linear-gradient</span>(<span class="hexcolor">#ccc</span>, <span class="hexcolor">#222</span>)</span></span>;
+  <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">5</span>) <span class="number">2px</span> <span class="number">2px</span> <span class="number">5px</span></span></span>;
+}</span>
+
+<span class="id">#widget</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">500px</span></span></span>;
+  <span class="rule"><span class="attribute">min-height</span>:<span class="value"> <span class="number">200px</span></span></span>;
+  <span class="rule"><span class="attribute">overflow</span>:<span class="value"> auto</span></span>;
+  <span class="rule"><span class="attribute">border</span>:<span class="value"> solid <span class="number">1px</span> <span class="hexcolor">#ccc</span></span></span>;
+  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">linear-gradient</span>(<span class="hexcolor">#ccc</span>, <span class="hexcolor">#222</span>)</span></span>;
+  <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">5</span>) <span class="number">2px</span> <span class="number">2px</span> <span class="number">5px</span></span></span>;
+}</span>
+</code></pre><p>上面的三个元素都有各自的样式，而且都是用不可复用的id选择器定义的样式。但是他们也有一些公用的样式。这些公用的样式由网站品牌风格或设计风格所决定的。</p>
+<p>由于一些长远考虑，我们抽象出一些公用的样式所以结果成这样：</p>
+<pre><code><span class="class">.button</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200px</span></span></span>;
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">50px</span></span></span>;
+}</span>
+
+<span class="class">.box</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">400px</span></span></span>;
+  <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;
+}</span>
+
+<span class="class">.widget</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">500px</span></span></span>;
+  <span class="rule"><span class="attribute">min-height</span>:<span class="value"> <span class="number">200px</span></span></span>;
+  <span class="rule"><span class="attribute">overflow</span>:<span class="value"> auto</span></span>;
+}</span>
+
+<span class="class">.skin</span> <span class="rules">{
+  <span class="rule"><span class="attribute">border</span>:<span class="value"> solid <span class="number">1px</span> <span class="hexcolor">#ccc</span></span></span>;
+  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">linear-gradient</span>(<span class="hexcolor">#ccc</span>, <span class="hexcolor">#222</span>)</span></span>;
+  <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">5</span>) <span class="number">2px</span> <span class="number">2px</span> <span class="number">5px</span></span></span>;
+}</span>
+</code></pre><p>现在给所有元素运用类名，公用的样式部分整合到一个类名“skin”上，用来复用到元素上。我们只需要把“skin”类名添加给所有的元素,除了更少的使用了利用代码之外，其效果和前面的例子前生的效果一模一样。</p>
+<h3 id="2、容器与内容的分离">2、容器与内容的分离</h3><p>关于oocss在github上的描述，第二个原则是容器与内容的分离。为了说明这个的重要性，采用以下css:</p>
+<pre><code><span class="id">#sidebar</span> <span class="tag">h3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> Arial, Helvetica, sans-serif</span></span>;
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> .<span class="number">8em</span></span></span>;
+  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1</span></span></span>;
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#777</span></span></span>;
+  <span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">3</span>) <span class="number">3px</span> <span class="number">3px</span> <span class="number">6px</span></span></span>;
+}</span>
+</code></pre><p>这些样式将运用到ID为“#sidebar”的子元素“h3”上，但是如果想把字体大小和文本阴影之外的样式运用到脚部具有相同效果的“h3”上，又应该怎么办？</p>
+<p>然后我们也许需要这样做：</p>
+<pre><code><span class="id">#sidebar</span> <span class="tag">h3</span>, <span class="id">#footer</span> <span class="tag">h3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> Arial, Helvetica, sans-serif</span></span>;
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">2em</span></span></span>;
+  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1</span></span></span>;
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#777</span></span></span>;
+  <span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">3</span>) <span class="number">3px</span> <span class="number">3px</span> <span class="number">6px</span></span></span>;
+}</span>
+
+<span class="id">#footer</span> <span class="tag">h3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">1.5em</span></span></span>;
+  <span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">3</span>) <span class="number">2px</span> <span class="number">2px</span> <span class="number">4px</span></span></span>;
+}</span>
+</code></pre><p>或许我们可能会写的更糟糕：</p>
+<pre><code><span class="id">#sidebar</span> <span class="tag">h3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> Arial, Helvetica, sans-serif</span></span>;
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">2em</span></span></span>;
+  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1</span></span></span>;
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#777</span></span></span>;
+  <span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">3</span>) <span class="number">3px</span> <span class="number">3px</span> <span class="number">6px</span></span></span>;
+}</span>
+
+<span class="comment">/* other styles here.... */</span>
+
+<span class="id">#footer</span> <span class="tag">h3</span> <span class="rules">{
+  <span class="rule"><span class="attribute">font-family</span>:<span class="value"> Arial, Helvetica, sans-serif</span></span>;
+  <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">1.5em</span></span></span>;
+  <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">1</span></span></span>;
+  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#777</span></span></span>;
+  <span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">3</span>) <span class="number">2px</span> <span class="number">2px</span> <span class="number">4px</span></span></span>;
+}</span>
+</code></pre><p>这样写代码的，或许初学人员会经常犯的，就算是你从事过前端工作一段时间，有一定的经验了，或许还是会犯这样的错误。犯错误是好事，但是犯了这样的错误你是否有思考过，为什么会写成这样？如果你从没有思考过，只是照旧这样写，那就是糟糕的一件事了。因为你只是在机械的工作，为了完成boss给你的任务而且。长期下来是件恐怖的事情。</p>
+<p>今天我们没有复用样式可能觉得不必要，也许没有意识到（或是简单的根本不关心）。随着OOCSS的推行，我们鼓励大家长远考虑一下不同元素的公用样式是什么？然后把他们分离成模块或是对象，以便可以重复用到任何需要的地方。</p>
+<p>在上面的例子中，用后代选择器声明的样式是不能复用的，因为他们依赖于一个特定的容器（在这里例子里要么是侧栏要么是页脚）。</p>
+<p>当我们用基于oocss建立的类模块，我们确保我们的样式不依赖于任何包含元素。这意味着他们可以在文档的任何地方被复用，无论结构如何。</p>
+<h3 id="3、现实生活中的一个例子">3、现实生活中的一个例子</h3><p>为了进一步说明oocss是如何运用的，在我的网站最新设计我将做一些类似的工作。在我编写完我的网站页头的inner元素后，我意识到这个头部内部的一些基础结构也许可以复用到页面的其他元素上。</p>
+<p>如下是我沿用以前的写法开始写的页头样式</p>
+<pre><code><span class="class">.header-inside</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">980px</span></span></span>;
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">260px</span></span></span>;
+  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">20px</span></span></span>;
+  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> auto</span></span>;
+  <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;
+  <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;
+}</span>
+</code></pre><p>列在这里的一些样式是类名为“header-inner”元素的独特样式。但是其余可以复用的样式我都把他们组成一个模块。这样我就可以抽出结构，样式添加到我们自己的复用类里，如：</p>
+<pre><code><span class="class">.globalwidth</span> <span class="rules">{
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">980px</span></span></span>;
+  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> auto</span></span>;
+  <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;
+  <span class="rule"><span class="attribute">padding-left</span>:<span class="value"> <span class="number">20px</span></span></span>;
+  <span class="rule"><span class="attribute">padding-right</span>:<span class="value"> <span class="number">20px</span></span></span>;
+  <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;
+}</span>
+
+<span class="class">.header-inside</span> <span class="rules">{
+  <span class="rule"><span class="attribute">padding-top</span>:<span class="value"> <span class="number">20px</span></span></span>;
+  <span class="rule"><span class="attribute">padding-bottom</span>:<span class="value"> <span class="number">20px</span></span></span>;
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">260px</span></span></span>;
+}</span>
+</code></pre><p>属于globalwidth类中的样式罗列如下</p>
+<p> 固定宽度<br> 用margin：auto居中<br> 为子元素创建一个定位的参照物<br> 左右内留白padding为20px<br> 为清除浮动设置overflow：hidden</p>
+<p>现在我们可以自由的把这些样式运用到需要相同特征的任何元素，只需给需要的元素添加类名的简单方式，而无需写一行额外的css代码。</p>
+<p>对于我的网站，我在主要的内容元素和页脚内部元素复用了这些结构样式。根据设计，这些样式也许可以运用到水平导航元素，可能会出现在标题和内容，或是任何有固定宽需要在页面居中的其他元素。</p>
+<p>给这些元素添加“globalwidth”样式后，结构可能是这样的：</p>
+<pre><code><span class="tag">&lt;<span class="title">header</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header-inside globalwidth"</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">header</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"main globalwidth"</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">footer</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"footer-inside globalwidth"</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">footer</span>&gt;</span>
+</code></pre><p>也许有人会觉得这种抽象html结构样式的方式，有悖于结构与表现分离的原则</p>
+<h3 id="媒体对象">媒体对象</h3><p>Nicole Sullivan是OOCSS先驱者之一，她创建了一个可以复用的模块称为媒体对象，正如她解释道，可以节省数百行的代码</p>
+<p>媒体对象是体现oocss能力的很好的例子，因为它里面容许包含任何尺寸的媒体元素的内容。尽管许多在他内部运用样式的内容甚至是媒体元素大小本身可能改变，但是媒体对象本身具有的通用基本样式有助于避免不必要的重复。</p>
+<h3 id="OOCSS的好处">OOCSS的好处</h3><p>我已经提到了一些oocss的好处。这里我将对他们做些扩展</p>
+<h3 id="1、更快的网站">1、更快的网站</h3><p>Oocss带来的好处是很明显的。如果在你的css中有较少的重复样式，那么将使得文件体积更小，从而更快的下载这些资源。</p>
+<p>的确,标记将更加混乱,从而创建更大的HTML文件。但是许多情况下标记结构损失很多，却换来了样式表现性能大大提升的效果。</p>
+<p>另一个需要记住的概念是在oocss的wiki里面提到他的附属品。这指的是每次在你的css中复用一些样式，本质上就会创建一个有着0行样式的元素。对于大型，高流量的项目，这些附属品有可能是影响性能表现的关键因素。</p>
+<h3 id="2、可维护的样式表">2、可维护的样式表</h3><p>随着oocss取代不断增长的特殊样式表，你将有一个易于维护的模块，在里面层叠发挥了重要的作用。</p>
+<p>当在现有网站上添加新页面，你将不会不考虑前面的代码，直接在样式表最后添加新的样式。相反你将会复用现有的样式，并在现有样式的基础上扩展你需要的样式。</p>
+<p>随着这种类型的长远设想，有可能创建一整个页面只有很少的css代码。任何css模块可以作为所有新页面的基础，这样新css页面就会很小。在某种情况下甚至可以创建一个全新样式的页面却没有一行css代码。</p>
+<p>这些可维护性的好处也增强了你的样式表的健壮性。因为样式表已经模块化了，页面是基于oocss搭建的，所以即使一个新开发人员开始使用样式表也不太会破坏它。</p>
+<h3 id="需要注意的问题">需要注意的问题</h3><p>在社区中对oocss的建立有很大的讨论，并引起了一些争议。这里我想尝试消除一些常见的误解</p>
+<h3 id="1、你仍可以使用id">1、你仍可以使用id</h3><p>如果你决定用oocss作为你工作的唯一方式，然后你的样式将大量基于css类名建立，你将不会使用id选择器给元素创建样式。</p>
+<p>正因为如此，许多人错误声称oocss鼓励完全放弃id的使用。但这是不对的。</p>
+<p>避免使用id的规则更具体的说，不在选择器中使用id。所以这是oocss使用原则完全接受的(避免样式使用id选择器)，因为你html中的id是用于javascript的钩子和片段标识。</p>
+<p>当然，你可能有这样一种情况：你已经把一个id运用到一个元素，而这个元素你知道他在页面中是唯一的。所以，你避免在元素上添加类名节省了几个字节，而是给他使用了id选择器。但是即使在这样一个例子中，依赖于一个类名是更安全的，因为他确保未来你不会遇到特殊的问题。</p>
+<h3 id="2、处理较小的项目">2、处理较小的项目</h3><p>对于较小的网站和应用程序，你也许认定oocss在这种情况下是大材小用了。所以这篇文章中倡导的oocss并不适用于所有的项目，他将取决于这个项目本身。</p>
+<p>尽管如此，我认为这是个好主意，至少在你所有的项目中开始考虑oocss的运用。一旦你掌握了他的诀窍，我肯定你会很容易发现，他致力于越大的项目收到oocss带来的好处就越明显。</p>
+<h3 id="一些实用指导">一些实用指导</h3><p>开始应用oocss是可能需要一些时间的，我现在仍在使用它，所以我不敢声称我知道这一领域的所有答案和经验。</p>
+<p>但是这里有些注意事项可能帮助你用oocss的思维方式开始使用oocss:</p>
+<p> 避免后代选择器(如不要使用类似于.sidebar h3)<br> 避免用id作为样式钩子<br> 避免在你的样式表中给类名附属一个元素名(如不要这样做div.header or h1.title)<br> 除非一些很少的情况，避免使用!important<br> 使用<a href="http://csslint.net/" target="_blank" rel="external">CSS Lint</a>检查你的css（这样你可以知道他有<a href="https://github.com/stubbornella/csslint/wiki/Rules" target="_blank" rel="external">哪些选项和疯狂的方法</a>）<br> 使用<a href="http://www.stubbornella.org/content/2011/01/22/grids-improve-site-performance/" target="_blank" rel="external">CSS网格</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2016/01/23/css-oocss/" data-id="cijqlcobe002lc0ei6rj4g1d0" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2016/01/23/css-oocss/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-sass-install" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/04/sass-install/" class="article-date">
@@ -224,7 +437,7 @@ compass <span class="keyword">create</span> learn-compass-init</span>
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/04/sass-install/" data-id="cij1itmhl000db8eiympw19jw" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/04/sass-install/" data-id="cijqlbn0q000dc0eiqbycxqc5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -336,7 +549,7 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/04/npm-error/" data-id="cij1itmid000lb8ei7t66iqaf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/04/npm-error/" data-id="cijqlbn22000lc0eixhevt71u" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -539,7 +752,7 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/29/com-telerik-plugins-nativepagetransitions/" data-id="cij1itmkx0027b8eis2wxas6s" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/29/com-telerik-plugins-nativepagetransitions/" data-id="cijqlbn410027c0eizatw2pz9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -653,7 +866,7 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/28/sass-official-website/" data-id="cij1itmhh000ab8eicu2fzlcd" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/28/sass-official-website/" data-id="cijqlbn0b000ac0eipficccgn" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -868,7 +1081,7 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/" data-id="cij1itmh50002b8eia9p6kyzy" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/" data-id="cijqlbmer0002c0eixv0gdtk5" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1174,7 +1387,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/24/sass-script-advance/" data-id="cij1itmhd0007b8eir1zpuhqj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/24/sass-script-advance/" data-id="cijqlbmgy0007c0eihjuxrq90" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1267,7 +1480,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugin-splashscreen/" data-id="cij1itmkl0021b8eiaomc1st3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugin-splashscreen/" data-id="cijqlbn3u0021c0ei58qtaoga" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1316,7 +1529,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugins-list/" data-id="cij1itmkd001yb8ei6j8em4tm" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugins-list/" data-id="cijqlbn3q001yc0eirgbntk3y" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1390,7 +1603,7 @@ $ jarsigner -verbose -sigalg SHA1withRSA -digestalg <span class="keyword">SHA1</
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/ionic-android-package/" data-id="cij1itmjh001ib8eiygi5jgx1" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/ionic-android-package/" data-id="cijqlbn32001ic0ei8l8w8jm3" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1399,101 +1612,6 @@ $ jarsigner -verbose -sigalg SHA1withRSA -digestalg <span class="keyword">SHA1</
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cordova/">cordova</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ionic-hidetabs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/10/24/ionic-hidetabs/" class="article-date">
-  <time datetime="2015-10-23T16:45:50.000Z" itemprop="datePublished">2015-10-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ionic/">ionic</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/24/ionic-hidetabs/">ionic 进入二级目录以后隐藏底部导航栏（tabs）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这篇记录在有tabs的项目里，进入子层级时，底部导航还一直存在，本人是要让他只在首页几个界面存在，其他的隐藏，在这里用到了angularjs的指令，要完成这个步骤分为三步：</p>
-<h3 id="1-在标签ion-tabs中添加：ng-class=”{‘tabs-item-hide’:_$root-hideTabs}”，源码如下：">1.在标签ion-tabs中添加：ng-class=”{‘tabs-item-hide’: $root.hideTabs}”，源码如下：</h3><pre><code>&lt;ion-tabs <span class="keyword">class</span>=<span class="string">"tabs-icon-top"</span> ng-<span class="keyword">class</span>=<span class="string">"{'tabs-item-hide': $root.hideTabs}"</span>&gt;
-
-<span class="comment">//tabs</span>
-
-&lt;/ion-tabs&gt;
-</code></pre><h3 id="2-添加angularjs的指令，源码如下：">2.添加angularjs的指令，源码如下：</h3><pre><code><span class="comment">//app已经在其他文件中指定，如var app = angular.module("starter",["ionic"])</span>
-app.directive(<span class="string">'hideTabs'</span>, <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$rootScope</span>)</span> </span>{
-    <span class="keyword">return</span> {
-        restrict: <span class="string">'A'</span>,
-        link: <span class="function"><span class="keyword">function</span><span class="params">(scope, element, attributes)</span> </span>{
-            scope.<span class="variable">$on</span>(<span class="string">'$ionicView.beforeEnter'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
-                scope.<span class="variable">$watch</span>(attributes.hideTabs, <span class="function"><span class="keyword">function</span><span class="params">(value)</span></span>{
-                    <span class="variable">$rootScope</span>.hideTabs = value;
-                });
-            });
-
-            scope.<span class="variable">$on</span>(<span class="string">'$ionicView.beforeLeave'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
-                <span class="variable">$rootScope</span>.hideTabs = <span class="keyword">false</span>;
-            });
-        }
-    };
-});
-</code></pre><h3 id="3-三你想要隐藏的界面标签_ion-view添加表达式hide-tabs=”true”,源码如下：">3.三你想要隐藏的界面标签 ion-view添加表达式hide-tabs=”true”,源码如下：</h3><pre><code>//这是官网模板中的文件
-<span class="tag">&lt;<span class="title">ion-view</span> <span class="attribute">hide-tabs</span>=<span class="value">"true"</span> <span class="attribute">view-title</span>=<span class="value">""</span>&gt;</span>
-
-  <span class="tag">&lt;<span class="title">ion-content</span> <span class="attribute">class</span>=<span class="value">"padding"</span>&gt;</span>
-
-    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">ng-src</span>=<span class="value">""</span> <span class="attribute">style</span>=<span class="value">"width: 64px; height: 64px"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">p</span>&gt;</span>
-      <span class="comment"></span>
-    <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">ion-content</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ion-view</span>&gt;</span>
-</code></pre><p>现在体验下效果吧！<br>另外，如果要把效果搞得好看点，没有什么延迟现象，需要改动ionic.css文件，改动他需要用scss，这些内容前面也有介绍，改动地方如下：</p>
-<pre><code><span class="class">.tabs</span> <span class="rules">{
-  <span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> all linear <span class="number">0.2s</span></span></span>;
-  <span class="rule"><span class="attribute">transition</span>:<span class="value"> all linear <span class="number">0.2s</span></span></span>;
-}</span>
-
-<span class="class">.tabs-item-hide</span> &gt; <span class="class">.tabs</span><span class="rules">{
-  <span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> all linear <span class="number">0.2s</span></span></span>;
-  <span class="rule"><span class="attribute">transition</span>:<span class="value"> all linear <span class="number">0.2s</span></span></span>;
-  <span class="rule"><span class="attribute">bottom</span>:<span class="value"> -$tabs-height</span></span>;
-  <span class="rule"><span class="attribute">display</span>:<span class="value"> flex</span></span>;
-}</span>
-</code></pre><p>上面内容在tabs.scss文件中！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://jianganglu.github.io/2015/10/24/ionic-hidetabs/" data-id="cij1itmj10017b8ei1tvwwzgf" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://jianganglu.github.io/2015/10/24/ionic-hidetabs/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
 
     </footer>
   </div>
@@ -1515,7 +1633,7 @@ app.directive(<span class="string">'hideTabs'</span>, <span class="function"><sp
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1524,7 +1642,7 @@ app.directive(<span class="string">'hideTabs'</span>, <span class="function"><sp
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1533,7 +1651,7 @@ app.directive(<span class="string">'hideTabs'</span>, <span class="function"><sp
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a>
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a>
     </div>
   </div>
 
@@ -1542,7 +1660,7 @@ app.directive(<span class="string">'hideTabs'</span>, <span class="function"><sp
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1552,6 +1670,10 @@ app.directive(<span class="string">'hideTabs'</span>, <span class="function"><sp
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/01/23/css-oocss/">面向对象的CSS(OOCSS)</a>
+          </li>
         
           <li>
             <a href="/2016/01/04/sass-install/">Sass安装</a>
@@ -1567,10 +1689,6 @@ app.directive(<span class="string">'hideTabs'</span>, <span class="function"><sp
         
           <li>
             <a href="/2015/12/28/sass-official-website/">sass官网实现</a>
-          </li>
-        
-          <li>
-            <a href="/2015/12/27/sass-script-advanced/">Sass高级</a>
           </li>
         
       </ul>
