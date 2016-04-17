@@ -15,27 +15,42 @@ var _hmt = _hmt || [];
 </script>
 
   
-  <title>How-do-i-name-the-.bowerrc-file | JiangangLu&#39;s Blog</title>
+  <title>面向对象的CSS（一） | JiangangLu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="on the command line (make sure to cd into your working directory), issue this command:
-touch .bowerrc
-This will also work for other files common to webdev like .htaccess and .gitignore
-Note: If you ha">
+  <meta name="description" content="一、OO CSS的概念与解读
+OO CSS将页面可重用元素抽象成一个类，用class加以描述，而与其对应的HTML即可看成是此类的一个实例。
+二、OO CSS作用与注意事项
+1、加强代码复用以便方便维护2、减少CSS体积3、提升渲染效率4、组件库思想、栅格布局可共用、减少选择器，方便扩展
+1、不要直接定义子节点，应把共性声明放到父类。
+代码示例：
+// Good
+.mod {
+  font-siz">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How-do-i-name-the-.bowerrc-file">
-<meta property="og:url" content="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/index.html">
+<meta property="og:title" content="面向对象的CSS（一）">
+<meta property="og:url" content="http://jianganglu.github.io/2016/04/17/css-oocss-1/index.html">
 <meta property="og:site_name" content="JiangangLu's Blog">
-<meta property="og:description" content="on the command line (make sure to cd into your working directory), issue this command:
-touch .bowerrc
-This will also work for other files common to webdev like .htaccess and .gitignore
-Note: If you ha">
-<meta property="og:updated_time" content="2016-04-10T03:02:13.256Z">
+<meta property="og:description" content="一、OO CSS的概念与解读
+OO CSS将页面可重用元素抽象成一个类，用class加以描述，而与其对应的HTML即可看成是此类的一个实例。
+二、OO CSS作用与注意事项
+1、加强代码复用以便方便维护2、减少CSS体积3、提升渲染效率4、组件库思想、栅格布局可共用、减少选择器，方便扩展
+1、不要直接定义子节点，应把共性声明放到父类。
+代码示例：
+// Good
+.mod {
+  font-siz">
+<meta property="og:updated_time" content="2016-04-17T15:26:50.737Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How-do-i-name-the-.bowerrc-file">
-<meta name="twitter:description" content="on the command line (make sure to cd into your working directory), issue this command:
-touch .bowerrc
-This will also work for other files common to webdev like .htaccess and .gitignore
-Note: If you ha">
+<meta name="twitter:title" content="面向对象的CSS（一）">
+<meta name="twitter:description" content="一、OO CSS的概念与解读
+OO CSS将页面可重用元素抽象成一个类，用class加以描述，而与其对应的HTML即可看成是此类的一个实例。
+二、OO CSS作用与注意事项
+1、加强代码复用以便方便维护2、减少CSS体积3、提升渲染效率4、组件库思想、栅格布局可共用、减少选择器，方便扩展
+1、不要直接定义子节点，应把共性声明放到父类。
+代码示例：
+// Good
+.mod {
+  font-siz">
   
     <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
   
@@ -93,14 +108,14 @@ Note: If you ha">
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-bower-create-the-bowerrc-file" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-css-oocss-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/04/10/bower-create-the-bowerrc-file/" class="article-date">
-  <time datetime="2016-04-10T02:47:46.000Z" itemprop="datePublished">2016-04-10</time>
+    <a href="/2016/04/17/css-oocss-1/" class="article-date">
+  <time datetime="2016-04-17T15:01:57.000Z" itemprop="datePublished">2016-04-17</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/bower/">bower</a>
+    <a class="article-category-link" href="/categories/css/">css</a>
   </div>
 
   </div>
@@ -111,7 +126,7 @@ Note: If you ha">
         
   
     <h1 class="article-title" itemprop="name">
-      How-do-i-name-the-.bowerrc-file
+      面向对象的CSS（一）
     </h1>
   
 
@@ -119,29 +134,134 @@ Note: If you ha">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>on the command line (make sure to cd into your working directory), issue this command:</p>
-<pre><code><span class="tag">touch</span> <span class="class">.bowerrc</span>
-</code></pre><p>This will also work for other files common to webdev like .htaccess and .gitignore</p>
-<p>Note: If you haven’t installed git bash for windows, you may not have support for the touch command. In that case (as mentioned in one of the comments here), the easiest way to accomplish this is via the cli with:</p>
-<pre><code><span class="label">echo</span> <span class="string">""</span> &gt; .<span class="keyword">bowerrc
-</span>
-{
-  <span class="string">"directory"</span> : <span class="string">"assets/bower_components"</span>
+        <p>一、OO CSS的概念与解读</p>
+<p>OO CSS将页面可重用元素抽象成一个类，用class加以描述，而与其对应的HTML即可看成是此类的一个实例。</p>
+<p>二、OO CSS作用与注意事项</p>
+<p>1、加强代码复用以便方便维护<br>2、减少CSS体积<br>3、提升渲染效率<br>4、组件库思想、栅格布局可共用、减少选择器，方便扩展</p>
+<p>1、不要直接定义子节点，应把共性声明放到父类。</p>
+<p>代码示例：</p>
+<pre><code><span class="comment">// Good</span>
+<span class="class">.mod</span> {
+  <span class="attribute">font-size</span>: <span class="number">12px</span>;
+  <span class="attribute">color</span>: <span class="hexcolor">#666</span>;
 }
-</code></pre>
+
+<span class="comment">// Bad</span>
+<span class="class">.mod</span> <span class="class">.inner</span> {
+  ......
+}
+
+<span class="comment">// Bad</span>
+<span class="class">.inner</span> {
+  ......
+}
+</code></pre><p>2、结构与皮肤进行分离。</p>
+<p>代码示例：</p>
+<pre><code><span class="subst">&lt;</span>div class<span class="subst">=</span><span class="string">"container simple-ext"</span><span class="subst">&gt;&lt;</span>/div<span class="subst">&gt;</span>
+
+<span class="built_in">.</span>container {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+
+<span class="built_in">.</span>simple<span class="attribute">-ext</span> {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+</code></pre><p>3、容器与内容相分离</p>
+<p>代码示例：</p>
+<pre><code>// Good
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"rank-list"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>排行<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+.rank-list {
+  ......
+}
+
+// Bad
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>排行<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+.container ul {
+  ......
+}
+</code></pre><p>4、抽象出可重用的元素，建好组件库，在组件库内存寻找可用的元素组装页面。</p>
+<p>5、往你想要扩展的对象本身增加class而不是他的父节点。</p>
+<p>6、对象应保持独立性</p>
+<p>代码示例：</p>
+<pre><code><span class="comment">// Good</span>
+&lt;div <span class="keyword">class</span>=<span class="string">"container mod"</span>&gt;&lt;/div&gt;
+
+<span class="comment">// Bad</span>
+&lt;div <span class="keyword">class</span>=<span class="string">"container"</span>&gt;
+  &lt;div <span class="keyword">class</span>=<span class="string">"mod"</span>&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+.container {
+  ......
+}
+
+.container .mod {
+  ......
+}
+</code></pre><p>7、避免使用ID选择器，权重太高，无法重用。</p>
+<p>8、避免位置相关的代码</p>
+<p>代码示例：</p>
+<pre><code><span class="comment">// Good</span>
+<span class="built_in">.</span>container {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+
+<span class="comment">// Bad</span>
+<span class="variable">#header</span> <span class="built_in">.</span>container {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+
+<span class="variable">#footer</span> <span class="built_in">.</span>container {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+
+<span class="comment">// Good</span>
+h1, <span class="built_in">.</span>h1 {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+
+h2, <span class="built_in">.</span>h2 {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+
+<span class="subst">&lt;</span>h1 class<span class="subst">=</span><span class="string">"h2"</span><span class="subst">&gt;&lt;</span>/h1<span class="subst">&gt;</span>
+
+<span class="comment">// Bad</span>
+<span class="variable">#header</span> h1 {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+
+<span class="variable">#footer</span> h1 {
+  <span class="attribute">...</span><span class="attribute">...</span>
+}
+</code></pre><p>9、保证选择器相同的权重</p>
+<p>10、类名，简短，清晰语义化OO CSS的名字并不影响HTML语义化。</p>
+<p>三、OO CSS代码的实战</p>
+<p>oocss.org<br>reset.css<br>normalize.css<br>neat.css</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/" data-id="cin4qcf9r002smkeil5jnh3tx" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/04/17/css-oocss-1/" data-id="cin4qcf94002dmkei5a0n6c4v" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
-        <a href="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://jianganglu.github.io/2016/04/17/css-oocss-1/#ds-thread" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bower/">bower</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
     </footer>
   </div>
@@ -149,19 +269,10 @@ Note: If you ha">
     
 <nav id="article-nav">
   
-    <a href="/2016/04/17/css-oocss-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          面向对象的CSS（一）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/01/25/maven-install/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/04/10/bower-create-the-bowerrc-file/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">Maven安装</div>
+      <div class="article-nav-title">How-do-i-name-the-.bowerrc-file</div>
     </a>
   
 </nav>
@@ -171,7 +282,7 @@ Note: If you ha">
 
 
   <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="2016/04/10/bower-create-the-bowerrc-file/" data-title="How-do-i-name-the-.bowerrc-file" data-url="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/"></div>
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/04/17/css-oocss-1/" data-title="面向对象的CSS（一）" data-url="http://jianganglu.github.io/2016/04/17/css-oocss-1/"></div>
   </section>
 </section>
       
