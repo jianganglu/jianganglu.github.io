@@ -85,6 +85,179 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-ionic-cors" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/12/ionic-cors/" class="article-date">
+  <time datetime="2015-08-12T05:25:07.000Z" itemprop="datePublished">2015-08-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ionic/">ionic</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/12/ionic-cors/">解决 ionic 中的 CORS（跨域） 问题【译】</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>译者注：本人翻译功力有限，所以文中难免有翻译不准确的地方，凑合看吧，牛逼的话你看<a href="http://blog.ionic.io/handling-cors-issues-in-ionic/" target="_blank" rel="external">英文版</a>的去，完事儿欢迎回来指正交流（^_^）</p>
+<p>如果你通过 ionic serve 或者 ionic run 命令使用或 live reload 或者访问过外部 API 结点，那么你肯定遇到过 CORS 问题，譬如下面这样：</p>
+<pre><code>XMLHttpRequest cannot <span class="operator"><span class="keyword">load</span> http://api.ionic.com/endpoint.
+<span class="keyword">No</span> <span class="string">'Access-Control-Allow-Origin'</span> header <span class="keyword">is</span> present <span class="keyword">on</span> the requested resource.
+Origin <span class="string">'http://localhost:8100'</span> <span class="keyword">is</span> therefore <span class="keyword">not</span> allowed access.</span>
+</code></pre><p>那么问题来了，什么是 CORS 呢？又是什么导致了这个问题嘞？</p>
+<h1 id="什么是_CORS？">什么是 CORS？</h1><p>CORS=Cross origin resource sharing(跨域资源共享)</p>
+<p>origin 就是你现在正在看的主站，你现在访问的是 <a href="http://ionicframework.com/blog/handling-cors-issues-in-ionic" target="_blank" rel="external">http://ionicframework.com/blog/handling-cors-issues-in-ionic</a> ，那么 origin 就是 ionicframework.com。</p>
+<p>如果说我们向 <a href="http://cors.api.com/api" target="_blank" rel="external">http://cors.api.com/api</a> 发起一个 AJAX 请求，那么 host origin 会由被浏览器自动列入CORS请求的 Orgin header 指定好了<em>（原文：Say we send an AJAX request to <a href="http://cors.api.com/api" target="_blank" rel="external">http://cors.api.com/api</a>, your host origin will be specified by the Origin header that is automatically included for CORS requests by the browser. ）</em> 由于 ionicframework.com 和 api.com 的主机并不匹配，所以在一个HTTP OPTIONS请求报头的 form 中我们所有从 ionicframework.com 发起的访问服务器资源的请求必修得到服务器的授权。</p>
+<p>假如上面的请求出现错误(不被服务器允许)，那么我们是无法从服务器访问到(api.com上的)资源的。</p>
+<p>让我们来看一下当你通过ionic serve， ionic run，ionic run -l来运行 app 的时候 origin 会是什么。</p>
+<h1 id="浏览器中的运行">浏览器中的运行</h1><p>当你运行 ionic serve 时发生了什么呢？</p>
+<ul>
+<li>启动了一个本地 web 服务器</li>
+<li>你的浏览器打开并定位到本地服务器地址</li>
+</ul>
+<p>这让你看着你的应用加载到你电脑上一个浏览器里，地址是：<a href="http://localhost:8100" target="_blank" rel="external">http://localhost:8100</a> （如果你选择了 localhost的话）。</p>
+<p>你的 origin 就是 localhost:8100。</p>
+<p>任何的发送到其他不是 localhost:8100 主机上的 AJAX 请求都会把localhost:8100作为他的 origin，这就会导致必须要经过一个 CORS 预检来看是否可以访问（非本机的）服务器资源。</p>
+<h1 id="设备上的运行">设备上的运行</h1><p>当你运行 ionic run 时发生了什么呢？</p>
+<ul>
+<li>app 所有的文件被拷贝到设备（或者模拟器）上。</li>
+<li>app 运行起来，触发手机/模拟器上的浏览器访问已经被拷贝上去的文件，比如： file://some/path/www/index.html。</li>
+</ul>
+<p>因为你正在运行的 URI 是 file://，所以你的 origin 将不会存在，所以任何向外的请求都不再需要 CORS 请求。</p>
+<h1 id="在设备使用_livereload_运行">在设备使用 livereload 运行</h1><p>当你运行 ionic run -l时又发生了什么呢？</p>
+<ul>
+<li>启动了一个本地服务器</li>
+<li>app 运行起来，触发手机/模拟器上的一个浏览器通过<a href="http://192.168.1.1:8100" target="_blank" rel="external">http://192.168.1.1:8100</a> 来运行文件(你的 本地 ip 可能是其他的)。</li>
+</ul>
+<p>你的 origin 就会是 192.168.1.1:8100。</p>
+<p>任何一个发送到不是192.168.1.1:8100 的服务器上的 AJAX 请求都会需要进行 CORS 预检请求来看是否可以访问到该服务器上的资源。</p>
+<h1 id="在_ionic_中解决_CORS_问题">在 ionic 中解决 CORS 问题</h1><p>CORS 问题只有在我们通过 ionic serve 或者 ionic run -l 来运行或测试应用的时候才会遇到。</p>
+<p>解决这个问题有两个办法：第一个，也是比较简单的一个，就是在你的 API 服务器端允许所有的 origin，然而我们并不能控制我们访问的所有的结点。我们需要的是一个不指定origin的请求。</p>
+<p>我们可以通过使用代理服务器来解决这个问题。我们来看看 Ionic CLI 是怎样提供了一个易配置的代理服务器的。</p>
+<h1 id="Ionic_CLI代理服务器">Ionic CLI代理服务器</h1><p>关于代理的快速定义：</p>
+<p>在计算机网络中，代理服务器就是一个服务器（计算机系统或者应用程序），是客户端发起的请求从其他服务器寻求资源的中间桥梁。<br>原文：In computer networks, a proxy server is a server (a computer system or an application) that acts as an intermediary for requests from clients seeking resources from other servers.</p>
+<p>我们为了避开 CORS 问题需要做的就是有一个代理服务器，可以接收我们的请求，想 API 结点发出一个新的请求，接收结点响应，之后反馈给我们的应用，从而避开 CORS 问题。</p>
+<p>Ionic CLI 就有给你提供一个代理服务器从而避开所有可能会遇到的 CORS 问题的能力。</p>
+<p>由于代理服务器向你的目标主机发起了一个新的请求，所以就不会再有 origin，也就不再需要 CORS 了。要注意，在浏览器增加了 Origin header 是很重要的。</p>
+<h1 id="设置代理服务器">设置代理服务器</h1><p>注意，这些设置只有通过ionic serve 和 ionic run -l 运行应用才需要</p>
+<p>首先我们需要在 ionic.project文件中设置我们的代理，这会告诉我们的 Ionic 本地服务器监听这些地址，然后发送这些请求到我们的目标地址上。</p>
+<p>在我们的应用中，当运行 serve 或 run -l 时候，我们需要把要访问的结点地址替换成代理服务器的地址。</p>
+<p>使用gulp任务的 replace 模块来转换出口地址会简单一点。</p>
+<p>建议的方法是设置一个 Angular Constant 来定位到我们试图代理的 API。</p>
+<p>这就是我们下面要采用的方法。我们会同时设置一个 Angular Service 来从 API结点 获取数据。</p>
+<h1 id="设置代理路径">设置代理路径</h1><p>比如说我们想要访问 <a href="http://cors.api.com/api" target="_blank" rel="external">http://cors.api.com/api</a> ，但并不允许我们来自 localhost的 origin。</p>
+<p>代理的设置包括两件事儿：在你本地 Ionic 服务器需要访问的 path，最终需要访问API的 proxyUrl。</p>
+<p>在你的 ionic.project 中像这样设置：</p>
+<pre><code>{
+  "<span class="attribute">name</span>": <span class="value"><span class="string">"proxy-example"</span></span>,
+  "<span class="attribute">app_id</span>": <span class="value"><span class="string">""</span></span>,
+  "<span class="attribute">proxies</span>": <span class="value">[
+    {
+      "<span class="attribute">path</span>": <span class="value"><span class="string">"/api"</span></span>,
+      "<span class="attribute">proxyUrl</span>": <span class="value"><span class="string">"http://cors.api.com/api"</span>
+    </span>}
+  ]
+</span>}
+</code></pre><p>通过ionic serve启动你的服务器。</p>
+<p>像我们上面指定的这样，当你访问 Ionic 服务器地址 <a href="http://localhost:8100/api" target="_blank" rel="external">http://localhost:8100/api</a> 的时候，它会以你的名义访问 <a href="http://cors.api.com/api。" target="_blank" rel="external">http://cors.api.com/api。</a></p>
+<p>这样，就不需要 CORS 了。</p>
+<h1 id="设置_Angular_Constant">设置 Angular Constant</h1><p>把你的 API结点设置成 Angular Constants是非常简单的一件事儿。</p>
+<p>下面我们就来把API结点指定成为我们的代理 URL。</p>
+<p>之后(发布时候)我们会把正式的地址作为 constant。</p>
+<pre><code>angular.<span class="keyword">module</span>(<span class="string">'starter'</span>, [<span class="string">'ionic'</span>, <span class="string">'starter.controllers'</span>, <span class="string">'starter.services'</span>])
+.constant(<span class="string">'ApiEndpoint'</span>, {
+  url: <span class="string">'http://localhost:8100/api'</span>
+})
+<span class="comment">// For the real endpoint, we'd use this</span>
+<span class="comment">// .constant('ApiEndpoint', {</span>
+<span class="comment">//  url: 'http://cors.api.com/api'</span>
+<span class="comment">// })</span>
+</code></pre><p>设置好之后你就能像下面这样在应用中引入ApiEndpoint依赖，随意调用这个constant了。</p>
+<h1 id="设置Angular_Service">设置Angular Service</h1><pre><code>angular.module(<span class="string">'starter.services'</span>, [])
+
+<span class="comment">//<span class="doctag"><span class="keyword">NOTE</span></span>: We are including the constant `ApiEndpoint` to be used here.</span>
+.factory(<span class="string">'Api'</span>, <span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$http</span>, ApiEndpoint)</span> </span>{
+  console.log(<span class="string">'ApiEndpoint'</span>, ApiEndpoint)
+
+  <span class="keyword">var</span> getApiData = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> <span class="variable">$http</span>.get(ApiEndpoint.url + <span class="string">'/tasks'</span>)
+      .then(<span class="function"><span class="keyword">function</span><span class="params">(data)</span> </span>{
+        console.log(<span class="string">'Got some data: '</span>, data);
+        <span class="keyword">return</span> data;
+      });
+  };
+
+  <span class="keyword">return</span> {
+    getApiData: getApiData
+  };
+})
+</code></pre><h1 id="通过_Gulp_自动转换地址">通过 Gulp 自动转换地址</h1><p>这个过程中，我们需要修改gulpfile.js来添加两个任务：添加代理和移除代理。</p>
+<p>首先安装replace模块 - npm install —save replace</p>
+<pre><code><span class="comment">// `npm install --save replace`</span>
+<span class="keyword">var</span> replace = <span class="built_in">require</span>(<span class="string">'replace'</span>);
+<span class="keyword">var</span> replaceFiles = [<span class="string">'./www/js/app.js'</span>];
+
+gulp.task(<span class="string">'add-proxy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">return</span> replace({
+    regex: <span class="string">"http://cors.api.com/api"</span>,
+    replacement: <span class="string">"http://localhost:8100/api"</span>,
+    paths: replaceFiles,
+    recursive: <span class="literal">false</span>,
+    silent: <span class="literal">false</span>,
+  });
+})
+
+gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+  <span class="keyword">return</span> replace({
+    regex: <span class="string">"http://localhost:8100/api"</span>,
+    replacement: <span class="string">"http://cors.api.com/api"</span>,
+    paths: replaceFiles,
+    recursive: <span class="literal">false</span>,
+    silent: <span class="literal">false</span>,
+  });
+})
+</code></pre><h1 id="结语">结语</h1><p>本教程向你展示了一个解决通过ionic serve或ionic run -l命令运行应用时候遇到的 CORS 问题的方法。</p>
+<p>我们知道在ionic serve和ionic run -l之间转换 API 结点地址的时候可能会是个麻烦，比较建议的方法是启动一个 gulp 进程。</p>
+<p>解决 CORS 问题最简单的方法是让 API 提供者允许所有的 hosts，然后这事儿有点儿不太现实。</p>
+<p>使用 Angular constant 和 replace 模块可以给我们一个避开 CORS 的折中的办法。</p>
+<p>如果你想看看完整的例子，可以看看这个<a href="https://github.com/driftyco/ionic-proxy-example" target="_blank" rel="external">示例项目</a>。</p>
+<p>这就是你需要访问一个有 CORS 限制的 API 服务器时候需要了解的所有事儿了。</p>
+<p>如果你还有什么疑问、问题或者想法，请在下面评论，或者在 twitter 或 github 上联系我们。</p>
+<p>来源：解决 ionic 中的 CORS 问题【译】 -  Only One</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/08/12/ionic-cors/" data-id="cioohh08i001m1cei9p22ksoj" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/08/12/ionic-cors/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ionic/">ionic</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-http-status-code" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/19/http-status-code/" class="article-date">
@@ -165,7 +338,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/http-status-code/" data-id="cin4qcf8p001xmkeijabprr35" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/http-status-code/" data-id="cioohh08u001x1ceich57wljp" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -246,7 +419,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/README/" data-id="cin4qcfa50037mkeigo76flao" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/README/" data-id="cioohh0aq003a1ceihihsigrk" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -397,7 +570,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/javascript-splice/" data-id="cin4qcf7x0015mkeifs3cs66r" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/javascript-splice/" data-id="cioohh08200151ceihrqn3ia7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -475,7 +648,7 @@ $ ionic resources <span class="comment">--splash</span>
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/" data-id="cin4qcf8e001pmkei4rp5ypqi" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/" data-id="cioohh08m001p1ceib8zi6ngk" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -611,7 +784,7 @@ function myDirective() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/13/angular-directive/" data-id="cin4qcf9z0032mkeig79duem5" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/13/angular-directive/" data-id="cioohh0am00351ceise8i2l6e" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -730,7 +903,7 @@ $<span class="params">(<span class="string">"#AnchorContentToggle"</span>)</span
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/03/markdown-catelog/" data-id="cin4qcf7n000vmkeizth8855i" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/03/markdown-catelog/" data-id="cioohh07u000v1ceio2qtr3s8" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1124,7 +1297,7 @@ About Me
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/05/25/blog-with-hexo/" data-id="cin4qcf9v002xmkeibtrasxrj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/05/25/blog-with-hexo/" data-id="cioohh0ai00301ceis5udob9k" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1177,7 +1350,7 @@ About Me
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/05/24/hello-world/" data-id="cin4qcf8t0020mkeigsdkgwk7" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/05/24/hello-world/" data-id="cioohh08y00201ceiler6e6d9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1205,7 +1378,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1214,7 +1387,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1223,7 +1396,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 17.5px;">sass</a>
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a>
     </div>
   </div>
 
@@ -1232,7 +1405,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1242,6 +1415,10 @@ About Me
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/05/26/css-z-index/">元素重叠及position定位的z-index顺序</a>
+          </li>
         
           <li>
             <a href="/2016/04/17/css-oocss-1/">面向对象的CSS（一）</a>
@@ -1257,10 +1434,6 @@ About Me
         
           <li>
             <a href="/2016/01/24/java-environment-setup/">Java 开发环境配置</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/23/css-oocss/">面向对象的CSS(OOCSS)</a>
           </li>
         
       </ul>

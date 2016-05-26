@@ -85,6 +85,101 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-css-z-index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/26/css-z-index/" class="article-date">
+  <time datetime="2016-05-26T15:36:09.000Z" itemprop="datePublished">2016-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/css/">css</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/26/css-z-index/">元素重叠及position定位的z-index顺序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>显示器是显示的图案是一个二维平面，拥有x轴和y轴来表示位置属性。为了表示三维立体的概念如显示元素的上下层的叠加顺序引入了z-index属性来表示z轴的区别。表示一个元素在叠加顺序上的上下立体关系。</p>
+<p>z-index值较大的元素将叠加在z-index值较小的元素之上。对于未指定此属性的定位对象，z-index 值为正数的对象会在其之上，而 z-index 值为负数的对象在其之下。</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"width:200px;height:200px;background-color:#0e0;"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> style=<span class="string">"position:relative; top:-50px; width:100px;height:100px;background-color:#00e;"</span>&gt;&lt;<span class="keyword">div</span>&gt;
+</code></pre><p>两个DIV，第二个向上移动50px，正常情况应该是这样的</p>
+<p><img src="/img/css/1.png" alt=""></p>
+<p>第二个div遮住了第一个div，对第二个添加z-index属性</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"width:200px;height:200px;background-color:#0e0;"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> style=<span class="string">"position:relative; top:-50px; width:100px;height:100px;background-color:#00e;z-index:-5;"</span>&gt;&lt;<span class="keyword">div</span>&gt;
+</code></pre><p>结果就会变成这个样子，z-index 最简单的应用就是这样</p>
+<p><img src="/img/css/2.png" alt=""></p>
+<h3 id="只对定位元素有效">只对定位元素有效</h3><p>z-index属性适用于定位元素（position属性值为 relative 或 absolute 或 fixed的对象），用来确定定位元素在垂直于显示屏方向（称为Z轴）上的层叠顺序，也就是说如果元素是没有定位的，对其设置的z-index会是无效的。</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"width:200px;height:200px;background-color:#0e0;z-index:30"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> style=<span class="string">"position:relative; top:-50px; width:100px;height:100px;background-color:#00e;z-index:10;"</span>&gt;&lt;<span class="keyword">div</span>&gt;
+</code></pre><p>虽然第一个div的z-index比第二个div大，但是由于第一个div未定位，其z-index属性未起作用，所以仍然会被第二个div覆盖。</p>
+<p><img src="/img/css/3.png" alt=""></p>
+<h3 id="相同z-index谁上谁下">相同z-index谁上谁下</h3><p>相同的z-index其实有两种情况</p>
+<p>1.如果两个元素都没有定位发生位置重合现象或者两个都已定位元素且z-index相同发生位置重合现象，那么按文档流顺序，后面的覆盖前面的。</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:200px;height:200px;background-color:#0e0;"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> style=<span class="string">"position:relative; top:-50px; width:100px;height:100px;background-color:#00e;"</span>&gt;&lt;<span class="keyword">div</span>&gt;
+</code></pre><p><img src="/img/css/4.png" alt=""></p>
+<p>2.如果两个元素都没有设置z-index，使用默认值，一个定位一个没有定位，那么定位元素覆盖未定位元素</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"position:relative;top:50px;width:200px;height:200px;background-color:#0e0;"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+&lt;<span class="keyword">div</span> style=<span class="string">" width:100px;height:100px;background-color:#00e;"</span>&gt;&lt;<span class="keyword">div</span>&gt;
+</code></pre><p><img src="/img/css/5.png" alt=""></p>
+<h3 id="父子关系处理">父子关系处理</h3><p>如果父元素z-index有效，那么子元素无论是否设置z-index都和父元素一致，会在父元素上方</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:200px;height:200px;background-color:#0e0;z-index:10;"</span>&gt;
+    &lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:100px;height:100px;background-color:#00e;z-index:-5;"</span>&gt;&lt;<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>虽然子元素设置z-index比父元素小，但是子元素仍然出现在父元素上方</p>
+<p><img src="/img/css/6.png" alt=""></p>
+<p>如果父元素z-index失效（未定位或者使用默认值），那么定位子元素的z-index设置生效</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:200px;height:200px;background-color:#0e0;"</span>&gt;
+    &lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:100px;height:100px;background-color:#00e;z-index:-5;"</span>&gt;&lt;<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>子元素z-index=-5生效，被父元素覆盖</p>
+<p><img src="/img/css/7.png" alt=""></p>
+<h3 id="兄弟之间子元素">兄弟之间子元素</h3><p>如果兄弟元素的z-index生效，那么其子元素覆盖关系有父元素决定</p>
+<pre><code>&lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:100px;height:100px;background-color:#0e0;z-index:5;"</span>&gt;
+    &lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:50px;height:250px;background-color:#00e;z-index:50;"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+
+&lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:100px;height:100px;background-color:#0e0;z-index:10;margin-top:4px;"</span>&gt;
+    &lt;<span class="keyword">div</span> style=<span class="string">"position:relative;width:30px;height:150px;background-color:#e0e;z-index:-10;"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre><p>虽然第一个div的子元素的z-index比较高，但是由于其父元素z-index比第二个div低，所以第一个div子元素会被第二个div及其子元素覆盖</p>
+<p><img src="/img/css/8.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2016/05/26/css-z-index/" data-id="cioohh09600281ceirp8gnn12" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2016/05/26/css-z-index/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-css-oocss-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/04/17/css-oocss-1/" class="article-date">
@@ -230,7 +325,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/04/17/css-oocss-1/" data-id="cin4qcf94002dmkei5a0n6c4v" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/04/17/css-oocss-1/" data-id="cioohh09i002g1cei8wxgrnam" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -287,7 +382,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/" data-id="cin4qcf9r002smkeil5jnh3tx" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/" data-id="cioohh0ae002v1cei3ya7uxrb" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -347,7 +442,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/25/maven-install/" data-id="cin4qcf7f000qmkeig5ccqzyc" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/25/maven-install/" data-id="cioohh07q000q1ceikzwa17b7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -408,7 +503,7 @@ java HelloWorld
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/24/java-environment-setup/" data-id="cin4qcf84001cmkei4e6me97t" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/24/java-environment-setup/" data-id="cioohh08a001c1ceina5styxa" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -621,7 +716,7 @@ java HelloWorld
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/23/css-oocss/" data-id="cin4qcf900028mkeiipedihpm" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/23/css-oocss/" data-id="cioohh09e002d1cei9uhvb5wy" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -777,7 +872,7 @@ compass <span class="keyword">create</span> learn-compass-init</span>
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/04/sass-install/" data-id="cin4qcf70000dmkeie0i96ice" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/04/sass-install/" data-id="cioohh072000d1ceii88aijsi" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -889,7 +984,7 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/04/npm-error/" data-id="cin4qcf7a000lmkeia81kdnlt" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/04/npm-error/" data-id="cioohh07e000l1ceijb9fna52" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1092,7 +1187,7 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/29/com-telerik-plugins-nativepagetransitions/" data-id="cin4qcf9n002pmkeimw5xhxl4" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/29/com-telerik-plugins-nativepagetransitions/" data-id="cioohh0aa002s1ceizc37nu6m" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1206,226 +1301,11 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/28/sass-official-website/" data-id="cin4qcf6x000amkeizio1nh8k" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/28/sass-official-website/" data-id="cioohh06y000a1ceiq1n0bu0r" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
         <a href="http://jianganglu.github.io/2015/12/28/sass-official-website/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-sass-script-advanced" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/27/sass-script-advanced/" class="article-date">
-  <time datetime="2015-12-27T13:29:03.000Z" itemprop="datePublished">2015-12-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/sass/">sass</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/27/sass-script-advanced/">Sass高级</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Sass 高级</p>
-<p><img src="http://7xpjsl.com1.z0.glb.clouddn.com/sass-script-advanced.png" alt="sass学习思维导图"></p>
-<p>@if 三目运算</p>
-<p>For explame:</p>
-<pre><code><span class="variable">$screenWidth</span><span class="value">: <span class="number">500</span>;</span>
-<span class="tag">body</span>{
-  <span class="attribute">color</span><span class="value">: <span class="function">if</span>(<span class="variable">$screenWidth</span> &gt; <span class="number">768</span>, blue, red);</span>
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="tag">body</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
-}</span>
-</code></pre><p>@if</p>
-<p>For explame:</p>
-<pre><code><span class="at_rule">@<span class="keyword">if</span> $screenWidth &gt; <span class="number">768</span></span>{
-  <span class="tag">body</span><span class="rules">{
-    <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
-  }</span>
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="tag">body</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
-}</span>
-</code></pre><p>@if…@else if…@else</p>
-<p>For explame:</p>
-<pre><code><span class="variable">@if</span> $screenWidth &gt; <span class="number">768</span>{
-  <span class="tag">body</span>{
-    <span class="attribute">color</span>: red;
-  }
-}
-<span class="variable">@else</span> if $screenWidth &gt;<span class="number">400</span>{
-  <span class="tag">span</span>{
-    <span class="attribute">color</span>: green;
-  }
-}
-<span class="variable">@else</span>{
-  <span class="tag">p</span>{
-    <span class="attribute">color</span>: blue;
-  }
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="tag">span</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
-}</span>
-</code></pre><p>@for</p>
-<p>For explame:</p>
-<pre><code>@<span class="keyword">for</span> <span class="variable">$i</span> <span class="keyword">from</span> <span class="number">1</span> <span class="keyword">to</span> <span class="number">5</span>{
-  .span<span class="comment">#{$i}{</span>
-    width: <span class="number">20</span>% * <span class="variable">$i</span>;
-  }
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="class">.span1</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">20%</span></span></span>;
-}</span>
-
-<span class="class">.span2</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">40%</span></span></span>;
-}</span>
-
-<span class="class">.span3</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">60%</span></span></span>;
-}</span>
-
-<span class="class">.span4</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80%</span></span></span>;
-}</span>
-</code></pre><p>For explame:</p>
-<pre><code><span class="at_rule">@<span class="keyword">for</span> <span class="variable">$i</span><span class="preprocessor"> from</span><span class="preprocessor"> 1</span><span class="preprocessor"> through</span><span class="preprocessor"> 5</span>{</span>
-  <span class="class">.span</span>#{<span class="variable">$i</span>}{
-    <span class="attribute">width</span><span class="value">: <span class="number">20%</span> * <span class="variable">$i</span>;</span>
-  }
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="class">.span1</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">20%</span></span></span>;
-}</span>
-
-<span class="class">.span2</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">40%</span></span></span>;
-}</span>
-
-<span class="class">.span3</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">60%</span></span></span>;
-}</span>
-
-<span class="class">.span4</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">80%</span></span></span>;
-}</span>
-
-<span class="class">.span5</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;
-}</span>
-</code></pre><p>@while</p>
-<p>For explame:</p>
-<pre><code><span class="variable">$j</span><span class="value">: <span class="number">6</span>;</span>
-<span class="at_rule">@<span class="keyword">while</span> <span class="variable">$j</span> &gt;<span class="preprocessor"> 0</span>{</span>
-  <span class="class">.p</span>#{<span class="variable">$j</span>}{
-    <span class="attribute">width</span><span class="value">: <span class="number">20%</span> * <span class="variable">$j</span>;</span>
-  }
-  <span class="variable">$j</span><span class="value">: <span class="variable">$j</span> - <span class="number">3</span>;</span>
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="class">.p6</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">120%</span></span></span>;
-}</span>
-
-<span class="class">.p3</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">60%</span></span></span>;
-}</span>
-</code></pre><p>@each</p>
-<p>For explame:</p>
-<pre><code><span class="variable">$k</span><span class="value">: <span class="number">1</span>;</span>
-<span class="at_rule">@<span class="keyword">each</span> <span class="variable">$c</span><span class="preprocessor"> in</span><span class="preprocessor"> blue</span>,<span class="preprocessor"> red</span>,<span class="preprocessor"> green</span> {</span>
-  <span class="class">.div</span>#{<span class="variable">$k</span>}{
-    <span class="attribute">color</span><span class="value">: <span class="variable">$c</span>;</span>
-  }
-  <span class="variable">$k</span><span class="value">: <span class="variable">$k</span>+<span class="number">1</span>;</span>
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="class">.div1</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> blue</span></span>;
-}</span>
-
-<span class="class">.div2</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
-}</span>
-
-<span class="class">.div3</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
-}</span>
-</code></pre><p>For explame:</p>
-<pre><code>@each $<span class="variable">key</span>,$<span class="built_in">color</span> in (<span class="keyword">default</span>, <span class="built_in">blue</span>), (info, <span class="built_in">green</span>), (danger, <span class="built_in">red</span>){
-  .<span class="built_in">text</span>-#{$<span class="variable">key</span>}{
-    <span class="built_in">color</span>: $<span class="built_in">color</span>;
-  }
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="class">.text-default</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> blue</span></span>;
-}</span>
-
-<span class="class">.text-info</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
-}</span>
-
-<span class="class">.text-danger</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
-}</span>
-</code></pre><p>For explame:</p>
-<pre><code><span class="variable">@each</span> <span class="variable">$key</span>, <span class="variable">$value</span> <span class="keyword">in</span> (<span class="keyword">default</span>: blue, info: green, danger: red){
-  .label-#{<span class="variable">$key</span>}{
-    <span class="keyword">color</span>: <span class="variable">$value</span>;
-  }
-}
-</code></pre><p>is complied to:</p>
-<pre><code><span class="class">.label-default</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> blue</span></span>;
-}</span>
-
-<span class="class">.label-info</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> green</span></span>;
-}</span>
-
-<span class="class">.label-danger</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;
-}</span>
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/" data-id="cin4qcf6k0002mkeik9niuq80" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://jianganglu.github.io/2015/12/27/sass-script-advanced/#ds-thread" class="article-comment-link">评论</a>
       
 
       
@@ -1451,7 +1331,7 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1460,7 +1340,7 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -1469,7 +1349,7 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 12.5px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 17.5px;">sass</a>
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a>
     </div>
   </div>
 
@@ -1478,7 +1358,7 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1488,6 +1368,10 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/05/26/css-z-index/">元素重叠及position定位的z-index顺序</a>
+          </li>
         
           <li>
             <a href="/2016/04/17/css-oocss-1/">面向对象的CSS（一）</a>
@@ -1503,10 +1387,6 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
         
           <li>
             <a href="/2016/01/24/java-environment-setup/">Java 开发环境配置</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/23/css-oocss/">面向对象的CSS(OOCSS)</a>
           </li>
         
       </ul>
