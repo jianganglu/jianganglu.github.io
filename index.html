@@ -85,6 +85,83 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-wordpress-avatar" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/27/wordpress-avatar/" class="article-date">
+  <time datetime="2016-10-27T15:25:27.000Z" itemprop="datePublished">2016-10-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/wordpress/">wordpress</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/27/wordpress-avatar/">wordpress显示头像</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="方法一">方法一</h2><p>安装插件，搜索avatar，选择WP User Avatar，点击现在安装<br><img src="(/img/wordpress/avatar/search-plugins.png" alt="图1 搜索WP User Avatar">)</p>
+<h2 id="方法二">方法二</h2><h3 id="调用ssl_头像链接">调用ssl 头像链接</h3><p>https还是没被墙的，而且速度还不错，直接调用这个最简单了。<br>如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码</p>
+<pre><code>function get_ssl_avatar(<span class="variable">$avatar</span>) {
+  <span class="variable">$avatar</span> = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&amp;.*/','&lt;img src=<span class="string">"https://secure.gravatar.com/avatar/<span class="variable">$1</span>?s=<span class="variable">$2</span>"</span> class=<span class="string">"avatar avatar-<span class="variable">$2</span>"</span> height=<span class="string">"<span class="variable">$2</span>"</span> width=<span class="string">"<span class="variable">$2</span>"</span>&gt;',<span class="variable">$avatar</span>)<span class="comment">;</span>
+  return <span class="variable">$avatar</span><span class="comment">;</span>
+}
+add_filter('get_avatar', 'get_ssl_avatar')<span class="comment">;</span>
+</code></pre><p>优点：简单稳定</p>
+<p>缺点: 当头像特别大时速度可能略慢</p>
+<h2 id="方法三">方法三</h2><h3 id="本地缓存">本地缓存</h3><p>下面的代码加到functions.php中</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">my_avatar</span><span class="params">(<span class="variable">$avatar</span>)</span> </span>{
+  <span class="variable">$tmp</span> = strpos(<span class="variable">$avatar</span>, <span class="string">'http'</span>);
+  <span class="variable">$g</span> = substr(<span class="variable">$avatar</span>, <span class="variable">$tmp</span>, strpos(<span class="variable">$avatar</span>, <span class="string">"'"</span>, <span class="variable">$tmp</span>) - <span class="variable">$tmp</span>);
+  <span class="variable">$tmp</span> = strpos(<span class="variable">$g</span>, <span class="string">'avatar/'</span>) + <span class="number">7</span>;
+  <span class="variable">$f</span> = substr(<span class="variable">$g</span>, <span class="variable">$tmp</span>, strpos(<span class="variable">$g</span>, <span class="string">"?"</span>, <span class="variable">$tmp</span>) - <span class="variable">$tmp</span>);
+  <span class="variable">$w</span> = get_bloginfo(<span class="string">'wpurl'</span>);
+  <span class="variable">$e</span> = ABSPATH .<span class="string">'avatar/'</span>. <span class="variable">$f</span> .<span class="string">'.jpg'</span>;
+  <span class="variable">$t</span> = <span class="number">1209600</span>; <span class="comment">//設定14天, 單位:秒</span>
+  <span class="keyword">if</span> ( !is_file(<span class="variable">$e</span>) || (time() - filemtime(<span class="variable">$e</span>)) &gt; <span class="variable">$t</span> ) { <span class="comment">//當頭像不存在或文件超過14天才更新</span>
+    copy(htmlspecialchars_decode(<span class="variable">$g</span>), <span class="variable">$e</span>);
+  } <span class="keyword">else</span>  <span class="variable">$avatar</span> = strtr(<span class="variable">$avatar</span>, <span class="keyword">array</span>(<span class="variable">$g</span> =&gt; <span class="variable">$w</span>.<span class="string">'/avatar/'</span>.<span class="variable">$f</span>.<span class="string">'.jpg'</span>));
+  <span class="keyword">if</span> (filesize(<span class="variable">$e</span>) &lt; <span class="number">500</span>) copy(<span class="variable">$w</span>.<span class="string">'/avatar/default.jpg'</span>, <span class="variable">$e</span>);
+  <span class="keyword">return</span> <span class="variable">$avatar</span>;
+}
+add_filter(<span class="string">'get_avatar'</span>, <span class="string">'my_avatar'</span>);
+</code></pre><p>在WordPress安装根目（即跟wp-content等文件夹同一目录下）下新建一个名为 avatar 的文件夹 ，并给予写权限。放入一张同尺寸的头像图片命名为default.jpg。</p>
+<p>优点:和主机速度挂钩，如果你的服务器特别快则头像加载也特别快</p>
+<p>缺点:只能缓存一个尺寸的头像，国内主机无法使用</p>
+<h2 id="方法四">方法四</h2><h3 id="七牛缓存">七牛缓存</h3><p>请度娘或Google.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2016/10/27/wordpress-avatar/" data-id="ciusijnzj0007skein7025jqt" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2016/10/27/wordpress-avatar/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-wordpress-send-email" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/27/wordpress-send-email/" class="article-date">
@@ -118,7 +195,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/10/27/wordpress-send-email/" data-id="ciushl6k80002esei38bw5hg3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/10/27/wordpress-send-email/" data-id="ciusijnyo0002skei84tgq9x0" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -213,7 +290,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/05/26/css-z-index/" data-id="ciushl6n3002deseimkt25owj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/05/26/css-z-index/" data-id="ciusijo29002gskeijyfnnat3" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -375,7 +452,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/04/17/css-oocss-1/" data-id="ciushl6nd002lesei6hfudwr2" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/04/17/css-oocss-1/" data-id="ciusijo2k002oskeipc0v9qzd" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -432,7 +509,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/" data-id="ciushl6nu0030esei111c0ih3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/" data-id="ciusijo350033skei1dwfkrpv" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -492,7 +569,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/25/maven-install/" data-id="ciushl6lo000veseiwdufx1iv" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/25/maven-install/" data-id="ciusijo0m000yskeiixz5p5bd" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -553,7 +630,7 @@ java HelloWorld
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/24/java-environment-setup/" data-id="ciushl6m7001heseilw7whrod" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/24/java-environment-setup/" data-id="ciusijo18001kskeiw9osgdvh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -766,7 +843,7 @@ java HelloWorld
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/23/css-oocss/" data-id="ciushl6n7002iesei2c8hkxr2" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/23/css-oocss/" data-id="ciusijo2g002lskeishlyduun" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -922,7 +999,7 @@ compass <span class="keyword">create</span> learn-compass-init</span>
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/04/sass-install/" data-id="ciushl6la000iesei2ldggpq6" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/04/sass-install/" data-id="ciusijo00000lskei41g50i5c" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1034,7 +1111,7 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/04/npm-error/" data-id="ciushl6lj000qeseio23tqw53" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/04/npm-error/" data-id="ciusijo0g000tskeilmkxu3q9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1051,212 +1128,9 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
 
 
   
-    <article id="post-com-telerik-plugins-nativepagetransitions" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/29/com-telerik-plugins-nativepagetransitions/" class="article-date">
-  <time datetime="2015-12-29T13:34:14.000Z" itemprop="datePublished">2015-12-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/cordova/">cordova</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/29/com-telerik-plugins-nativepagetransitions/">com.telerik.plugins.nativepagetransitions</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原生页面切换效果</p>
-<h2 id="插件安装：">插件安装：</h2><pre><code>cordova plugin add com<span class="class">.telerik</span><span class="class">.plugins</span><span class="class">.nativepagetransitions</span>
-</code></pre><p>如果使用Cordova4+还需安装插件：</p>
-<pre><code>cordova <span class="keyword">plugin</span> add cordova-<span class="keyword">plugin</span>-whitelist
-</code></pre><h2 id="在index-html中添加">在index.html中添加</h2><pre><code>&lt;meta http-equiv=<span class="string">"Content-Security-Policy"</span> content=<span class="string">"default-src *; script-src '</span><span class="transposed_variable">self'</span> <span class="string">'unsafe-inline'</span> <span class="string">'unsafe-eval'</span> *; style-src  <span class="string">'self'</span> <span class="string">'unsafe-inline'</span> *<span class="string">"&gt;</span>
-</code></pre><p>Full example:</p>
-<pre><code>nameApp.run(<span class="function"><span class="keyword">function</span>(<span class="params">$ionicPlatform</span>) </span>{
-    $ionicPlatform.ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-
-        <span class="comment">// then override any default you want</span>
-        <span class="built_in">window</span>.plugins.nativepagetransitions.globalOptions.duration = <span class="number">500</span>;
-        <span class="built_in">window</span>.plugins.nativepagetransitions.globalOptions.iosdelay = <span class="number">350</span>;
-        <span class="built_in">window</span>.plugins.nativepagetransitions.globalOptions.androiddelay = <span class="number">350</span>;
-        <span class="built_in">window</span>.plugins.nativepagetransitions.globalOptions.winphonedelay = <span class="number">350</span>;
-        <span class="built_in">window</span>.plugins.nativepagetransitions.globalOptions.slowdownfactor = <span class="number">4</span>;
-        <span class="comment">// these are used for slide left/right only currently</span>
-        <span class="built_in">window</span>.plugins.nativepagetransitions.globalOptions.fixedPixelsTop = <span class="number">0</span>;
-        <span class="built_in">window</span>.plugins.nativepagetransitions.globalOptions.fixedPixelsBottom = <span class="number">0</span>;
-
-    });
-});
-
-$state.go(<span class="string">'view'</span>, {movieid: id});   
-<span class="built_in">window</span>.plugins.nativepagetransitions.slide(
-  {<span class="string">"direction"</span>:<span class="string">"up"</span>},
-  <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>{<span class="built_in">console</span>.log(<span class="string">"success: "</span> + msg)}, <span class="comment">// called when the animation has finished</span>
-  <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>{alert(<span class="string">"error: "</span> + msg)} <span class="comment">// called in case you pass in weird values</span>
-);
-</code></pre><h2 id="添加指令">添加指令</h2><pre><code>nameApp.directive(<span class="string">'goNative'</span>, [<span class="string">'$ionicGesture'</span>, <span class="string">'$ionicPlatform'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$ionicGesture, $ionicPlatform</span>) </span>{
-  <span class="keyword">return</span> {
-    restrict: <span class="string">'A'</span>,
-
-    link: <span class="function"><span class="keyword">function</span>(<span class="params">scope, element, attrs</span>) </span>{
-
-      $ionicGesture.on(<span class="string">'tap'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>{
-
-        <span class="keyword">var</span> direction = attrs.direction;
-        <span class="keyword">var</span> transitiontype = attrs.transitiontype;
-
-        $ionicPlatform.ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-
-          <span class="keyword">switch</span> (transitiontype) {
-            <span class="keyword">case</span> <span class="string">"slide"</span>:
-              <span class="built_in">window</span>.plugins.nativepagetransitions.slide({
-                  <span class="string">"direction"</span>: direction
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  <span class="built_in">console</span>.log(<span class="string">"success: "</span> + msg)
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  alert(<span class="string">"error: "</span> + msg)
-                }
-              );
-              <span class="keyword">break</span>;
-            <span class="keyword">case</span> <span class="string">"flip"</span>:
-              <span class="built_in">window</span>.plugins.nativepagetransitions.flip({
-                  <span class="string">"direction"</span>: direction
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  <span class="built_in">console</span>.log(<span class="string">"success: "</span> + msg)
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  alert(<span class="string">"error: "</span> + msg)
-                }
-              );
-              <span class="keyword">break</span>;
-
-            <span class="keyword">case</span> <span class="string">"fade"</span>:
-              <span class="built_in">window</span>.plugins.nativepagetransitions.fade({
-
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  <span class="built_in">console</span>.log(<span class="string">"success: "</span> + msg)
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  alert(<span class="string">"error: "</span> + msg)
-                }
-              );
-              <span class="keyword">break</span>;
-
-            <span class="keyword">case</span> <span class="string">"drawer"</span>:
-              <span class="built_in">window</span>.plugins.nativepagetransitions.drawer({
-                  <span class="string">"origin"</span>         : direction,
-                  <span class="string">"action"</span>         : <span class="string">"open"</span>
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  <span class="built_in">console</span>.log(<span class="string">"success: "</span> + msg)
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  alert(<span class="string">"error: "</span> + msg)
-                }
-              );
-              <span class="keyword">break</span>;
-
-            <span class="keyword">case</span> <span class="string">"curl"</span>:
-              <span class="built_in">window</span>.plugins.nativepagetransitions.curl({
-                  <span class="string">"direction"</span>: direction
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  <span class="built_in">console</span>.log(<span class="string">"success: "</span> + msg)
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  alert(<span class="string">"error: "</span> + msg)
-                }
-              );
-              <span class="keyword">break</span>;              
-
-            <span class="keyword">default</span>:
-              <span class="built_in">window</span>.plugins.nativepagetransitions.slide({
-                  <span class="string">"direction"</span>: direction
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  <span class="built_in">console</span>.log(<span class="string">"success: "</span> + msg)
-                },
-                <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-                  alert(<span class="string">"error: "</span> + msg)
-                }
-              );
-          }
-
-
-        });
-      }, element);
-    }
-  };
-}]);
-
-<span class="xml"><span class="tag">&lt;<span class="title">ion-item</span> <span class="attribute">item</span>=<span class="value">"group"</span> <span class="attribute">collection-repeat</span>=<span class="value">"movie in movies"</span> <span class="attribute">collection-item-width</span>=<span class="value">"'100%'"</span> <span class="attribute">collection-item-height</span>=<span class="value">"100"</span> <span class="attribute">href</span>=<span class="value">"#/movie/"</span> <span class="attribute">class</span>=<span class="value">"item-thumbnail-left"</span> <span class="attribute">transitiontype</span>=<span class="value">"flip"</span> <span class="attribute">direction</span>=<span class="value">"left"</span> <span class="attribute">go-native</span>&gt;</span>
-
-<span class="tag">&lt;<span class="title">ion-nav-bar</span> <span class="attribute">class</span>=<span class="value">"bar-positive"</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">ion-nav-back-button</span> <span class="attribute">class</span>=<span class="value">"button-clear"</span> <span class="attribute">transitiontype</span>=<span class="value">"flip"</span> <span class="attribute">direction</span>=<span class="value">"right"</span> <span class="attribute">go-native</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">i</span> <span class="attribute">class</span>=<span class="value">"ion-arrow-left-c"</span>&gt;</span><span class="tag">&lt;/<span class="title">i</span>&gt;</span> Back
-  <span class="tag">&lt;/<span class="title">ion-nav-back-button</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">ion-nav-bar</span>&gt;</span></span>
-</code></pre><h2 id="添加服务">添加服务</h2><pre><code>nameApp.service(<span class="string">'Navigation'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$state</span>) </span>{
-  <span class="comment">//directly binding events to this context</span>
-  <span class="keyword">this</span>.goNative = <span class="function"><span class="keyword">function</span>(<span class="params">view, data, direction</span>) </span>{
-    $state.go(view, data);
-    <span class="built_in">window</span>.plugins.nativepagetransitions.slide({
-        <span class="string">"direction"</span>: direction
-      },
-      <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-        <span class="built_in">console</span>.log(<span class="string">"success: "</span> + msg)
-      }, <span class="comment">// called when the animation has finished</span>
-      <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>{
-        alert(<span class="string">"error: "</span> + msg)
-      } <span class="comment">// called in case you pass in weird values</span>
-    );
-  };
-});
-</code></pre><h2 id="最后配置Config">最后配置Config</h2><pre><code>nameApp.config(<span class="function"><span class="keyword">function</span><span class="params">(<span class="variable">$stateProvider</span>, <span class="variable">$urlRouterProvider</span>, <span class="variable">$ionicConfigProvider</span>)</span> </span>{
-
-  <span class="variable">$ionicConfigProvider</span>.views.transition(<span class="string">'none'</span>);
-}
-</code></pre><p><a href="http://plugins.telerik.com/cordova/plugin/native-page-transitions#VersionHistory" target="_blank" rel="external">官方文档</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://jianganglu.github.io/2015/12/29/com-telerik-plugins-nativepagetransitions/" data-id="ciushl6nr002xeseiagq7lgn1" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://jianganglu.github.io/2015/12/29/com-telerik-plugins-nativepagetransitions/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cordova/">cordova</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -1267,7 +1141,7 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1276,7 +1150,7 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1285,7 +1159,7 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a>
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 17.5px;">sass</a> <a href="/tags/wordpress/" style="font-size: 12.5px;">wordpress</a>
     </div>
   </div>
 
@@ -1294,7 +1168,7 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1304,6 +1178,10 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/10/27/wordpress-avatar/">wordpress显示头像</a>
+          </li>
         
           <li>
             <a href="/2016/10/27/wordpress-send-email/">wordpress发送邮件</a>
@@ -1319,10 +1197,6 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
         
           <li>
             <a href="/2016/04/10/bower-create-the-bowerrc-file/">How-do-i-name-the-.bowerrc-file</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/25/maven-install/">Maven安装</a>
           </li>
         
       </ul>

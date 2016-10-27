@@ -15,17 +15,28 @@ var _hmt = _hmt || [];
 </script>
 
   
-  <title>Tag: Git | JiangangLu&#39;s Blog</title>
+  <title>wordpress显示头像 | JiangangLu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端开发，JiangangLu, blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JiangangLu's Blog">
-<meta property="og:url" content="http://jianganglu.github.io/tags/Git/index.html">
+  <meta name="description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装)
+方法二调用ssl 头像链接https还是没被墙的，而且速度还不错，直接调用这个最简单了。如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码
+function get_ssl_avatar($avatar) {
+  $avatar = preg_replace(&apos;/.*\/avatar\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wordpress显示头像">
+<meta property="og:url" content="http://jianganglu.github.io/2016/10/27/wordpress-avatar/index.html">
 <meta property="og:site_name" content="JiangangLu's Blog">
-<meta property="og:description" content="前端开发，JiangangLu, blog">
+<meta property="og:description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装)
+方法二调用ssl 头像链接https还是没被墙的，而且速度还不错，直接调用这个最简单了。如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码
+function get_ssl_avatar($avatar) {
+  $avatar = preg_replace(&apos;/.*\/avatar\">
+<meta property="og:image" content="http://jianganglu.github.io/(/img/wordpress/avatar/search-plugins.png">
+<meta property="og:updated_time" content="2016-10-27T15:36:58.240Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JiangangLu's Blog">
-<meta name="twitter:description" content="前端开发，JiangangLu, blog">
+<meta name="twitter:title" content="wordpress显示头像">
+<meta name="twitter:description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装)
+方法二调用ssl 头像链接https还是没被墙的，而且速度还不错，直接调用这个最简单了。如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码
+function get_ssl_avatar($avatar) {
+  $avatar = preg_replace(&apos;/.*\/avatar\">
   
     <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
   
@@ -83,39 +94,97 @@ var _hmt = _hmt || [];
   </div>
 </header>
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2015/08/28/git-ssh/" class="archive-article-date">
-  <time datetime="2015-08-28T05:18:30.000Z" itemprop="datePublished">8月 28</time>
+      <section id="main"><article id="post-wordpress-avatar" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/27/wordpress-avatar/" class="article-date">
+  <time datetime="2016-10-27T15:25:27.000Z" itemprop="datePublished">2016-10-27</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/wordpress/">wordpress</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/28/git-ssh/">LINUX上为GIT添加SSH-KEY,WINDOWS上也适用</a>
+    <h1 class="article-title" itemprop="name">
+      wordpress显示头像
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="方法一">方法一</h2><p>安装插件，搜索avatar，选择WP User Avatar，点击现在安装<br><img src="(/img/wordpress/avatar/search-plugins.png" alt="图1 搜索WP User Avatar">)</p>
+<h2 id="方法二">方法二</h2><h3 id="调用ssl_头像链接">调用ssl 头像链接</h3><p>https还是没被墙的，而且速度还不错，直接调用这个最简单了。<br>如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码</p>
+<pre><code>function get_ssl_avatar(<span class="variable">$avatar</span>) {
+  <span class="variable">$avatar</span> = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&amp;.*/','&lt;img src=<span class="string">"https://secure.gravatar.com/avatar/<span class="variable">$1</span>?s=<span class="variable">$2</span>"</span> class=<span class="string">"avatar avatar-<span class="variable">$2</span>"</span> height=<span class="string">"<span class="variable">$2</span>"</span> width=<span class="string">"<span class="variable">$2</span>"</span>&gt;',<span class="variable">$avatar</span>)<span class="comment">;</span>
+  return <span class="variable">$avatar</span><span class="comment">;</span>
+}
+add_filter('get_avatar', 'get_ssl_avatar')<span class="comment">;</span>
+</code></pre><p>优点：简单稳定</p>
+<p>缺点: 当头像特别大时速度可能略慢</p>
+<h2 id="方法三">方法三</h2><h3 id="本地缓存">本地缓存</h3><p>下面的代码加到functions.php中</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">my_avatar</span><span class="params">(<span class="variable">$avatar</span>)</span> </span>{
+  <span class="variable">$tmp</span> = strpos(<span class="variable">$avatar</span>, <span class="string">'http'</span>);
+  <span class="variable">$g</span> = substr(<span class="variable">$avatar</span>, <span class="variable">$tmp</span>, strpos(<span class="variable">$avatar</span>, <span class="string">"'"</span>, <span class="variable">$tmp</span>) - <span class="variable">$tmp</span>);
+  <span class="variable">$tmp</span> = strpos(<span class="variable">$g</span>, <span class="string">'avatar/'</span>) + <span class="number">7</span>;
+  <span class="variable">$f</span> = substr(<span class="variable">$g</span>, <span class="variable">$tmp</span>, strpos(<span class="variable">$g</span>, <span class="string">"?"</span>, <span class="variable">$tmp</span>) - <span class="variable">$tmp</span>);
+  <span class="variable">$w</span> = get_bloginfo(<span class="string">'wpurl'</span>);
+  <span class="variable">$e</span> = ABSPATH .<span class="string">'avatar/'</span>. <span class="variable">$f</span> .<span class="string">'.jpg'</span>;
+  <span class="variable">$t</span> = <span class="number">1209600</span>; <span class="comment">//設定14天, 單位:秒</span>
+  <span class="keyword">if</span> ( !is_file(<span class="variable">$e</span>) || (time() - filemtime(<span class="variable">$e</span>)) &gt; <span class="variable">$t</span> ) { <span class="comment">//當頭像不存在或文件超過14天才更新</span>
+    copy(htmlspecialchars_decode(<span class="variable">$g</span>), <span class="variable">$e</span>);
+  } <span class="keyword">else</span>  <span class="variable">$avatar</span> = strtr(<span class="variable">$avatar</span>, <span class="keyword">array</span>(<span class="variable">$g</span> =&gt; <span class="variable">$w</span>.<span class="string">'/avatar/'</span>.<span class="variable">$f</span>.<span class="string">'.jpg'</span>));
+  <span class="keyword">if</span> (filesize(<span class="variable">$e</span>) &lt; <span class="number">500</span>) copy(<span class="variable">$w</span>.<span class="string">'/avatar/default.jpg'</span>, <span class="variable">$e</span>);
+  <span class="keyword">return</span> <span class="variable">$avatar</span>;
+}
+add_filter(<span class="string">'get_avatar'</span>, <span class="string">'my_avatar'</span>);
+</code></pre><p>在WordPress安装根目（即跟wp-content等文件夹同一目录下）下新建一个名为 avatar 的文件夹 ，并给予写权限。放入一张同尺寸的头像图片命名为default.jpg。</p>
+<p>优点:和主机速度挂钩，如果你的服务器特别快则头像加载也特别快</p>
+<p>缺点:只能缓存一个尺寸的头像，国内主机无法使用</p>
+<h2 id="方法四">方法四</h2><h3 id="七牛缓存">七牛缓存</h3><p>请度娘或Google.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2016/10/27/wordpress-avatar/" data-id="ciusijnzj0007skein7025jqt" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2016/10/27/wordpress-avatar/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wordpress/">wordpress</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/27/wordpress-send-email/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">wordpress发送邮件</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/10/27/wordpress-avatar/" data-title="wordpress显示头像" data-url="http://jianganglu.github.io/2016/10/27/wordpress-avatar/"></div>
+  </section>
 </section>
       
       <aside id="sidebar">
