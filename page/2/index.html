@@ -85,6 +85,120 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-sass-official-website" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/28/sass-official-website/" class="article-date">
+  <time datetime="2015-12-28T14:49:31.000Z" itemprop="datePublished">2015-12-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/sass/">sass</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/28/sass-official-website/">sass官网实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://7xpjsl.com1.z0.glb.clouddn.com/sass-script-advanced.png" alt="sass官网实现"></p>
+<h2 id="项目创建">项目创建</h2><pre><code>npm init
+
+compass <span class="built_in">create</span> <span class="comment">--bare</span>
+</code></pre><p>or</p>
+<pre><code>compass create --bare --sass-<span class="keyword">dir</span> <span class="string">"sass"</span> --css-<span class="keyword">dir</span> <span class="string">"css"</span> --images-<span class="keyword">dir</span> <span class="string">"img"</span> --javascripts-<span class="keyword">dir</span> <span class="string">"js"</span>
+</code></pre><h2 id="自动化构建">自动化构建</h2><p>在根目录下创建gulpfile.js</p>
+<pre><code>npm gulp gulp-compass browser-sync del <span class="command">run</span>-sequence <span class="comment">--save-dev</span>
+</code></pre><p>假如下载失败可修改：</p>
+<pre><code>npm config git <span class="keyword">registry</span>
+
+npm config <span class="keyword">set</span> <span class="keyword">registry</span> <span class="keyword">http</span>://
+</code></pre><p>安装compass-normalize、breakpoint、susy</p>
+<pre><code><span class="label">gem</span> install compass-normalize <span class="keyword">breakpoint </span>susy
+</code></pre><p>在config.rb里分别引入</p>
+<pre><code><span class="built_in">require</span> <span class="string">"compass-normalize"</span>
+<span class="comment"># 响应式</span>
+<span class="built_in">require</span> <span class="string">"breakpoint"</span>
+<span class="comment"># 布局</span>
+<span class="built_in">require</span> <span class="string">"susy"</span>
+</code></pre><p>main.scss</p>
+<pre><code><span class="comment">/*! Vendor */</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"compass"</span>
+, <span class="string">"susy"</span>
+, <span class="string">"breakpoint"</span>
+, <span class="string">"normalize-version"</span>  
+, <span class="string">"normalize/base"</span>
+, <span class="string">"normalize/links"</span>
+, <span class="string">"normalize/html5"</span>
+</span>;
+
+<span class="comment">/*! Helpers */</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"helpers/variables"</span>
+</span>;
+
+<span class="comment">/*! Base*/</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"base/font"</span>
+</span>;
+
+<span class="comment">/*! Layout */</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"layout/main"</span>
+</span>;
+
+<span class="comment">/*! Components */</span> 
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"components/alerts"</span>
+, <span class="string">"components/pop-stripe"</span>
+, <span class="string">"components/banner"</span>
+, <span class="string">"components/page-header"</span>
+, <span class="string">"components/section-bottom"</span>
+, <span class="string">"components/contentinfo"</span>
+</span>;
+
+<span class="comment">/*! Pages*/</span>
+<span class="at_rule">@<span class="keyword">import</span> 
+  <span class="string">"pages/page-base"</span>
+, <span class="string">"pages/index"</span>
+, <span class="string">"pages/install"</span>
+, <span class="string">"pages/guide"</span>
+, <span class="string">"pages/community"</span>
+, <span class="string">"pages/libsass"</span>
+</span>;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/12/28/sass-official-website/" data-id="ciushl6l7000feseiw6hf4mk9" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/12/28/sass-official-website/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-sass-script-advanced" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/27/sass-script-advanced/" class="article-date">
@@ -283,7 +397,7 @@ var _hmt = _hmt || [];
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/" data-id="cioohh06m00021ceihpw84t9k" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/" data-id="ciushl6kz0007eseiymzftcf4" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -589,7 +703,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/24/sass-script-advance/" data-id="cioohh06u00071ceivkhy3gcj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/24/sass-script-advance/" data-id="ciushl6l4000ceseikiquv47z" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -682,7 +796,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugin-splashscreen/" data-id="cioohh09y002m1ceifuje359m" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugin-splashscreen/" data-id="ciushl6nj002reseiwq1n09uh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -731,7 +845,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugins-list/" data-id="cioohh09m002j1cei2zzpjkux" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugins-list/" data-id="ciushl6nh002oeseiax316lij" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -805,7 +919,7 @@ $ jarsigner -verbose -sigalg SHA1withRSA -digestalg <span class="keyword">SHA1</
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/ionic-android-package/" data-id="cioohh08q001s1ceibvsxv78d" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/ionic-android-package/" data-id="ciushl6mo001xeseiu2y91w4d" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -900,7 +1014,7 @@ app.directive(<span class="string">'hideTabs'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/10/24/ionic-hidetabs/" data-id="cioohh08e001h1ceicfu6adjp" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/10/24/ionic-hidetabs/" data-id="ciushl6mb001mesei4hmdn8sw" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -973,7 +1087,7 @@ Error: cmd: Command failed with exit code 2
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/09/09/cordova-build-android/" data-id="cioohh0a6002p1ceirx97msxr" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/09/09/cordova-build-android/" data-id="ciushl6nn002uesei8jozb992" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1067,7 +1181,7 @@ Error: cmd: Command failed with exit code 2
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/" data-id="cioohh07y00101ceijzs1lj4v" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/" data-id="ciushl6lw0015esei4pffr5b2" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1138,7 +1252,7 @@ ssh-<span class="built_ins">add</span> id_rsa
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/08/28/git-ssh/" data-id="cioohh09200211cei1v56psy8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/08/28/git-ssh/" data-id="ciushl6mz0026eseig4j2cazj" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1147,66 +1261,6 @@ ssh-<span class="built_ins">add</span> id_rsa
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-npm-install" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/19/npm-install/" class="article-date">
-  <time datetime="2015-08-19T05:56:01.000Z" itemprop="datePublished">2015-08-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/node/">node</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/19/npm-install/">使用npm安装一些包失败了的看过来（npm国内镜像介绍）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这个也是网上搜的，亲自试过，非常好用！</p>
-<p>删除代理设置：</p>
-<pre><code><span class="id">#npm</span> config delete proxy
-<span class="id">#npm</span> config delete https-proxy
-</code></pre><p>镜像使用方法（三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在）:</p>
-<h1 id="1-通过config命令">1.通过config命令</h1><pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> https://<span class="keyword">registry</span>.npm.taobao.org 
-npm <span class="keyword">info</span> underscore （如果上面配置正确这个命令会有字符串response）
-</code></pre><h1 id="2-命令行指定">2.命令行指定</h1><pre><code><span class="title">npm</span> --registry <span class="url">https://registry.npm.taobao.org</span> <span class="built_in">info</span> underscore 
-</code></pre><h1 id="3-编辑_~/-npmrc_加入下面内容">3.编辑 ~/.npmrc 加入下面内容</h1><pre><code>registry = <span class="string">https:</span><span class="comment">//registry.npm.taobao.org</span>
-</code></pre><p>搜索镜像: <a href="https://npm.taobao.org" target="_blank" rel="external">https://npm.taobao.org</a></p>
-<p>建立或使用镜像,参考: <a href="https://github.com/cnpm/cnpmjs.org" target="_blank" rel="external">https://github.com/cnpm/cnpmjs.org</a></p>
-<p><a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝镜像</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://jianganglu.github.io/2015/08/19/npm-install/" data-id="cioohh076000g1ceim8gi4g3m" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://jianganglu.github.io/2015/08/19/npm-install/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
 
     </footer>
   </div>
@@ -1228,7 +1282,7 @@ npm <span class="keyword">info</span> underscore （如果上面配置正确这�
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1237,7 +1291,7 @@ npm <span class="keyword">info</span> underscore （如果上面配置正确这�
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1246,7 +1300,7 @@ npm <span class="keyword">info</span> underscore （如果上面配置正确这�
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a>
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a>
     </div>
   </div>
 
@@ -1255,7 +1309,7 @@ npm <span class="keyword">info</span> underscore （如果上面配置正确这�
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1265,6 +1319,10 @@ npm <span class="keyword">info</span> underscore （如果上面配置正确这�
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/10/27/wordpress-send-email/">wordpress发送邮件</a>
+          </li>
         
           <li>
             <a href="/2016/05/26/css-z-index/">元素重叠及position定位的z-index顺序</a>
@@ -1280,10 +1338,6 @@ npm <span class="keyword">info</span> underscore （如果上面配置正确这�
         
           <li>
             <a href="/2016/01/25/maven-install/">Maven安装</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/24/java-environment-setup/">Java 开发环境配置</a>
           </li>
         
       </ul>

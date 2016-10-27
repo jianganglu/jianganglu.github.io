@@ -85,6 +85,66 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-npm-install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/19/npm-install/" class="article-date">
+  <time datetime="2015-08-19T05:56:01.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/node/">node</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/npm-install/">使用npm安装一些包失败了的看过来（npm国内镜像介绍）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个也是网上搜的，亲自试过，非常好用！</p>
+<p>删除代理设置：</p>
+<pre><code><span class="id">#npm</span> config delete proxy
+<span class="id">#npm</span> config delete https-proxy
+</code></pre><p>镜像使用方法（三种办法任意一种都能解决问题，建议使用第三种，将配置写死，下次用的时候配置还在）:</p>
+<h1 id="1-通过config命令">1.通过config命令</h1><pre><code>npm config <span class="keyword">set</span> <span class="keyword">registry</span> https://<span class="keyword">registry</span>.npm.taobao.org 
+npm <span class="keyword">info</span> underscore （如果上面配置正确这个命令会有字符串response）
+</code></pre><h1 id="2-命令行指定">2.命令行指定</h1><pre><code><span class="title">npm</span> --registry <span class="url">https://registry.npm.taobao.org</span> <span class="built_in">info</span> underscore 
+</code></pre><h1 id="3-编辑_~/-npmrc_加入下面内容">3.编辑 ~/.npmrc 加入下面内容</h1><pre><code>registry = <span class="string">https:</span><span class="comment">//registry.npm.taobao.org</span>
+</code></pre><p>搜索镜像: <a href="https://npm.taobao.org" target="_blank" rel="external">https://npm.taobao.org</a></p>
+<p>建立或使用镜像,参考: <a href="https://github.com/cnpm/cnpmjs.org" target="_blank" rel="external">https://github.com/cnpm/cnpmjs.org</a></p>
+<p><a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝镜像</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/08/19/npm-install/" data-id="ciushl6le000leseivobz9u9c" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/08/19/npm-install/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ionic-cors" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/08/12/ionic-cors/" class="article-date">
@@ -241,7 +301,7 @@ gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/08/12/ionic-cors/" data-id="cioohh08i001m1cei9p22ksoj" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/08/12/ionic-cors/" data-id="ciushl6mf001reseiisyvrsxi" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -338,7 +398,7 @@ gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/http-status-code/" data-id="cioohh08u001x1ceich57wljp" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/http-status-code/" data-id="ciushl6ms0022esei5u9fnppt" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -419,7 +479,7 @@ gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/README/" data-id="cioohh0aq003a1ceihihsigrk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/README/" data-id="ciushl6o6003feseia9ozkzc0" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -570,7 +630,7 @@ gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/javascript-splice/" data-id="cioohh08200151ceihrqn3ia7" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/javascript-splice/" data-id="ciushl6m2001aeseifs2vkx9o" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -648,7 +708,7 @@ $ ionic resources <span class="comment">--splash</span>
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/" data-id="cioohh08m001p1ceib8zi6ngk" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/" data-id="ciushl6ml001uesei11i3s01t" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -784,7 +844,7 @@ function myDirective() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/13/angular-directive/" data-id="cioohh0am00351ceise8i2l6e" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/13/angular-directive/" data-id="ciushl6o3003aesei704nwxdn" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -903,7 +963,7 @@ $<span class="params">(<span class="string">"#AnchorContentToggle"</span>)</span
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/03/markdown-catelog/" data-id="cioohh07u000v1ceio2qtr3s8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/03/markdown-catelog/" data-id="ciushl6ls0010eseigvjp5y1j" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1297,7 +1357,7 @@ About Me
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/05/25/blog-with-hexo/" data-id="cioohh0ai00301ceis5udob9k" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/05/25/blog-with-hexo/" data-id="ciushl6ny0035eseiavvv9uv1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1350,7 +1410,7 @@ About Me
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/05/24/hello-world/" data-id="cioohh08y00201ceiler6e6d9" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/05/24/hello-world/" data-id="ciushl6mw0025eseipgbcodhw" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1378,7 +1438,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1387,7 +1447,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1396,7 +1456,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a>
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 13.33px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 16.67px;">sass</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a>
     </div>
   </div>
 
@@ -1405,7 +1465,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1415,6 +1475,10 @@ About Me
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/10/27/wordpress-send-email/">wordpress发送邮件</a>
+          </li>
         
           <li>
             <a href="/2016/05/26/css-z-index/">元素重叠及position定位的z-index顺序</a>
@@ -1430,10 +1494,6 @@ About Me
         
           <li>
             <a href="/2016/01/25/maven-install/">Maven安装</a>
-          </li>
-        
-          <li>
-            <a href="/2016/01/24/java-environment-setup/">Java 开发环境配置</a>
           </li>
         
       </ul>
