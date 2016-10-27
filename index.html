@@ -111,7 +111,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="方法一">方法一</h2><p>安装插件，搜索avatar，选择WP User Avatar，点击现在安装<br><img src="(/img/wordpress/avatar/search-plugins.png" alt="图1 搜索WP User Avatar">)</p>
+        <h2 id="方法一">方法一</h2><p>安装插件，搜索avatar，选择WP User Avatar，点击现在安装<br><img src="/img/wordpress/avatar/search-plugins.png" alt="图1 搜索WP User Avatar"></p>
 <h2 id="方法二">方法二</h2><h3 id="调用ssl_头像链接">调用ssl 头像链接</h3><p>https还是没被墙的，而且速度还不错，直接调用这个最简单了。<br>如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码</p>
 <pre><code>function get_ssl_avatar(<span class="variable">$avatar</span>) {
   <span class="variable">$avatar</span> = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&amp;.*/','&lt;img src=<span class="string">"https://secure.gravatar.com/avatar/<span class="variable">$1</span>?s=<span class="variable">$2</span>"</span> class=<span class="string">"avatar avatar-<span class="variable">$2</span>"</span> height=<span class="string">"<span class="variable">$2</span>"</span> width=<span class="string">"<span class="variable">$2</span>"</span>&gt;',<span class="variable">$avatar</span>)<span class="comment">;</span>

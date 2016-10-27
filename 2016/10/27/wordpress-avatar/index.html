@@ -17,26 +17,26 @@ var _hmt = _hmt || [];
   
   <title>wordpress显示头像 | JiangangLu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装)
+  <meta name="description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装
 方法二调用ssl 头像链接https还是没被墙的，而且速度还不错，直接调用这个最简单了。如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码
 function get_ssl_avatar($avatar) {
-  $avatar = preg_replace(&apos;/.*\/avatar\">
+  $avatar = preg_replace(&apos;/.*\/avatar\/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="wordpress显示头像">
 <meta property="og:url" content="http://jianganglu.github.io/2016/10/27/wordpress-avatar/index.html">
 <meta property="og:site_name" content="JiangangLu's Blog">
-<meta property="og:description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装)
+<meta property="og:description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装
 方法二调用ssl 头像链接https还是没被墙的，而且速度还不错，直接调用这个最简单了。如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码
 function get_ssl_avatar($avatar) {
-  $avatar = preg_replace(&apos;/.*\/avatar\">
-<meta property="og:image" content="http://jianganglu.github.io/(/img/wordpress/avatar/search-plugins.png">
-<meta property="og:updated_time" content="2016-10-27T15:36:58.240Z">
+  $avatar = preg_replace(&apos;/.*\/avatar\/">
+<meta property="og:image" content="http://jianganglu.github.io/img/wordpress/avatar/search-plugins.png">
+<meta property="og:updated_time" content="2016-10-27T15:39:32.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wordpress显示头像">
-<meta name="twitter:description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装)
+<meta name="twitter:description" content="方法一安装插件，搜索avatar，选择WP User Avatar，点击现在安装
 方法二调用ssl 头像链接https还是没被墙的，而且速度还不错，直接调用这个最简单了。如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码
 function get_ssl_avatar($avatar) {
-  $avatar = preg_replace(&apos;/.*\/avatar\">
+  $avatar = preg_replace(&apos;/.*\/avatar\/">
   
     <link rel="alternative" href="/atom.xml" title="JiangangLu&#39;s Blog" type="application/atom+xml">
   
@@ -120,7 +120,7 @@ function get_ssl_avatar($avatar) {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="方法一">方法一</h2><p>安装插件，搜索avatar，选择WP User Avatar，点击现在安装<br><img src="(/img/wordpress/avatar/search-plugins.png" alt="图1 搜索WP User Avatar">)</p>
+        <h2 id="方法一">方法一</h2><p>安装插件，搜索avatar，选择WP User Avatar，点击现在安装<br><img src="/img/wordpress/avatar/search-plugins.png" alt="图1 搜索WP User Avatar"></p>
 <h2 id="方法二">方法二</h2><h3 id="调用ssl_头像链接">调用ssl 头像链接</h3><p>https还是没被墙的，而且速度还不错，直接调用这个最简单了。<br>如果你的网站启用了ssl则不需要了，否则functions.php 加入如下代码</p>
 <pre><code>function get_ssl_avatar(<span class="variable">$avatar</span>) {
   <span class="variable">$avatar</span> = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&amp;.*/','&lt;img src=<span class="string">"https://secure.gravatar.com/avatar/<span class="variable">$1</span>?s=<span class="variable">$2</span>"</span> class=<span class="string">"avatar avatar-<span class="variable">$2</span>"</span> height=<span class="string">"<span class="variable">$2</span>"</span> width=<span class="string">"<span class="variable">$2</span>"</span>&gt;',<span class="variable">$avatar</span>)<span class="comment">;</span>
