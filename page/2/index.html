@@ -85,6 +85,136 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-npm-error" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/04/npm-error/" class="article-date">
+  <time datetime="2016-01-04T13:58:18.000Z" itemprop="datePublished">2016-01-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/npm/">npm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/04/npm-error/">npm-error</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>node-sass安装失败</p>
+<pre><code>Building: E:<span class="command">\nodejs</span><span class="command">\node</span>.exe C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\bin</span><span class="command">\node</span>-gyp.js rebuild --verbose --libsass_ext= --libsass_cflags= --libsass_ldflags= --libsass_library=
+gyp info it worked if it ends with ok
+gyp verb cli <span class="special">[</span> 'E:<span class="command">\\</span>nodejs<span class="command">\\</span>node.exe',
+gyp verb cli 'C:<span class="command">\\</span>Users<span class="command">\\</span>Administrator<span class="command">\\</span>Desktop<span class="command">\\</span>webpack<span class="command">\\</span>node_modules<span class="command">\\</span>node-sass<span class="command">\\</span>node_modules<span class="command">\\</span>node-gyp<span class="command">\\</span>bin<span class="command">\\</span>node-gyp.js',
+gyp verb cli 'rebuild',
+gyp verb cli '--verbose',
+gyp verb cli '--libsass_ext=',
+gyp verb cli '--libsass_cflags=',
+gyp verb cli '--libsass_ldflags=',
+gyp verb cli '--libsass_library=' <span class="special">]</span>
+gyp info using node-gyp@3.2.1
+gyp info using node@4.1.2 | win32 | x64
+gyp verb command rebuild <span class="special">[</span><span class="special">]</span>
+gyp verb command clean <span class="special">[</span><span class="special">]</span>
+gyp verb clean removing "build" directory
+gyp verb command configure <span class="special">[</span><span class="special">]</span>
+gyp verb check python checking for Python executable "python2.7" in the PATH
+gyp verb which failed Error: not found: python2.7
+gyp verb which failed at F (C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\node</span>_modules<span class="command">\which</span><span class="command">\which</span>.js:78:19)
+gyp verb which failed at E (C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\node</span>_modules<span class="command">\which</span><span class="command">\which</span>.js:82:29)
+gyp verb which failed at C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\node</span>_modules<span class="command">\which</span><span class="command">\which</span>.js:93:16
+gyp verb which failed at FSReqWrap.oncomplete (fs.js:82:15)
+gyp verb which failed python2.7 <span class="special">[</span>Error: not found: python2.7<span class="special">]</span>
+gyp verb could not find "python2.7". guessing location
+gyp verb ensuring that file exists: C:<span class="command">\Python</span>27<span class="command">\python</span>.exe
+gyp ERR! configure error
+gyp ERR! stack Error: Can't find Python executable "python2.7", you can set the PYTHON env variable.
+gyp ERR! stack at failNoPython (C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\lib</span><span class="command">\configure</span>.js:401:14)
+gyp ERR! stack at C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\lib</span><span class="command">\configure</span>.js:356:11
+gyp ERR! stack at FSReqWrap.oncomplete (fs.js:82:15)
+gyp ERR! System Windows_NT 6.1.7601
+gyp ERR! command "E:<span class="command">\\</span>nodejs<span class="command">\\</span>node.exe" "C:<span class="command">\\</span>Users<span class="command">\\</span>Administrator<span class="command">\\</span>Desktop<span class="command">\\</span>webpack<span class="command">\\</span>node_modules<span class="command">\\</span>node-sass<span class="command">\\</span>node_modules<span class="command">\\</span>node-gyp<span class="command">\\</span>bin<span class="command">\\</span>node-gyp.js" "rebuild" "--verbose" "--libsass_ext=" "--libsass_cflags=" "--libsass_ldflags=" "--libsass_library="
+gyp ERR! cwd C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass
+gyp ERR! node -v v4.1.2
+gyp ERR! node-gyp -v v3.2.1
+gyp ERR! not ok
+Build failed
+npm ERR! Windows_NT 6.1.7601
+npm ERR! argv "E:<span class="command">\\</span>nodejs<span class="command">\\</span>node.exe" "E:<span class="command">\\</span>nodejs<span class="command">\\</span>node_modules<span class="command">\\</span>npm<span class="command">\\</span>bin<span class="command">\\</span>npm-cli.js" "install" "sass-loader" "--save-dev"
+npm ERR! node v4.1.2
+npm ERR! npm v2.14.4
+npm ERR! code ELIFECYCLE
+
+npm ERR! node-sass@3.4.2 postinstall: node scripts/build.js
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the node-sass@3.4.2 postinstall script 'node scripts/build.js'.
+npm ERR! This is most likely a problem with the node-sass package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR! node scripts/build.js
+npm ERR! You can get their info via:
+npm ERR! npm owner ls node-sass
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR! C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\npm</span>-debug.log
+</code></pre><p>解决办法：</p>
+<pre><code><span class="built_in">npm</span> uninstall node-sass
+<span class="built_in">npm</span> install node-sass<span class="property">@latest</span>
+
+<span class="built_in">npm</span> uninstall gulp-sass
+<span class="built_in">npm</span> install gulp-sass<span class="property">@latest</span>
+
+<span class="built_in">npm</span> install --save node-sass --registry=<span class="attribute">https</span>:<span class="regexp">//</span>registry.<span class="built_in">npm</span>.taobao.org --disturl=<span class="attribute">https</span>:<span class="regexp">//</span><span class="built_in">npm</span>.taobao.org<span class="regexp">/dist --sass-binary-site=http:/</span>/<span class="built_in">npm</span>.taobao.org/mirrors/node-sass
+</code></pre>
+		<div class="reward">
+		  <div class="reward-button">
+			赏
+			<span class="reward-code">
+			  <span class="alipay-code">
+			    <img class="alipay-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/alipay.png">
+			    <b>支付宝扫码打赏</b>
+			  </span>
+			  <span class="wechat-code">
+			    <img class="wechat-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/wxpay.png">
+			    <b>微信打赏</b>
+			  </span>
+			</span>
+		  </div>
+		  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+		</div>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2016/01/04/npm-error/" data-id="cjofs86gs000uageiqnclgmbl" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2016/01/04/npm-error/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-com-telerik-plugins-nativepagetransitions" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/29/com-telerik-plugins-nativepagetransitions/" class="article-date">
@@ -287,7 +417,7 @@ $state.go(<span class="string">'view'</span>, {movieid: id});
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/29/com-telerik-plugins-nativepagetransitions/" data-id="ciwxlcwuh0030x4eidxvwpxph" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/29/com-telerik-plugins-nativepagetransitions/" data-id="cjofs86kw0031agei7ekv7mwo" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -417,7 +547,7 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/28/sass-official-website/" data-id="ciwxlcwqo000ix4eifpihfr2c" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/28/sass-official-website/" data-id="cjofs86ga000jageiwfqlwk0b" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -648,7 +778,7 @@ npm config <span class="keyword">set</span> <span class="keyword">registry</span
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/" data-id="ciwxlcwq8000ax4eiimfwrvnb" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/27/sass-script-advanced/" data-id="cjofs86f0000bagei7993r7oh" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -970,7 +1100,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/12/24/sass-script-advance/" data-id="ciwxlcwqe000fx4eiuafhdsvb" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/12/24/sass-script-advance/" data-id="cjofs86g7000gageib4p5blx1" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1079,7 +1209,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugin-splashscreen/" data-id="ciwxlcwu1002ux4eiwfdnt8dc" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugin-splashscreen/" data-id="cjofs86km002vageihs6oeedz" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1144,7 +1274,7 @@ body{
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugins-list/" data-id="ciwxlcwtr002rx4ei8fe67eeu" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/cordova-plugins-list/" data-id="cjofs86k8002sageiaz2et1y7" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1234,7 +1364,7 @@ $ jarsigner -verbose -sigalg SHA1withRSA -digestalg <span class="keyword">SHA1</
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/11/20/ionic-android-package/" data-id="ciwxlcwsr0020x4ei2qkauq3y" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/11/20/ionic-android-package/" data-id="cjofs86ir0021ageicgoyekwz" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1345,7 +1475,7 @@ app.directive(<span class="string">'hideTabs'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/10/24/ionic-hidetabs/" data-id="ciwxlcwsa001px4ei02t1r4lf" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/10/24/ionic-hidetabs/" data-id="cjofs86ic001qageidhvse6xs" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1434,7 +1564,7 @@ Error: cmd: Command failed with exit code 2
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/09/09/cordova-build-android/" data-id="ciwxlcwu9002xx4eil2muf4xz" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/09/09/cordova-build-android/" data-id="cjofs86kp002yageimdd3td8i" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1443,116 +1573,6 @@ Error: cmd: Command failed with exit code 2
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cordova/">cordova</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-install-jenkins" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/28/linux-install-jenkins/" class="article-date">
-  <time datetime="2015-08-28T12:16:42.000Z" itemprop="datePublished">2015-08-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/jenkins/">jenkins</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/28/linux-install-jenkins/">Jenkins安装与配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1 <a href="&#39;http://files.cnblogs.com/files/zz0412/jenkins%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C.pdf&#39;">Jenkins入门系列之——03PDF文档下载</a></p>
-<p>2 Jenkins安装<br>在最简单的情况下，Jenkins 只需要两个步骤： </p>
-<p>1.下载最新的版本（一个 WAR 文件）。Jenkins官方网址: <a href="http://Jenkins-ci.org/" target="_blank" rel="external">http://Jenkins-ci.org/</a></p>
-<p>2.运行 java -jar jenkins.war</p>
-<p>注意：Jenkins 需要运行 Java 5以及以上的版本。</p>
-<p>还有一种安装方式就是将下载的war包文件部署到 servlet 容器，然后启动容器，在浏览器的URL地址栏中输入类似<a href="http://localhost:8080/jenkins/这样的地址即可。下图是安装成功后的界面（使用的是Linux+Tomcat6+Java6环境）：" target="_blank" rel="external">http://localhost:8080/jenkins/这样的地址即可。下图是安装成功后的界面（使用的是Linux+Tomcat6+Java6环境）：</a></p>
-<p><img src="/img/linux/install-jenkins01.png" alt="图1 Jenkins主界面"></p>
-<p>3 Jenkins配置</p>
-<p>写在配置前的一些话：Jenkins的配置不可能全部都说到的，大部分配置是有英文说明的，点击输入框后面的问号就可以看见了。英文不会用翻译工具，连蒙带猜的，多测试几次，你就懂了。</p>
-<p>3.1 系统管理</p>
-<p>在已运行的Jenkins主页中，点击左侧的系统管理进入如下界面：<br><img src="/img/linux/install-jenkins02.png" alt="图2 Jenkins系统管理"></p>
-<p>3.1.1 提示信息</p>
-<p>Ps：版本不同提示的消息有可能不同</p>
-<p>3.1.1.1 Utf-8编码</p>
-<p>Your container doesn’t use UTF-8 to decode URLs. If you use non-ASCII characters as a job name etc, this will cause problems. See Containers and Tomcat i18n for more details.</p>
-<p>Jenkins建议在tomcat中使用utf-8编码，配置tomcat下conf目录的server.xml文件</p>
-<p><img src="/img/linux/install-jenkins03.png" alt="图3 URIEncoding编码设置"></p>
-<p>Ps：如果Job的控制台中文输出乱码，请将URIEncoding=”utf-8”更改为useBodyEncodingForURI=”true”</p>
-<p>3.1.1.2 新的版本</p>
-<p>New version of Jenkins (1.518.JENKINS-14362-jzlib) is available for download (changelog).</p>
-<p>提示有新的版本可以下载了,喜欢更新的点击download去下载吧！</p>
-<p>3.1.1.3 安全设置</p>
-<p><img src="/img/linux/install-jenkins04.png" alt="图4 安全提示消息"></p>
-<p>詹金斯允许网络上的任何人代表您启动进程。考虑至少启用身份验证来阻止滥用。点击Dismiss忽略该消息,点击Setup Security进入设置界面.详细设置请参考 Configure Global Security(安全设置) 章节</p>
-<p>3.1.2 系统设置</p>
-<p>在已运行的Jenkins主页中，点击左侧的系统管理—&gt;系统设置进入如下界面：<br><img src="/img/linux/install-jenkins05.png" alt="图5 系统设置界面"></p>
-<p>3.1.2.1 JDK、Maven、Ant配置<br>配置一个JDK、Ant、Maven实例，请在每一节下面单击Add(新增) 按钮，这里将添加实例的名称和绝对地址。下图描述了这两个部分。<br><img src="/img/linux/install-jenkins06.png" alt="图6 JDK配置界面"></p>
-<p>JDK别名：给你看的，随便你自己，叫阿猫阿狗都可以</p>
-<p>JAVA_HOME：这个是本机JDK的安装路径（错误的路径会有红字提示你的）</p>
-<p>自动安装：不推荐这个选项</p>
-<p>后面Ant与Maven的配置是一样的，JDK去oracle官网下载，Ant与Maven去apache官网下载</p>
-<p>Ps：每个文本框后面都有个问号，点击问号就会出现帮助信息</p>
-<p>3.1.2.2 邮件通知配置</p>
-<p>3.1.2.2.1 配置发件人地址<br><img src="/img/linux/install-jenkins07.png" alt="图7 发件人地址配置界面"></p>
-<p>System Admin e-mail address：Jenkins邮件发送地址，如果你这个没有配置，等着发邮件的时候报错吧，当时我也是这儿没有配置，郁闷了我一周的时间。⊙﹏⊙b汗 </p>
-<p>3.1.2.2.2 配置邮件通知<br><img src="/img/linux/install-jenkins08.png" alt="图8 邮件通知"></p>
-<p>这个就非常的简单了，根据的的邮箱提供者的参数配置就行了。</p>
-<p>Ps：小技巧：用户默认邮件后缀配置了后，以后你填写邮件地址只需要@之前的就行了</p>
-<p>3.1.2.3 Subversion配置<br><img src="/img/linux/install-jenkins09.png" alt="图9 Subversion配置"></p>
-<p>Subversion Workspace Version：Subversion 的版本号，选择你对应的版本号就行了</p>
-<p>3.1.3 Configure Global Security(安全设置)</p>
-<p>在已运行的Jenkins主页中，点击左侧的系统管理—&gt;Configure Global Security进入如下界面：<br><img src="/img/linux/install-jenkins10.png" alt="图10 安全设置界面"></p>
-<p>设置如上图，保存后系统管理中就出现管理用户的选项。页面右上角也会出现登录/注册的选项。</p>
-<p>3.1.4 管理用户设置</p>
-<p>在右上角点击注册<br><img src="/img/linux/install-jenkins11.png" alt="图11 注册用户界面"></p>
-<p><img src="/img/linux/install-jenkins12.png" alt=""><br><img src="/img/linux/install-jenkins13.png" alt=""><br><img src="/img/linux/install-jenkins14.png" alt=""><br><img src="/img/linux/install-jenkins15.png" alt=""><br><img src="/img/linux/install-jenkins16.png" alt=""><br><img src="/img/linux/install-jenkins17.png" alt=""><br><img src="/img/linux/install-jenkins18.jpg" alt=""><br><img src="/img/linux/install-jenkins19.png" alt=""><br><img src="/img/linux/install-jenkins20.png" alt=""><br><img src="/img/linux/install-jenkins21.png" alt=""><br><img src="/img/linux/install-jenkins22.png" alt=""><br><img src="/img/linux/install-jenkins23.png" alt=""><br><img src="/img/linux/install-jenkins24.png" alt=""><br><img src="/img/linux/install-jenkins25.png" alt=""><br><img src="/img/linux/install-jenkins26.png" alt=""><br><img src="/img/linux/install-jenkins27.png" alt=""><br><img src="/img/linux/install-jenkins28.png" alt=""><br><img src="/img/linux/install-jenkins29.png" alt=""><br><img src="/img/linux/install-jenkins30.jpg" alt=""><br><img src="/img/linux/install-jenkins31.jpg" alt=""><br><img src="/img/linux/install-jenkins32.png" alt=""><br><img src="/img/linux/install-jenkins33.png" alt=""><br><img src="/img/linux/install-jenkins34.png" alt=""><br><img src="/img/linux/install-jenkins35.png" alt=""><br><img src="/img/linux/install-jenkins36.jpg" alt=""><br><img src="/img/linux/install-jenkins37.png" alt=""><br><img src="/img/linux/install-jenkins38.png" alt=""></p>
-
-		<div class="reward">
-		  <div class="reward-button">
-			赏
-			<span class="reward-code">
-			  <span class="alipay-code">
-			    <img class="alipay-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/alipay.png">
-			    <b>支付宝扫码打赏</b>
-			  </span>
-			  <span class="wechat-code">
-			    <img class="wechat-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/wxpay.png">
-			    <b>微信打赏</b>
-			  </span>
-			</span>
-		  </div>
-		  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
-		</div>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/" data-id="ciwxlcwrh0018x4ei867i6oot" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
 
     </footer>
   </div>
@@ -1601,7 +1621,7 @@ Error: cmd: Command failed with exit code 2
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1611,6 +1631,10 @@ Error: cmd: Command failed with exit code 2
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/11/13/新币种7CCOIN介绍/">新币种7CCOIN介绍</a>
+          </li>
         
           <li>
             <a href="/2016/10/27/wordpress-avatar/">wordpress显示头像</a>
@@ -1626,10 +1650,6 @@ Error: cmd: Command failed with exit code 2
         
           <li>
             <a href="/2016/04/17/css-oocss-1/">面向对象的CSS（一）</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/10/bower-create-the-bowerrc-file/">How-do-i-name-the-.bowerrc-file</a>
           </li>
         
       </ul>
@@ -1663,7 +1683,7 @@ Error: cmd: Command failed with exit code 2
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 JiangangLu<br>
+      &copy; 2018 JiangangLu<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
