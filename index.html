@@ -85,6 +85,80 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-lint-vue-files-with-stylelint" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/05/lint-vue-files-with-stylelint/" class="article-date">
+  <time datetime="2019-03-05T13:40:15.000Z" itemprop="datePublished">2019-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/stylelint/">stylelint</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/05/lint-vue-files-with-stylelint/">lint-vue-files-with-stylelint</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>For the record, this is working configuration for webpack:</p>
+<p>1.Install:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="tag">i</span> --save-dev stylelint stylelint-processor-<span class="tag">html</span> stylelint-config-standard stylelint-webpack-plugin</span><br></pre></td></tr></table></figure>
+<p>2.Create <code>.stylelintrc<code></code></code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> "<span class="attribute">processors</span>": <span class="value">[<span class="string">"stylelint-processor-html"</span>]</span>,</span><br><span class="line"> "<span class="attribute">extends</span>": <span class="value"><span class="string">"stylelint-config-standard"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>3.Load stylelint-webpack-plugin (in <code>build/webpack.base.conf.js</code> for Vue webpack template)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="keyword">var</span> StylelintPlugin = <span class="built_in">require</span>(<span class="string">'stylelint-webpack-plugin'</span>)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    <span class="keyword">new</span> StylelintPlugin(&#123;</span><br><span class="line">      files: [<span class="string">'**/*.vue'</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Add lint:css to package.json</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"lint:css"</span>: <span class="string">"stylelint '**/*.vue' --syntax scss"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h1 id="参考">参考</h1><p><a href="https://github.com/vuejs/vue-loader/issues/303" target="_blank" rel="external">vue-loader</a></p>
+
+		<div class="reward">
+		  <div class="reward-button">
+			赏
+			<span class="reward-code">
+			  <span class="alipay-code">
+			    <img class="alipay-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/alipay.png">
+			    <b>支付宝扫码打赏</b>
+			  </span>
+			  <span class="wechat-code">
+			    <img class="wechat-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/wxpay.png">
+			    <b>微信打赏</b>
+			  </span>
+			</span>
+		  </div>
+		  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+		</div>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2019/03/05/lint-vue-files-with-stylelint/" data-id="cjsvu3hz8001dy8eiagr4aefs" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2019/03/05/lint-vue-files-with-stylelint/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stylelint/">stylelint</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-wordpress-avatar" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/27/wordpress-avatar/" class="article-date">
@@ -161,7 +235,7 @@ add_filter(<span class="string">'get_avatar'</span>, <span class="string">'my_av
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/10/27/wordpress-avatar/" data-id="cjok37o3a0007hkeiwpu0i2jd" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/10/27/wordpress-avatar/" data-id="cjsvu3hvc0007y8ei4x8vhrxd" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -227,7 +301,7 @@ add_filter(<span class="string">'get_avatar'</span>, <span class="string">'my_av
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/10/27/wordpress-send-email/" data-id="cjok37o0c0002hkei5kvxo0al" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/10/27/wordpress-send-email/" data-id="cjsvu3hdz0002y8ei211jy8pf" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -338,7 +412,7 @@ add_filter(<span class="string">'get_avatar'</span>, <span class="string">'my_av
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/05/26/css-z-index/" data-id="cjok37o9q002ghkei7c4ki8ib" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/05/26/css-z-index/" data-id="cjsvu3i0o002ly8eirjd5j80t" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -516,7 +590,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/04/17/css-oocss-1/" data-id="cjok37obi002ohkei4slxycmo" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/04/17/css-oocss-1/" data-id="cjsvu3i12002ty8eipzk0gx23" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -589,7 +663,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/" data-id="cjok37odg0033hkeih563k148" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/04/10/bower-create-the-bowerrc-file/" data-id="cjsvu3i1x0038y8ei8rdxznli" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -665,7 +739,7 @@ h2, <span class="built_in">.</span>h2 {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/25/maven-install/" data-id="cjok37o60000yhkeirksf9mn3" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/25/maven-install/" data-id="cjsvu3hyu000yy8eiyk0d8o4y" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -742,7 +816,7 @@ java HelloWorld
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/24/java-environment-setup/" data-id="cjok37o7u001khkeihf5edbm8" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/24/java-environment-setup/" data-id="cjsvu3hzn001py8eia9w58j7k" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -971,7 +1045,7 @@ java HelloWorld
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/23/css-oocss/" data-id="cjok37oa3002lhkeim41w0xrm" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/23/css-oocss/" data-id="cjsvu3i0x002qy8eiox5aknxg" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1143,7 +1217,7 @@ compass <span class="keyword">create</span> learn-compass-init</span>
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2016/01/04/sass-install/" data-id="cjok37o5g000lhkeipd5w2g8q" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2016/01/04/sass-install/" data-id="cjsvu3hyf000ly8eihe50fwvx" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1152,136 +1226,6 @@ compass <span class="keyword">create</span> learn-compass-init</span>
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-npm-error" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/01/04/npm-error/" class="article-date">
-  <time datetime="2016-01-04T13:58:18.000Z" itemprop="datePublished">2016-01-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/npm/">npm</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/04/npm-error/">npm-error</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>node-sass安装失败</p>
-<pre><code>Building: E:<span class="command">\nodejs</span><span class="command">\node</span>.exe C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\bin</span><span class="command">\node</span>-gyp.js rebuild --verbose --libsass_ext= --libsass_cflags= --libsass_ldflags= --libsass_library=
-gyp info it worked if it ends with ok
-gyp verb cli <span class="special">[</span> 'E:<span class="command">\\</span>nodejs<span class="command">\\</span>node.exe',
-gyp verb cli 'C:<span class="command">\\</span>Users<span class="command">\\</span>Administrator<span class="command">\\</span>Desktop<span class="command">\\</span>webpack<span class="command">\\</span>node_modules<span class="command">\\</span>node-sass<span class="command">\\</span>node_modules<span class="command">\\</span>node-gyp<span class="command">\\</span>bin<span class="command">\\</span>node-gyp.js',
-gyp verb cli 'rebuild',
-gyp verb cli '--verbose',
-gyp verb cli '--libsass_ext=',
-gyp verb cli '--libsass_cflags=',
-gyp verb cli '--libsass_ldflags=',
-gyp verb cli '--libsass_library=' <span class="special">]</span>
-gyp info using node-gyp@3.2.1
-gyp info using node@4.1.2 | win32 | x64
-gyp verb command rebuild <span class="special">[</span><span class="special">]</span>
-gyp verb command clean <span class="special">[</span><span class="special">]</span>
-gyp verb clean removing "build" directory
-gyp verb command configure <span class="special">[</span><span class="special">]</span>
-gyp verb check python checking for Python executable "python2.7" in the PATH
-gyp verb which failed Error: not found: python2.7
-gyp verb which failed at F (C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\node</span>_modules<span class="command">\which</span><span class="command">\which</span>.js:78:19)
-gyp verb which failed at E (C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\node</span>_modules<span class="command">\which</span><span class="command">\which</span>.js:82:29)
-gyp verb which failed at C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\node</span>_modules<span class="command">\which</span><span class="command">\which</span>.js:93:16
-gyp verb which failed at FSReqWrap.oncomplete (fs.js:82:15)
-gyp verb which failed python2.7 <span class="special">[</span>Error: not found: python2.7<span class="special">]</span>
-gyp verb could not find "python2.7". guessing location
-gyp verb ensuring that file exists: C:<span class="command">\Python</span>27<span class="command">\python</span>.exe
-gyp ERR! configure error
-gyp ERR! stack Error: Can't find Python executable "python2.7", you can set the PYTHON env variable.
-gyp ERR! stack at failNoPython (C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\lib</span><span class="command">\configure</span>.js:401:14)
-gyp ERR! stack at C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass<span class="command">\node</span>_modules<span class="command">\node</span>-gyp<span class="command">\lib</span><span class="command">\configure</span>.js:356:11
-gyp ERR! stack at FSReqWrap.oncomplete (fs.js:82:15)
-gyp ERR! System Windows_NT 6.1.7601
-gyp ERR! command "E:<span class="command">\\</span>nodejs<span class="command">\\</span>node.exe" "C:<span class="command">\\</span>Users<span class="command">\\</span>Administrator<span class="command">\\</span>Desktop<span class="command">\\</span>webpack<span class="command">\\</span>node_modules<span class="command">\\</span>node-sass<span class="command">\\</span>node_modules<span class="command">\\</span>node-gyp<span class="command">\\</span>bin<span class="command">\\</span>node-gyp.js" "rebuild" "--verbose" "--libsass_ext=" "--libsass_cflags=" "--libsass_ldflags=" "--libsass_library="
-gyp ERR! cwd C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\node</span>-sass
-gyp ERR! node -v v4.1.2
-gyp ERR! node-gyp -v v3.2.1
-gyp ERR! not ok
-Build failed
-npm ERR! Windows_NT 6.1.7601
-npm ERR! argv "E:<span class="command">\\</span>nodejs<span class="command">\\</span>node.exe" "E:<span class="command">\\</span>nodejs<span class="command">\\</span>node_modules<span class="command">\\</span>npm<span class="command">\\</span>bin<span class="command">\\</span>npm-cli.js" "install" "sass-loader" "--save-dev"
-npm ERR! node v4.1.2
-npm ERR! npm v2.14.4
-npm ERR! code ELIFECYCLE
-
-npm ERR! node-sass@3.4.2 postinstall: node scripts/build.js
-npm ERR! Exit status 1
-npm ERR!
-npm ERR! Failed at the node-sass@3.4.2 postinstall script 'node scripts/build.js'.
-npm ERR! This is most likely a problem with the node-sass package,
-npm ERR! not with npm itself.
-npm ERR! Tell the author that this fails on your system:
-npm ERR! node scripts/build.js
-npm ERR! You can get their info via:
-npm ERR! npm owner ls node-sass
-npm ERR! There is likely additional logging output above.
-
-npm ERR! Please include the following file with any support request:
-npm ERR! C:<span class="command">\Users</span><span class="command">\Administrator</span><span class="command">\Desktop</span><span class="command">\webpack</span><span class="command">\node</span>_modules<span class="command">\npm</span>-debug.log
-</code></pre><p>解决办法：</p>
-<pre><code><span class="built_in">npm</span> uninstall node-sass
-<span class="built_in">npm</span> install node-sass<span class="property">@latest</span>
-
-<span class="built_in">npm</span> uninstall gulp-sass
-<span class="built_in">npm</span> install gulp-sass<span class="property">@latest</span>
-
-<span class="built_in">npm</span> install --save node-sass --registry=<span class="attribute">https</span>:<span class="regexp">//</span>registry.<span class="built_in">npm</span>.taobao.org --disturl=<span class="attribute">https</span>:<span class="regexp">//</span><span class="built_in">npm</span>.taobao.org<span class="regexp">/dist --sass-binary-site=http:/</span>/<span class="built_in">npm</span>.taobao.org/mirrors/node-sass
-</code></pre>
-		<div class="reward">
-		  <div class="reward-button">
-			赏
-			<span class="reward-code">
-			  <span class="alipay-code">
-			    <img class="alipay-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/alipay.png">
-			    <b>支付宝扫码打赏</b>
-			  </span>
-			  <span class="wechat-code">
-			    <img class="wechat-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/wxpay.png">
-			    <b>微信打赏</b>
-			  </span>
-			</span>
-		  </div>
-		  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
-		</div>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://jianganglu.github.io/2016/01/04/npm-error/" data-id="cjok37o5v000thkeiqdre3w1l" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://jianganglu.github.io/2016/01/04/npm-error/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
 
     </footer>
   </div>
@@ -1303,7 +1247,7 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/stylelint/">stylelint</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1312,7 +1256,7 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stylelint/">stylelint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1321,7 +1265,7 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 17.5px;">sass</a> <a href="/tags/wordpress/" style="font-size: 12.5px;">wordpress</a>
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 17.5px;">sass</a> <a href="/tags/stylelint/" style="font-size: 10px;">stylelint</a> <a href="/tags/wordpress/" style="font-size: 12.5px;">wordpress</a>
     </div>
   </div>
 
@@ -1330,7 +1274,7 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1340,6 +1284,10 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/03/05/lint-vue-files-with-stylelint/">lint-vue-files-with-stylelint</a>
+          </li>
         
           <li>
             <a href="/2016/10/27/wordpress-avatar/">wordpress显示头像</a>
@@ -1355,10 +1303,6 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
         
           <li>
             <a href="/2016/04/17/css-oocss-1/">面向对象的CSS（一）</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/10/bower-create-the-bowerrc-file/">How-do-i-name-the-.bowerrc-file</a>
           </li>
         
       </ul>
@@ -1392,7 +1336,7 @@ npm ERR! C:<span class="command">\Users</span><span class="command">\Administrat
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 JiangangLu<br>
+      &copy; 2019 JiangangLu<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>

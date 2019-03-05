@@ -85,6 +85,116 @@ var _hmt = _hmt || [];
     <div class="outer">
       <section id="main">
   
+    <article id="post-linux-install-jenkins" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/28/linux-install-jenkins/" class="article-date">
+  <time datetime="2015-08-28T12:16:42.000Z" itemprop="datePublished">2015-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/jenkins/">jenkins</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/28/linux-install-jenkins/">Jenkins安装与配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1 <a href="&#39;http://files.cnblogs.com/files/zz0412/jenkins%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C.pdf&#39;">Jenkins入门系列之——03PDF文档下载</a></p>
+<p>2 Jenkins安装<br>在最简单的情况下，Jenkins 只需要两个步骤： </p>
+<p>1.下载最新的版本（一个 WAR 文件）。Jenkins官方网址: <a href="http://Jenkins-ci.org/" target="_blank" rel="external">http://Jenkins-ci.org/</a></p>
+<p>2.运行 java -jar jenkins.war</p>
+<p>注意：Jenkins 需要运行 Java 5以及以上的版本。</p>
+<p>还有一种安装方式就是将下载的war包文件部署到 servlet 容器，然后启动容器，在浏览器的URL地址栏中输入类似<a href="http://localhost:8080/jenkins/这样的地址即可。下图是安装成功后的界面（使用的是Linux+Tomcat6+Java6环境）：" target="_blank" rel="external">http://localhost:8080/jenkins/这样的地址即可。下图是安装成功后的界面（使用的是Linux+Tomcat6+Java6环境）：</a></p>
+<p><img src="/img/linux/install-jenkins01.png" alt="图1 Jenkins主界面"></p>
+<p>3 Jenkins配置</p>
+<p>写在配置前的一些话：Jenkins的配置不可能全部都说到的，大部分配置是有英文说明的，点击输入框后面的问号就可以看见了。英文不会用翻译工具，连蒙带猜的，多测试几次，你就懂了。</p>
+<p>3.1 系统管理</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理进入如下界面：<br><img src="/img/linux/install-jenkins02.png" alt="图2 Jenkins系统管理"></p>
+<p>3.1.1 提示信息</p>
+<p>Ps：版本不同提示的消息有可能不同</p>
+<p>3.1.1.1 Utf-8编码</p>
+<p>Your container doesn’t use UTF-8 to decode URLs. If you use non-ASCII characters as a job name etc, this will cause problems. See Containers and Tomcat i18n for more details.</p>
+<p>Jenkins建议在tomcat中使用utf-8编码，配置tomcat下conf目录的server.xml文件</p>
+<p><img src="/img/linux/install-jenkins03.png" alt="图3 URIEncoding编码设置"></p>
+<p>Ps：如果Job的控制台中文输出乱码，请将URIEncoding=”utf-8”更改为useBodyEncodingForURI=”true”</p>
+<p>3.1.1.2 新的版本</p>
+<p>New version of Jenkins (1.518.JENKINS-14362-jzlib) is available for download (changelog).</p>
+<p>提示有新的版本可以下载了,喜欢更新的点击download去下载吧！</p>
+<p>3.1.1.3 安全设置</p>
+<p><img src="/img/linux/install-jenkins04.png" alt="图4 安全提示消息"></p>
+<p>詹金斯允许网络上的任何人代表您启动进程。考虑至少启用身份验证来阻止滥用。点击Dismiss忽略该消息,点击Setup Security进入设置界面.详细设置请参考 Configure Global Security(安全设置) 章节</p>
+<p>3.1.2 系统设置</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理—&gt;系统设置进入如下界面：<br><img src="/img/linux/install-jenkins05.png" alt="图5 系统设置界面"></p>
+<p>3.1.2.1 JDK、Maven、Ant配置<br>配置一个JDK、Ant、Maven实例，请在每一节下面单击Add(新增) 按钮，这里将添加实例的名称和绝对地址。下图描述了这两个部分。<br><img src="/img/linux/install-jenkins06.png" alt="图6 JDK配置界面"></p>
+<p>JDK别名：给你看的，随便你自己，叫阿猫阿狗都可以</p>
+<p>JAVA_HOME：这个是本机JDK的安装路径（错误的路径会有红字提示你的）</p>
+<p>自动安装：不推荐这个选项</p>
+<p>后面Ant与Maven的配置是一样的，JDK去oracle官网下载，Ant与Maven去apache官网下载</p>
+<p>Ps：每个文本框后面都有个问号，点击问号就会出现帮助信息</p>
+<p>3.1.2.2 邮件通知配置</p>
+<p>3.1.2.2.1 配置发件人地址<br><img src="/img/linux/install-jenkins07.png" alt="图7 发件人地址配置界面"></p>
+<p>System Admin e-mail address：Jenkins邮件发送地址，如果你这个没有配置，等着发邮件的时候报错吧，当时我也是这儿没有配置，郁闷了我一周的时间。⊙﹏⊙b汗 </p>
+<p>3.1.2.2.2 配置邮件通知<br><img src="/img/linux/install-jenkins08.png" alt="图8 邮件通知"></p>
+<p>这个就非常的简单了，根据的的邮箱提供者的参数配置就行了。</p>
+<p>Ps：小技巧：用户默认邮件后缀配置了后，以后你填写邮件地址只需要@之前的就行了</p>
+<p>3.1.2.3 Subversion配置<br><img src="/img/linux/install-jenkins09.png" alt="图9 Subversion配置"></p>
+<p>Subversion Workspace Version：Subversion 的版本号，选择你对应的版本号就行了</p>
+<p>3.1.3 Configure Global Security(安全设置)</p>
+<p>在已运行的Jenkins主页中，点击左侧的系统管理—&gt;Configure Global Security进入如下界面：<br><img src="/img/linux/install-jenkins10.png" alt="图10 安全设置界面"></p>
+<p>设置如上图，保存后系统管理中就出现管理用户的选项。页面右上角也会出现登录/注册的选项。</p>
+<p>3.1.4 管理用户设置</p>
+<p>在右上角点击注册<br><img src="/img/linux/install-jenkins11.png" alt="图11 注册用户界面"></p>
+<p><img src="/img/linux/install-jenkins12.png" alt=""><br><img src="/img/linux/install-jenkins13.png" alt=""><br><img src="/img/linux/install-jenkins14.png" alt=""><br><img src="/img/linux/install-jenkins15.png" alt=""><br><img src="/img/linux/install-jenkins16.png" alt=""><br><img src="/img/linux/install-jenkins17.png" alt=""><br><img src="/img/linux/install-jenkins18.jpg" alt=""><br><img src="/img/linux/install-jenkins19.png" alt=""><br><img src="/img/linux/install-jenkins20.png" alt=""><br><img src="/img/linux/install-jenkins21.png" alt=""><br><img src="/img/linux/install-jenkins22.png" alt=""><br><img src="/img/linux/install-jenkins23.png" alt=""><br><img src="/img/linux/install-jenkins24.png" alt=""><br><img src="/img/linux/install-jenkins25.png" alt=""><br><img src="/img/linux/install-jenkins26.png" alt=""><br><img src="/img/linux/install-jenkins27.png" alt=""><br><img src="/img/linux/install-jenkins28.png" alt=""><br><img src="/img/linux/install-jenkins29.png" alt=""><br><img src="/img/linux/install-jenkins30.jpg" alt=""><br><img src="/img/linux/install-jenkins31.jpg" alt=""><br><img src="/img/linux/install-jenkins32.png" alt=""><br><img src="/img/linux/install-jenkins33.png" alt=""><br><img src="/img/linux/install-jenkins34.png" alt=""><br><img src="/img/linux/install-jenkins35.png" alt=""><br><img src="/img/linux/install-jenkins36.jpg" alt=""><br><img src="/img/linux/install-jenkins37.png" alt=""><br><img src="/img/linux/install-jenkins38.png" alt=""></p>
+
+		<div class="reward">
+		  <div class="reward-button">
+			赏
+			<span class="reward-code">
+			  <span class="alipay-code">
+			    <img class="alipay-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/alipay.png">
+			    <b>支付宝扫码打赏</b>
+			  </span>
+			  <span class="wechat-code">
+			    <img class="wechat-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/wxpay.png">
+			    <b>微信打赏</b>
+			  </span>
+			</span>
+		  </div>
+		  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
+		</div>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/" data-id="cjsvu3hz40018y8ei8esvzqtg" class="article-share-link" data-share="baidu">分享到</a>
+      
+
+      
+        <a href="http://jianganglu.github.io/2015/08/28/linux-install-jenkins/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jenkins/">jenkins</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-git-ssh" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/08/28/git-ssh/" class="article-date">
@@ -155,7 +265,7 @@ ssh-<span class="built_ins">add</span> id_rsa
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/08/28/git-ssh/" data-id="cjok37o9k0029hkeiuf0im6jm" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/08/28/git-ssh/" data-id="cjsvu3i0g002ey8eiob8f6dgd" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -231,7 +341,7 @@ npm <span class="keyword">info</span> underscore （如果上面配置正确这�
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/08/19/npm-install/" data-id="cjok37o5l000ohkeiu8i51n4z" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/08/19/npm-install/" data-id="cjsvu3hyj000oy8ei4rguutf9" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -420,7 +530,7 @@ gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/08/12/ionic-cors/" data-id="cjok37o8f001uhkeieu9jwg9m" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/08/12/ionic-cors/" data-id="cjsvu3hzz001zy8eivcquiphr" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -533,7 +643,7 @@ gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/http-status-code/" data-id="cjok37o950025hkeiqz8nry38" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/http-status-code/" data-id="cjsvu3i0a002ay8ei5w61b3rv" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -630,7 +740,7 @@ gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/README/" data-id="cjok37oej003ihkeiplo4vbc1" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/README/" data-id="cjsvu3i2d003ny8ein56gsi4q" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -797,7 +907,7 @@ gulp.task(<span class="string">'remove-proxy'</span>, <span class="function"><sp
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/19/javascript-splice/" data-id="cjok37o6w001dhkeiho8mvoh4" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/19/javascript-splice/" data-id="cjsvu3hzc001iy8ei9p4fg1ek" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -891,7 +1001,7 @@ $ ionic resources <span class="comment">--splash</span>
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/" data-id="cjok37o8p001xhkei2hc5hzv7" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/14/ionic-automating-icons-and-splash-screens/" data-id="cjsvu3i030022y8ei2oze4jqt" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1043,7 +1153,7 @@ function myDirective() {
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/13/angular-directive/" data-id="cjok37odz003dhkei95kouje2" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/13/angular-directive/" data-id="cjsvu3i27003iy8ei4blgp5de" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1178,7 +1288,7 @@ $<span class="params">(<span class="string">"#AnchorContentToggle"</span>)</span
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://jianganglu.github.io/2015/06/03/markdown-catelog/" data-id="cjok37o6c0013hkeij7rc5c00" class="article-share-link" data-share="baidu">分享到</a>
+        <a data-url="http://jianganglu.github.io/2015/06/03/markdown-catelog/" data-id="cjsvu3hyz0013y8eimj3hxlvy" class="article-share-link" data-share="baidu">分享到</a>
       
 
       
@@ -1187,416 +1297,6 @@ $<span class="params">(<span class="string">"#AnchorContentToggle"</span>)</span
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-blog-with-hexo" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/05/25/blog-with-hexo/" class="article-date">
-  <time datetime="2015-05-25T13:02:12.000Z" itemprop="datePublished">2015-05-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/25/blog-with-hexo/">使用Hexo搭建博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是一篇个人总结，不适合用作入门教程；<br>需要更详细的资料请<a href="http://www.baidu.com" target="_blank" rel="external">点击这里</a></p>
-<h1 id="安装">安装</h1><p>系统环境 win8.1 64bit</p>
-<p>文本编辑器推荐使用<a href="http://www.sublimetext.com/" title="Sublime Text" target="_blank" rel="external">Sublime Text</a>;<br>Hexo的文件编码格式为 UTF-8</p>
-<h1 id="Git">Git</h1><p>安装 <a href="https://windows.github.com/" title="GitHub for Windows" target="_blank" rel="external">GitHub for Windows</a>,<br>登录后会自动在本地配置好 SSH,执行 git shell时也不需要-config用户名和邮箱</p>
-<p>新建仓库，Github Pages 的仓库名必须为your_user_name.github.io</p>
-<p>配置 SSH，参考 <a href="https://help.github.com/articles/generating-ssh-keys/" title="SSH配置教程" target="_blank" rel="external">SSH配置教程</a></p>
-<h1 id="Node-js">Node.js</h1><p>安装 <a href="https://nodejs.org/" title="Node.js" target="_blank" rel="external">Node.js</a>, Node 安装包里带有npm</p>
-<h1 id="Hexo">Hexo</h1><p>安装 Hexo</p>
-<pre><code>npm <span class="keyword">install</span> -g hexo
-</code></pre><p>查看 Node 版本</p>
-<pre><code><span class="title">node</span> -v
-</code></pre><p>查看 Hexo 版本</p>
-<pre><code>hexo <span class="property">version</span>
-</code></pre><p>创建项目</p>
-<pre><code><span class="title">hexo</span> init Hexo
-</code></pre><p>进入目录</p>
-<pre><code><span class="built_in">cd</span> Hexo
-</code></pre><p>也可以先进目录再初始化项目</p>
-<pre><code><span class="built_in">cd</span> Hexo
-hexo init
-</code></pre><p>安装依赖包</p>
-<pre><code>npm <span class="keyword">install</span>
-</code></pre><p>以后所有的命令都在该目录下进行</p>
-<p>启动服务</p>
-<pre><code>hexo <span class="keyword">server</span>
-</code></pre><p>用浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a> 或者 <a href="http://127.0.0.1:4000/" target="_blank" rel="external">http://127.0.0.1:4000/</a> 就能看到网页了<br>推荐使用现代化浏览器(Chrome)获得最佳效果</p>
-<p>按 Ctrl+C 停止本地预览</p>
-<h1 id="使用">使用</h1><h2 id="目录结构">目录结构</h2><pre><code>.
-├── .deploy       <span class="preprocessor">#需要部署的文件</span>
-├── node_modules  <span class="preprocessor">#Hexo插件</span>
-├── <span class="keyword">public</span>        <span class="preprocessor">#生成的静态网页文件</span>
-├── scaffolds     <span class="preprocessor">#模板</span>
-├── source        <span class="preprocessor">#博客正文和其他源文件，404、favicon、CNAME 都应该放在这里</span>
-|   ├── _drafts   <span class="preprocessor">#草稿</span>
-|   └── _posts    <span class="preprocessor">#文章</span>
-├── themes        <span class="preprocessor">#主题</span>
-├── _config.yml   <span class="preprocessor">#全局配置文件</span>
-└── <span class="keyword">package</span>.json
-</code></pre><h2 id="全局配置__config-yml">全局配置 _config.yml</h2><p>配置文件的冒号“:”后面有空格</p>
-<pre><code><span class="comment"># Hexo Configuration</span>
-<span class="comment">## Docs: http://hexo.io/docs/configuration.html</span>
-<span class="comment">## Source: https://github.com/hexojs/hexo/</span>
-<span class="comment"># Site #站点信息</span>
-<span class="symbol">title:</span> <span class="constant">JiangangLu</span><span class="string">'s Blog #标题
-subtitle: 做人不卖萌和咸鱼有什么区别 #副标题
-description: JiangangLu'</span>s blog <span class="comment">#站点描述，给搜索引擎看的</span>
-<span class="symbol">author:</span> jianganglu <span class="comment">#作者</span>
-<span class="symbol">email:</span>  <span class="comment">#电子邮箱</span>
-<span class="symbol">language:</span> zh-<span class="constant">CN</span> <span class="comment">#语言</span>
-<span class="comment"># URL #链接格式</span>
-<span class="symbol">url:</span> <span class="symbol">http:</span>/<span class="regexp">/jianganglu.github.io/</span> <span class="comment">#网址</span>
-<span class="symbol">root:</span> / <span class="comment">#根目录</span>
-<span class="symbol">permalink:</span> <span class="symbol">:year/</span><span class="symbol">:month/</span><span class="symbol">:day/</span><span class="symbol">:title/</span> <span class="comment">#文章的链接格式</span>
-<span class="symbol">tag_dir:</span> tags <span class="comment">#标签目录</span>
-<span class="symbol">archive_dir:</span> archives <span class="comment">#存档目录</span>
-<span class="symbol">category_dir:</span> categories <span class="comment">#分类目录</span>
-<span class="symbol">code_dir:</span> downloads/code
-<span class="symbol">permalink_defaults:</span>
-<span class="comment"># Directory #目录</span>
-<span class="symbol">source_dir:</span> source <span class="comment">#源文件目录</span>
-<span class="symbol">public_dir:</span> public <span class="comment">#生成的网页文件目录</span>
-<span class="comment"># Writing #写作</span>
-<span class="symbol">new_post_name:</span> <span class="symbol">:title</span>.md <span class="comment">#新文章标题</span>
-<span class="symbol">default_layout:</span> post <span class="comment">#默认的模板，包括 post、page、photo、draft（文章、页面、照片、草稿）</span>
-<span class="symbol">titlecase:</span> <span class="keyword">false</span> <span class="comment">#标题转换成大写</span>
-<span class="symbol">external_link:</span> <span class="keyword">true</span> <span class="comment">#在新选项卡中打开连接</span>
-<span class="symbol">filename_case:</span> <span class="number">0</span>
-<span class="symbol">render_drafts:</span> <span class="keyword">false</span>
-<span class="symbol">post_asset_folder:</span> <span class="keyword">false</span>
-<span class="symbol">relative_link:</span> <span class="keyword">false</span>
-<span class="symbol">highlight:</span> <span class="comment">#语法高亮</span>
-  <span class="symbol">enable:</span> <span class="keyword">true</span> <span class="comment">#是否启用</span>
-  <span class="symbol">line_number:</span> <span class="keyword">true</span> <span class="comment">#显示行号</span>
-  <span class="symbol">tab_replace:</span>
-<span class="comment"># Category &amp; Tag #分类和标签</span>
-<span class="symbol">default_category:</span> uncategorized <span class="comment">#默认分类</span>
-<span class="symbol">category_map:</span>
-<span class="symbol">tag_map:</span>
-<span class="comment"># Archives</span>
-<span class="number">2</span><span class="symbol">:</span> 开启分页
-<span class="number">1</span><span class="symbol">:</span> 禁用分页
-<span class="number">0</span><span class="symbol">:</span> 全部禁用
-<span class="symbol">archive:</span> <span class="number">2</span>
-<span class="symbol">category:</span> <span class="number">2</span>
-<span class="symbol">tag:</span> <span class="number">2</span>
-<span class="comment"># Server #本地服务器</span>
-<span class="symbol">port:</span> <span class="number">4000</span> <span class="comment">#端口号</span>
-<span class="symbol">server_ip:</span> localhost <span class="comment">#IP 地址</span>
-<span class="symbol">logger:</span> <span class="keyword">false</span>
-<span class="symbol">logger_format:</span> dev
-<span class="comment"># Date / Time format #日期时间格式</span>
-<span class="symbol">date_format:</span> <span class="constant">YYYY</span>-<span class="constant">MM</span>-<span class="constant">DD</span> <span class="comment">#参考http://momentjs.com/docs/#/displaying/format/</span>
-<span class="symbol">time_format:</span> <span class="constant">H</span><span class="symbol">:mm</span><span class="symbol">:ss</span>
-<span class="comment"># Pagination #分页</span>
-<span class="symbol">per_page:</span> <span class="number">10</span> <span class="comment">#每页文章数，设置成 0 禁用分页</span>
-<span class="symbol">pagination_dir:</span> page
-<span class="comment"># Disqus #Disqus评论，替换为多说</span>
-<span class="symbol">disqus_shortname:</span>
-<span class="comment"># Extensions #拓展插件</span>
-<span class="symbol">theme:</span> landscape-plus <span class="comment">#主题</span>
-<span class="symbol">exclude_generator:</span>
-<span class="symbol">plugins:</span> <span class="comment">#插件，例如生成 RSS 和站点地图的</span>
-- hexo-generator-feed
-- hexo-generator-sitemap
-<span class="comment"># Deployment #部署，将 jianganglu 改成用户名</span>
-<span class="symbol">deploy:</span>
-  <span class="symbol">type:</span> git
-  <span class="symbol">repo:</span> <span class="symbol">https:</span>/<span class="regexp">/github.com/jianganglu</span><span class="regexp">/jianganglu.github.io.git</span>
-</code></pre><h2 id="命令行使用">命令行使用</h2><p>常用命令：</p>
-<pre><code>hexo help <span class="preprocessor">#查看帮助</span>
-hexo init <span class="preprocessor">#初始化一个目录</span>
-hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="preprocessor">#新建文章</span>
-hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="preprocessor">#新建页面</span>
-hexo generate <span class="preprocessor">#生成网页，可以在 public 目录查看整个网站的文件</span>
-hexo <span class="keyword">server</span> <span class="preprocessor">#本地预览，'Ctrl+C'关闭</span>
-hexo deploy <span class="preprocessor">#部署.deploy目录</span>
-hexo clean <span class="preprocessor">#清除缓存，**强烈建议每次执行命令前先清理缓存，每次部署前先删除 .deploy 文件夹**</span>
-</code></pre><p>复合命令：</p>
-<pre><code>hexo deploy -<span class="keyword">g</span>
-hexo server -<span class="keyword">g</span>
-</code></pre><p>简写：</p>
-<pre><code>hexo <span class="variable">n =</span>= hexo new
-hexo <span class="variable">g =</span>= hexo generate
-hexo <span class="variable">s =</span>= hexo server
-hexo <span class="variable">d =</span>= hexo deploy
-</code></pre><p>安装插件，<plugin-name>为插件名</plugin-name></p>
-<pre><code>npm <span class="operator"><span class="keyword">install</span> &lt;<span class="keyword">plugin</span>-name&gt; <span class="comment">--save</span>
-npm <span class="keyword">update</span> #升级
-npm <span class="keyword">uninstall</span> &lt;<span class="keyword">plugin</span>-name&gt; #卸载</span>
-</code></pre><p>安装主题，<repository>为主题的 git 仓库，<theme-name>为要存放在本地的目录名</theme-name></repository></p>
-<pre><code>git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
-</code></pre><h2 id="编辑文章">编辑文章</h2><p>新建文章</p>
-<pre><code>hexo <span class="keyword">new</span> <span class="string">"标题"</span>
-</code></pre><p>在 _posts 目录下会生成文件标题.md</p>
-<pre><code>title: 标题
-date: 2014-11-11 11:11:11
-tags:
--<span class="ruby"> 标签<span class="number">1</span>
-</span>-<span class="ruby"> 标签<span class="number">2</span>
-</span>-<span class="ruby"> 标签<span class="number">3</span>
-</span>categories: [分类1,分类2,分类3]
--<span class="ruby">--
-</span>正文，使用Markdown语法书写
-</code></pre><p>编辑完后保存，hexo server 预览</p>
-<h2 id="发布">发布</h2><p>以发布到 Github 为例</p>
-<p>编辑全局配置文件 _config.yml 中的 deploy 部分，jianganglu为用户名</p>
-<pre><code><span class="attribute">deploy</span>:
-  <span class="attribute">type</span>: git
-  <span class="attribute">repo</span>: <span class="attribute">https</span>:<span class="comment">//github.com/jianganglu/jianganglu.github.io.git</span>
-  <span class="attribute">branch</span>: master
-</code></pre><p>或者</p>
-<pre><code><span class="attribute">deploy</span>:
-  <span class="attribute">type</span>: git
-  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:jianganglu/jianganglu.github.com.git
-  <span class="attribute">branch</span>: master
-</code></pre><p><strong>项目主页需要把 branch 设置为 gh-pages</strong></p>
-<p>托管到 Gitcafe 的话修改为</p>
-<pre><code><span class="attribute">deploy</span>:
-  <span class="attribute">type</span>: github
-  <span class="attribute">repository</span>: git<span class="variable">@gitcafe</span>.<span class="attribute">com</span>:jianganglu/jianganglu.git
-  <span class="attribute">branch</span>: gitcafe-pages
-</code></pre><p>部署</p>
-<pre><code><span class="title">hexo</span> deploy
-</code></pre><p>以下提示说明部署成功</p>
-<pre><code><span class="attr_selector">[info]</span> <span class="tag">Deploy</span> <span class="rule"><span class="attribute">done</span>:<span class="value"> github</span></span>
-</code></pre><p>点击 Github 上项目的 Settings，GitHub Pages，提示Your site is published at <a href="http://jianganglu.github.io/">http://jianganglu.github.io/</a><br>第一次上传网站的话需要等十分钟左右，以后每次更新都能马上打开</p>
-<h1 id="绑定域名">绑定域名</h1><p>不绑定域名的话只能通过your_user_name.github.io访问<br>申请域名推荐<a href="https://www.godaddy.com/" title="GoDaddy" target="_blank" rel="external">GoDaddy</a>，域名解析推荐<a href="https://www.dnspod.cn/Login" title="DNSPod" target="_blank" rel="external">DNSPod</a></p>
-<h2 id="绑定顶级域名">绑定顶级域名</h2><p>新建文件 CNAME，无后缀，纯文本文件，内容为要绑定的域名jianganglu.com<br>如果要使用www.jianganglu.com的形式，文件内容改为www.jianganglu.com</p>
-<p>DNS设置<br>主机记录@，类型A，记录值192.30.252.153<br>主机记录www，类型A，记录值192.30.252.153<br>参考 <a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider" target="_blank" rel="external">https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider</a></p>
-<h2 id="绑定子域名">绑定子域名</h2><p>比如使用域名jianganglu.com的子域名blog.jianganglu.com<br>CNAME文件内容为blog.jianganglu.com</p>
-<p>DNS设置<br>主机记录blog，类型CNAME，记录值jianganglu.github.io<br>参考 <a href="https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider" target="_blank" rel="external">https://help.github.com/articles/tips-for-configuring-a-cname-record-with-your-dns-provider</a></p>
-<h2 id="Gitcafe_绑定域名">Gitcafe 绑定域名</h2><p>项目管理界面，左侧的导航栏中有自定义域名设置</p>
-<h1 id="优化">优化</h1><h2 id="配置主题">配置主题</h2><p>Hexo 的<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">主题列表</a></p>
-<p>下载主题</p>
-<pre><code>$ git clone <span class="tag">&lt;<span class="title">repository</span>&gt;</span> themes/<span class="tag">&lt;<span class="title">theme-name</span>&gt;</span>
-</code></pre><p>也可以手动下载后解压到 themes 目录</p>
-<p>在全局配置文件 _config.yml 中 theme 一行改成想要的主题</p>
-<p>主题目录结构</p>
-<pre><code>.
-├── languages          <span class="preprocessor">#国际化</span>
-|   ├── <span class="keyword">default</span>.yml    <span class="preprocessor">#默认</span>
-|   └── zh-CN.yml      <span class="preprocessor">#中文</span>
-├── <span class="keyword">layout</span>             <span class="preprocessor">#布局</span>
-|   ├── _partial       <span class="preprocessor">#局部的布局</span>
-|   └── _widget        <span class="preprocessor">#小挂件的布局</span>
-├── script             <span class="preprocessor">#js脚本</span>
-├── source             <span class="preprocessor">#源代码文件</span>
-|   ├── css            <span class="preprocessor">#CSS</span>
-|   |   ├── _base      <span class="preprocessor">#基础CSS</span>
-|   |   ├── _partial   <span class="preprocessor">#局部CSS</span>
-|   |   ├── fonts      <span class="preprocessor">#字体</span>
-|   |   ├── images     <span class="preprocessor">#图片</span>
-|   |   └── style.styl <span class="preprocessor">#style.css</span>
-|   ├── fancybox       <span class="preprocessor">#fancybox</span>
-|   └── js             <span class="preprocessor">#js</span>
-├── _config.yml        <span class="preprocessor">#主题配置文件</span>
-└── README.md          <span class="preprocessor">#主题介绍</span>
-</code></pre><p>以下是主题 <a href="https://github.com/xiangming/landscape-plus" target="_blank" rel="external">landscape-plus</a> 的配置文件</p>
-<pre><code><span class="preprocessor"># Header #顶部导航</span>
-<span class="label">menu:</span>
-  Home: / <span class="preprocessor">#主页</span>
-  Archives: /archives <span class="preprocessor">#存档</span>
-  About: /about <span class="preprocessor">#关于</span>
-<span class="label">rss:</span> /atom.xml <span class="preprocessor">#RSS 订阅</span>
-<span class="preprocessor"># Content</span>
-<span class="label">excerpt_link:</span> 阅读全文 <span class="preprocessor">#"Read More"要显示的文字</span>
-<span class="label">fancybox:</span> true <span class="preprocessor">#fancybox 看图效果</span>
-<span class="preprocessor"># Sidebar #侧边栏</span>
-<span class="label">sidebar:</span> right <span class="preprocessor">#位置，右边</span>
-<span class="label">widgets:</span>
-- weibo
-- recent_posts
-- recent_comments
-- recent_visitors
-- archive
-- category
-- tag
-- tagcloud
-<span class="preprocessor">#- links #在 widget 前加"#"禁用</span>
-<span class="preprocessor"># Links #友情链接</span>
-<span class="label">links:</span>
-  Hexo: http://hexo.io
-<span class="preprocessor"># Miscellaneous</span>
-<span class="label">google_analytics:</span> UA-xxxxxxxx-<span class="number">1</span> <span class="preprocessor">#Google Analytics ID</span>
-<span class="label">favicon:</span> /favicon.ico <span class="preprocessor">#favicon 路径</span>
-<span class="label">twitter:</span> jianganglu
-<span class="label">google_plus:</span> 
-<span class="label">fb_admins:</span> 
-<span class="label">fb_app_id:</span> 
-<span class="preprocessor"># Duoshuo #多说通用代码</span>
-<span class="label">duoshuo_shortname:</span>
-<span class="preprocessor"># Baidu share #百度分享</span>
-<span class="label">baidushare:</span> true
-</code></pre><h1 id="评论">评论</h1><p>在 <a href="https://disqus.com/" title="Disqus官网" target="_blank" rel="external">Disqus官网</a> 申请新网站的 shortname<br>配置 _config.yml 文件</p>
-<pre><code><span class="attribute">disqus_shortname</span>: <span class="string">xxxxxxxx</span>
-</code></pre><p>替换为多说，landscape-plus 已经配置好了多说，填写duoshuo_shortname即可</p>
-<h1 id="RSS_订阅">RSS 订阅</h1><p>安装插件</p>
-<pre><code>npm <span class="keyword">install</span> hexo-generator-feed
-</code></pre><p>全局配置文件开启插件</p>
-<pre><code>plugins:
-<span class="bullet">- </span>hexo-generator-feed
-</code></pre><p>主题配置文件添加入口</p>
-<pre><code><span class="attribute">rss</span>: <span class="string">/atom.xml</span>
-</code></pre><p>浏览<a href="http://localhost:4000/atom.xml查看是否生效" target="_blank" rel="external">http://localhost:4000/atom.xml查看是否生效</a></p>
-<h1 id="Sitemap_网站地图">Sitemap 网站地图</h1><p>安装插件</p>
-<pre><code>npm <span class="keyword">install</span> hexo-generator-sitemap
-</code></pre><p>开启插件</p>
-<pre><code>plugins:
-<span class="bullet">- </span>hexo-generator-sitemap
-</code></pre><p>浏览<a href="http://localhost:4000/sitemap.xml查看是否生效" target="_blank" rel="external">http://localhost:4000/sitemap.xml查看是否生效</a></p>
-<h1 id="mathjax_数学公式">mathjax 数学公式</h1><p>新建文件 themes/pacman/layout/_partial/mathjax.ejs<br>添加以下内容</p>
-<pre><code><span class="comment">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/x-mathjax-config"</span>&gt;</span><span class="less">
-  <span class="tag">MathJax</span><span class="class">.Hub</span><span class="class">.Config</span>({
-    <span class="tag">tex2jax</span>: {
-      <span class="attribute">inlineMath</span>: [ [<span class="string">'$'</span>,<span class="string">'$'</span>], [<span class="string">"\\("</span>,<span class="string">"\\)"</span>] ],
-      <span class="attribute">processEscapes</span>: true
-    }
-  });
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/x-mathjax-config"</span>&gt;</span><span class="less">
-    <span class="tag">MathJax</span><span class="class">.Hub</span><span class="class">.Config</span>({
-      <span class="tag">tex2jax</span>: {
-        <span class="attribute">skipTags</span>: [<span class="string">'script'</span>, <span class="string">'noscript'</span>, <span class="string">'style'</span>, <span class="string">'textarea'</span>, <span class="string">'pre'</span>, <span class="string">'code'</span>]
-      }
-    });
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/x-mathjax-config"</span>&gt;</span><span class="matlab">
-    MathJax.Hub.Queue(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-        var all = MathJax.Hub.getAllJax(), <span class="built_in">i</span>;
-        <span class="keyword">for</span>(<span class="built_in">i</span>=<span class="number">0</span>; <span class="built_in">i</span> &lt; all.<span class="built_in">length</span>; <span class="built_in">i</span> += <span class="number">1</span>) <span class="cell">{
-            all[i].SourceElement().parentNode.className += <span class="string">' has-jax'</span>;
-        }</span>
-    });
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><span class="undefined">
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</code></pre><p>在themes/pacman/layout/_partial/after_footer.ejs增加对mathjax的引用</p>
-<pre><code>&lt;<span class="preprocessor">%</span>- partial<span class="comment">('mathjax')</span> <span class="preprocessor">%</span>&gt;
-</code></pre><h1 id="文章摘要">文章摘要</h1><p>在摘要文字后面插入</p>
-<pre><code><span class="comment">&lt;!--more--&gt;</span>
-</code></pre><p>可以在主题的配置文件中设置要显示的文字</p>
-<pre><code><span class="attribute">excerpt_link</span>: <span class="string">阅读全文</span>
-</code></pre><h1 id="图片显示">图片显示</h1><p>把图片放到 source/images 目录下</p>
-<pre><code>![]<span class="comment">(images/<span class="doctag"><span class="keyword">xxx</span>.</span>jpg)</span>
-</code></pre><p>推荐使用图床</p>
-<h1 id="自定义页面">自定义页面</h1><p>以关于页面为例</p>
-<pre><code>hexo <span class="keyword">new</span> page <span class="string">"about"</span>
-</code></pre><p>编辑 source/about/index.md：</p>
-<pre><code>title: About
-<span class="header">date: 2014-11-1 11:11:11
----</span>
-About Me
-</code></pre><p>在主题的配置文件里添加入口</p>
-<pre><code><span class="attribute">menu</span>:
-  <span class="attribute">About</span>: /about
-</code></pre><h1 id="自定义_404_页面">自定义 404 页面</h1><p>添加 source/404.html</p>
-<p>404 页面不需要 Hexo 解析</p>
-<pre><code>layout: false
---------
-<span class="doctype">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;<span class="title">html</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=UTF-8"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="title">title</span>&gt;</span>404<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"icon"</span> <span class="attribute">href</span>=<span class="value">"/favicon.ico"</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">align</span>=<span class="value">"center"</span>&gt;</span>
-      <span class="tag">&lt;<span class="title">p</span>&gt;</span>404 你懂的<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
-    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
-</code></pre><p><a href="http://www.qq.com/404/" target="_blank" rel="external">腾讯公益404</a><br><a href="http://yibo.iyiyun.com/Index/web404" target="_blank" rel="external">404公益_益云(公益互联网)社会创新中心</a><br><a href="http://404page.missingkids.org.tw/" target="_blank" rel="external">失蹤兒童少年資料管理中心404</a></p>
-<h1 id="添加小图标">添加小图标</h1><p>将 favicon.ico 文件放在 source 目录下<br>配置 landscape-plus 主题里的 _config.yml</p>
-<pre><code><span class="attribute">favicon</span>: <span class="string">/favicon.ico</span>
-</code></pre><h1 id="添加robots-txt">添加robots.txt</h1><p>source 目录下添加 robots.txt</p>
-<pre><code><span class="attribute">User-agent</span>: <span class="string">Baiduspider</span>
-<span class="attribute">Disallow</span>: <span class="string"></span>
-<span class="attribute">User-agent</span>: <span class="string">Googlebot</span>
-<span class="attribute">Disallow</span>: <span class="string"></span>
-<span class="attribute">User-agent</span>: <span class="string">*</span>
-<span class="attribute">Disallow</span>: <span class="string">/</span>
-</code></pre><h1 id="生成_post_时默认生成_categories_配置项">生成 post 时默认生成 categories 配置项</h1><p>在 scaffolds/post.md 中添加</p>
-<pre><code><span class="label">categories:</span>
-</code></pre><h1 id="添加新浪微博秀">添加新浪微博秀</h1><p>在<a href="http://app.weibo.com/tool/weiboshow" title="微博秀" target="_blank" rel="external">微博秀</a>设置和生成代码<br>在主题 /layout/_widget 中新建 weibo.ejs 文件，保存刚刚复制的代码<br>在主题配置文件添加</p>
-<pre><code>widgets:
-<span class="bullet">- </span>weibo
-</code></pre><h1 id="设置网站统计">设置网站统计</h1><h2 id="百度统计">百度统计</h2><p>编辑文件 hexo\themes\modernist_config.yml ，增加配置选项：</p>
-<pre><code><span class="keyword">baidu_t</span>ongji: <span class="keyword">true</span>
-</code></pre><p>新建文件 hexo\themes\modernist\layout_partial\baidu_tongji.ejs ，内容如下：</p>
-<pre><code><span class="xml"></span>&lt;%<span class="ruby"> <span class="keyword">if</span> (theme.baidu_tongji){ </span>%&gt;<span class="xml">
-<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="vala">
-<span class="preprocessor">#你的百度统计代码</span>
-</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-</span>&lt;%<span class="ruby"> } </span>%&gt;<span class="xml"></span>
-</code></pre><p>注册并登录百度统计获取你的统计代码。</p>
-<p>编辑文件 hexo\themes\modernist\layout_partial\head.ejs ，在 『/head』 之前增加：</p>
-<pre><code>&lt;<span class="preprocessor">%</span>- partial<span class="comment">('baidu_tongji')</span> <span class="preprocessor">%</span>&gt;
-</code></pre><p>不出意外的话，在你的站点的每个页面的左上角都会看到一个恶心的百度LOGO。你只能在『百度统计首页-&gt;网站列表-&gt;获取代码-&gt;系统管理设置-&gt;统计图标设置-&gt;显示图标』，把那个勾去掉。</p>
-<h1 id="Google_Analytics">Google Analytics</h1><p>landscape-plus 主题直接配置</p>
-<pre><code><span class="attribute">google_analytics</span>: <span class="string">UA-xxxxxxxx-1</span>
-</code></pre><h1 id="添加”fork_me_on_github”">添加”fork me on github”</h1><p><a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">官方教程</a><br>将代码插入到 layout.ejs</p>
-<h1 id="分享">分享</h1><p>landscape-plus 主题开启百度分享</p>
-<pre><code><span class="string">baidushare:</span> <span class="literal">true</span>
-</code></pre><h1 id="迁移">迁移</h1><p>参考官方文档 <a href="http://zespia.tw/hexo/docs/migration.html" title="Hexo Migration" target="_blank" rel="external">Hexo Migration</a></p>
-
-		<div class="reward">
-		  <div class="reward-button">
-			赏
-			<span class="reward-code">
-			  <span class="alipay-code">
-			    <img class="alipay-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/alipay.png">
-			    <b>支付宝扫码打赏</b>
-			  </span>
-			  <span class="wechat-code">
-			    <img class="wechat-img wdp-appear" src="http://7xpjsl.com1.z0.glb.clouddn.com/wxpay.png">
-			    <b>微信打赏</b>
-			  </span>
-			</span>
-		  </div>
-		  <p class="reward-notice">如果文章对你有帮助，欢迎点击上方按钮打赏作者</p>
-		</div>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <a data-url="http://jianganglu.github.io/2015/05/25/blog-with-hexo/" data-id="cjok37odt0038hkeio7ucmxbq" class="article-share-link" data-share="baidu">分享到</a>
-      
-
-      
-        <a href="http://jianganglu.github.io/2015/05/25/blog-with-hexo/#ds-thread" class="article-comment-link">评论</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
     </footer>
   </div>
@@ -1618,7 +1318,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AngularJS/">AngularJS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaSciprt/">JavaSciprt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maven/">Maven</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bower/">bower</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/cordova/">cordova</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ionic/">ionic</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jenkins/">jenkins</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/npm/">npm</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sass/">sass</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/stylelint/">stylelint</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1627,7 +1327,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AngularJS/">AngularJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaSciprt/">JavaSciprt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Splice/">Splice()</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bower/">bower</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cordova/">cordova</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic/">ionic</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jenkins/">jenkins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sass/">sass</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stylelint/">stylelint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/">wordpress</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1636,7 +1336,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 17.5px;">sass</a> <a href="/tags/wordpress/" style="font-size: 12.5px;">wordpress</a>
+      <a href="/tags/AngularJS/" style="font-size: 10px;">AngularJS</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaSciprt/" style="font-size: 10px;">JavaSciprt</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Splice/" style="font-size: 10px;">Splice()</a> <a href="/tags/bower/" style="font-size: 10px;">bower</a> <a href="/tags/cordova/" style="font-size: 20px;">cordova</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/ionic/" style="font-size: 15px;">ionic</a> <a href="/tags/jenkins/" style="font-size: 10px;">jenkins</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/sass/" style="font-size: 17.5px;">sass</a> <a href="/tags/stylelint/" style="font-size: 10px;">stylelint</a> <a href="/tags/wordpress/" style="font-size: 12.5px;">wordpress</a>
     </div>
   </div>
 
@@ -1645,7 +1345,7 @@ About Me
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -1655,6 +1355,10 @@ About Me
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/03/05/lint-vue-files-with-stylelint/">lint-vue-files-with-stylelint</a>
+          </li>
         
           <li>
             <a href="/2016/10/27/wordpress-avatar/">wordpress显示头像</a>
@@ -1670,10 +1374,6 @@ About Me
         
           <li>
             <a href="/2016/04/17/css-oocss-1/">面向对象的CSS（一）</a>
-          </li>
-        
-          <li>
-            <a href="/2016/04/10/bower-create-the-bowerrc-file/">How-do-i-name-the-.bowerrc-file</a>
           </li>
         
       </ul>
@@ -1707,7 +1407,7 @@ About Me
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 JiangangLu<br>
+      &copy; 2019 JiangangLu<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
